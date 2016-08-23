@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Travel Partner</string>
+    <string name="tools_tour_name">Tour Name</string>
+    <string name="tools_start_location">Start Location</string>
+    <string name="tools_start_date_time">Start Date Time</string>
+    <string name="tools_end_date_time">End Date Time</string>
+    <string name="tools_remaining_time">Remaining Time</string>
+</resources>
