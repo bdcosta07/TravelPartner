@@ -5,15 +5,12 @@
     <dimen name="home_text_size">18sp</dimen>
     <dimen name="tour_text_size">18sp</dimen>
     <dimen name="tour_padding_bottom">8dp</dimen>
-<<<<<<< HEAD
     <dimen name="tour_entry_text_size">19sp</dimen>
     <dimen name="tour_margin_bottom">15dp</dimen>
     <dimen name="date_time_set_text_size">18sp</dimen>
     <dimen name="tour_margin_top">15dp</dimen>
-=======
 
     <dimen name="md_keylines">16dp</dimen>
     <dimen name="app_bar_height">256dp</dimen>
     <dimen name="navheader_height">222dp</dimen>
->>>>>>> 6fb3bd1c0ebf798b730d74c9f68252302b7938f2
 </resources>
