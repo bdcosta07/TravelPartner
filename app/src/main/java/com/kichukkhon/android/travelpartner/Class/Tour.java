@@ -1,22 +1,33 @@
 package com.kichukkhon.android.travelpartner.Class;
 
-import android.provider.BaseColumns;
-
 /**
  * Created by Bridget on 8/23/2016.
  */
 public class Tour extends BaseEntity{
-    private String tripName;
-    private long StartDateTime;
-    private long EndDateTime;
+    private String tourName;
+    private String destination;
+    private double destLat;
+    private double destLon;
+    private long startDateTime;
+    private long endDateTime;
+    private String startLocation;
+    private double locationLat;
+    private double locationLon;
     private String transport;
-    private ExpenseTracker budget;
+    private double budget;
+    private boolean deleted;
 
-    public Tour(int id, String tripName, long startDateTime, long endDateTime, String transport, ExpenseTracker budget) {
+    public Tour(int id, String tourName, String destination, double destLat, double destLon, long startDateTime, long endDateTime, String startLocation, double locationLat, double locationLon, String transport, double budget) {
         super(id);
-        this.tripName = tripName;
-        StartDateTime = startDateTime;
-        EndDateTime = endDateTime;
+        this.tourName = tourName;
+        this.destination = destination;
+        this.destLat = destLat;
+        this.destLon = destLon;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.startLocation = startLocation;
+        this.locationLat = locationLat;
+        this.locationLon = locationLon;
         this.transport = transport;
         this.budget = budget;
     }
@@ -24,28 +35,28 @@ public class Tour extends BaseEntity{
     public Tour() {
     }
 
-    public String getTripName() {
-        return tripName;
+    public String getTourName() {
+        return tourName;
     }
 
-    public void setTripName(String tripName) {
-        this.tripName = tripName;
+    public void setTourName(String tourName) {
+        this.tourName = tourName;
     }
 
     public long getStartDateTime() {
-        return StartDateTime;
+        return startDateTime;
     }
 
     public void setStartDateTime(long startDateTime) {
-        StartDateTime = startDateTime;
+        this.startDateTime = startDateTime;
     }
 
     public long getEndDateTime() {
-        return EndDateTime;
+        return endDateTime;
     }
 
     public void setEndDateTime(long endDateTime) {
-        EndDateTime = endDateTime;
+        this.endDateTime = endDateTime;
     }
 
     public String getTransport() {
@@ -56,11 +67,67 @@ public class Tour extends BaseEntity{
         this.transport = transport;
     }
 
-    public ExpenseTracker getBudget() {
+    public double getBudget() {
         return budget;
     }
 
-    public void setBudget(ExpenseTracker budget) {
+    public void setBudget(double budget) {
         this.budget = budget;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public double getDestLat() {
+        return destLat;
+    }
+
+    public void setDestLat(double destLat) {
+        this.destLat = destLat;
+    }
+
+    public double getDestLon() {
+        return destLon;
+    }
+
+    public void setDestLon(double destLon) {
+        this.destLon = destLon;
+    }
+
+    public String getStartLocation() {
+        return startLocation;
+    }
+
+    public void setStartLocation(String startLocation) {
+        this.startLocation = startLocation;
+    }
+
+    public double getLocationLat() {
+        return locationLat;
+    }
+
+    public void setLocationLat(double locationLat) {
+        this.locationLat = locationLat;
+    }
+
+    public double getLocationLon() {
+        return locationLon;
+    }
+
+    public void setLocationLon(double locationLon) {
+        this.locationLon = locationLon;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
