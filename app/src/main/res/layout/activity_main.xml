@@ -73,18 +73,16 @@
         android:textSize="@dimen/home_text_size"/>
 
     <Button
-<<<<<<< HEAD
         android:id="@+id/btnTourEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tour Entry"
         android:onClick="btnTourEntryOnClick"/>
-=======
+
+    <Button
         android:id="@+id/btnTourHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tour Home"
         android:onClick="btnTourHomeClick"/>
->>>>>>> 6fb3bd1c0ebf798b730d74c9f68252302b7938f2
-
 </LinearLayout>
