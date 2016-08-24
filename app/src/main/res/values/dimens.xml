@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="home_text_size">18sp</dimen>
+    <dimen name="tour_text_size">18sp</dimen>
+    <dimen name="tour_padding_bottom">8dp</dimen>
 </resources>
