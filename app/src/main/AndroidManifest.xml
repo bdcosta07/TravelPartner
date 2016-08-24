@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.TourListActivity" />
-        <activity android:name=".Activity.TourEntryDetailsActivity"></activity>
+        <activity android:name=".Activity.TourEntryDetailsActivity" />
+        <activity android:name=".Activity.TourHomeActivity"></activity>
     </application>
 
 </manifest>

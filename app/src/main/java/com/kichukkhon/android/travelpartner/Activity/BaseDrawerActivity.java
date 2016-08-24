@@ -1,0 +1,62 @@
+package com.kichukkhon.android.travelpartner.Activity;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
+import com.kichukkhon.android.travelpartner.R;
+
+/**
+ * Created by Ratul on 8/25/2016.
+ */
+public class BaseDrawerActivity extends BaseActivity {
+
+    private DrawerLayout mDrawerLayout;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    public void InitCommonUIElements() {
+        // Adding Toolbar to Main screen
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
+        setSupportActionBar(toolbar);
+
+        // Create Navigation drawer and inflate layout
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        // Adding menu icon to Toolbar
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            VectorDrawableCompat indicator
+                    = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.white, getTheme()));
+            supportActionBar.setHomeAsUpIndicator(indicator);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Set behavior of Navigation drawer
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    // This method will trigger on item Click of navigation menu
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // Set item in checked state
+                        menuItem.setChecked(true);
+
+                        // TODO: handle navigation
+
+                        // Closing drawer on item click
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
+    }
+}
