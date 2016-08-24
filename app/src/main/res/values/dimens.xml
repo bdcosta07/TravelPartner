@@ -5,4 +5,8 @@
     <dimen name="home_text_size">18sp</dimen>
     <dimen name="tour_text_size">18sp</dimen>
     <dimen name="tour_padding_bottom">8dp</dimen>
+    <dimen name="tour_entry_text_size">19sp</dimen>
+    <dimen name="tour_margin_bottom">15dp</dimen>
+    <dimen name="date_time_set_text_size">18sp</dimen>
+    <dimen name="tour_margin_top">15dp</dimen>
 </resources>

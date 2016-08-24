@@ -17,4 +17,8 @@
 
     <!-- Date format [CHAR LIMIT=NONE] -->
     <string name="format_full_friendly_date"><xliff:g id="month">%1$s</xliff:g>, <xliff:g id="day">%2$s</xliff:g></string>
+    <string name="add_new_tour">Add new Tour</string>
+    <string name="txt_budget">Budget</string>
+    <string name="tv_start_time_set">Start Time</string>
+    <string name="tv_end_date_set">End Date</string>
 </resources>
