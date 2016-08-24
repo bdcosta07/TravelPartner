@@ -15,8 +15,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+<<<<<<< HEAD
     public void btnTourEntryOnClick(View view) {
         Intent intent=new Intent(this,TourEntryDetailsActivity.class);
+=======
+    public void btnTourHomeClick(View view) {
+        Intent intent = new Intent(this, TourHomeActivity.class);
+>>>>>>> 6fb3bd1c0ebf798b730d74c9f68252302b7938f2
         startActivity(intent);
     }
 }
