@@ -21,4 +21,7 @@
     <string name="txt_budget">Budget</string>
     <string name="tv_start_time_set">Start Time</string>
     <string name="tv_end_date_set">End Date</string>
+
+
+    <string name="destination_search_hint">Where do you want to go?</string>
 </resources>
