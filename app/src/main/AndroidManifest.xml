@@ -19,11 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragment.UpcomingTourListFragment" />
         <activity android:name=".Activity.TourEntryDetailsActivity" />
         <activity android:name=".Activity.TourHomeActivity" />
         <activity android:name=".Activity.TourEntryDestinationActivity" />
         <activity android:name=".Activity.TourListActivity"></activity>
+        <activity android:name=".Activity.AlarmActivity"></activity>
+
+        <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
+
+        <service android:name=".BackgroundService.AlarmService"
+            android:enabled="true">
+        </service>
     </application>
 
 </manifest>
