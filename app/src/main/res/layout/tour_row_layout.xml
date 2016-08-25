@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -9,40 +10,50 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <TextView
-        android:id="@+id/tvTourName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="@string/tour_name"
-        android:textSize="@dimen/tour_text_size"
-        android:paddingBottom="@dimen/tour_padding_bottom"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvStartDate"
-            android:layout_width="0dp"
+            android:id="@+id/tvTourName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/start_date"
+            tools:text="@string/tour_name"
             android:textSize="@dimen/tour_text_size"
-            android:paddingBottom="@dimen/tour_padding_bottom"
-            android:layout_weight="1"/>
+            android:paddingBottom="@dimen/tour_padding_bottom"/>
 
-        <TextView
-            android:id="@+id/tvEndDate"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/end_date"
-            android:textSize="@dimen/tour_text_size"
-            android:paddingBottom="@dimen/tour_padding_bottom"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvStartDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="@string/start_date"
+                android:textSize="@dimen/tour_text_size"
+                android:paddingBottom="@dimen/tour_padding_bottom"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tvEndDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="@string/end_date"
+                android:textSize="@dimen/tour_text_size"
+                android:paddingBottom="@dimen/tour_padding_bottom"
+                android:layout_weight="1"/>
 
 
+
+        </LinearLayout>
 
     </LinearLayout>
 
 
-</LinearLayout>
+
+
+
+</android.support.v7.widget.CardView>

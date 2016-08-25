@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder>{
 
-    ArrayList<Tour> tourList;
+    ArrayList<Tour> tourList=new ArrayList<>();
     Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,7 +44,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder>{
     }
 
     public TourAdapter(Context context,ArrayList<Tour> tourList) {
-        this.tourList = tourList;
+        this.tourList=tourList;
         this.context = context;
     }
 
