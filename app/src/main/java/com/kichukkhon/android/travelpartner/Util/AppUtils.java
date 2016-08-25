@@ -111,18 +111,14 @@ public class AppUtils {
         return timeString;
     }
 
-    public static long convertDateStringToMillis(String dateString, String expectedPattern){
-        //String expectedPattern = "yyyy-MM-dd";
-        long timeInMillis=0l;
+    public static long convertDateStringToMillis(String dateString, String expectedPattern) {
+        long timeInMillis = 0l;
         SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
-        try
-        {
+        try {
             Date date = formatter.parse(dateString);
 
-            timeInMillis= date.getTime();
-        }
-        catch (ParseException e)
-        {
+            timeInMillis = date.getTime();
+        } catch (ParseException e) {
             // execution will come here if the String that is given
             // does not match the expected format.
             e.printStackTrace();

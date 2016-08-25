@@ -10,4 +10,6 @@ public final class Constants {
     public static final String PLACE_NAME_KEY = "place_name";
     public static final String PLACE_LATITUDE_KEY = "place_lat";
     public static final String PLACE_LONGITUDE_KEY = "place_lng";
+
+    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
 }
