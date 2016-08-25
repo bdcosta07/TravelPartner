@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.kichukkhon.android.travelpartner.Class.Tour;
-import com.kichukkhon.android.travelpartner.Database.Tables.*;
+import com.kichukkhon.android.travelpartner.Database.Tables.TourEntry;
 
 import java.util.ArrayList;
 
@@ -39,13 +39,13 @@ public class TourDBManager {
         contentValues.put(TourEntry.DESTINATION_LAT, tour.getDestLat());
         contentValues.put(TourEntry.DESTINATION_LON, tour.getDestLon());
         contentValues.put(TourEntry.STAR_DATE, tour.getStartDateTime());
-        contentValues.put(TourEntry.END_DATE,tour.getEndDateTime());
-        contentValues.put(TourEntry.START_LOCATION,tour.getStartLocation());
-        contentValues.put(TourEntry.LOCATION_LAT,tour.getLocationLat());
-        contentValues.put(TourEntry.LOCATION_LON,tour.getLocationLon());
-        contentValues.put(TourEntry.TRANSPORT,tour.getTransport());
-        contentValues.put(TourEntry.BUDGET,tour.getBudget());
-        contentValues.put(TourEntry.DELETED,tour.isDeleted());
+        contentValues.put(TourEntry.END_DATE, tour.getEndDateTime());
+        contentValues.put(TourEntry.START_LOCATION, tour.getStartLocation());
+        contentValues.put(TourEntry.LOCATION_LAT, tour.getLocationLat());
+        contentValues.put(TourEntry.LOCATION_LON, tour.getLocationLon());
+        contentValues.put(TourEntry.TRANSPORT, tour.getTransport());
+        contentValues.put(TourEntry.BUDGET, tour.getBudget());
+        contentValues.put(TourEntry.DELETED, tour.isDeleted());
 
         long inserted = database.insert(TourEntry.TOUR_TABLE, null, contentValues);
         this.close();
@@ -72,15 +72,15 @@ public class TourDBManager {
                 String destination = cursor.getString(cursor.getColumnIndex(TourEntry.DESTINATION));
                 double destinationLat = cursor.getDouble(cursor.getColumnIndex(TourEntry.DESTINATION_LAT));
                 double destinationLon = cursor.getDouble(cursor.getColumnIndex(TourEntry.DESTINATION_LON));
-                long startDate=cursor.getLong(cursor.getColumnIndex(TourEntry.STAR_DATE));
-                long endDate=cursor.getLong(cursor.getColumnIndex(TourEntry.END_DATE));
+                long startDate = cursor.getLong(cursor.getColumnIndex(TourEntry.STAR_DATE));
+                long endDate = cursor.getLong(cursor.getColumnIndex(TourEntry.END_DATE));
                 String starLocation = cursor.getString(cursor.getColumnIndex(TourEntry.START_LOCATION));
                 double locationLat = cursor.getDouble(cursor.getColumnIndex(TourEntry.LOCATION_LAT));
                 double locationLon = cursor.getDouble(cursor.getColumnIndex(TourEntry.LOCATION_LON));
                 String transport = cursor.getString(cursor.getColumnIndex(TourEntry.TRANSPORT));
                 double budget = cursor.getDouble(cursor.getColumnIndex(TourEntry.BUDGET));
 
-                tour = new Tour(id, tourName, destination, destinationLat, destinationLon, startDate,endDate,starLocation,locationLat,locationLon,transport,budget);
+                tour = new Tour(id, tourName, destination, destinationLat, destinationLon, startDate, endDate, starLocation, locationLat, locationLon, transport, budget);
                 tourList.add(tour);
                 cursor.moveToNext();
             }
@@ -124,13 +124,13 @@ public class TourDBManager {
         contentValues.put(TourEntry.DESTINATION_LAT, tour.getDestLat());
         contentValues.put(TourEntry.DESTINATION_LON, tour.getDestLon());
         contentValues.put(TourEntry.STAR_DATE, tour.getStartDateTime());
-        contentValues.put(TourEntry.END_DATE,tour.getEndDateTime());
-        contentValues.put(TourEntry.START_LOCATION,tour.getStartLocation());
-        contentValues.put(TourEntry.LOCATION_LAT,tour.getLocationLat());
-        contentValues.put(TourEntry.LOCATION_LON,tour.getLocationLon());
-        contentValues.put(TourEntry.TRANSPORT,tour.getTransport());
-        contentValues.put(TourEntry.BUDGET,tour.getBudget());
-        contentValues.put(TourEntry.DELETED,tour.isDeleted());
+        contentValues.put(TourEntry.END_DATE, tour.getEndDateTime());
+        contentValues.put(TourEntry.START_LOCATION, tour.getStartLocation());
+        contentValues.put(TourEntry.LOCATION_LAT, tour.getLocationLat());
+        contentValues.put(TourEntry.LOCATION_LON, tour.getLocationLon());
+        contentValues.put(TourEntry.TRANSPORT, tour.getTransport());
+        contentValues.put(TourEntry.BUDGET, tour.getBudget());
+        contentValues.put(TourEntry.DELETED, tour.isDeleted());
 
         int updated = database.update(TourEntry.TOUR_TABLE, contentValues, TourEntry._ID + " = " + id, null);
         this.close();

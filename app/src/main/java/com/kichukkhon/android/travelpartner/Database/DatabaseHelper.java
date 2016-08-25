@@ -4,7 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.kichukkhon.android.travelpartner.Database.Tables.*;
+import com.kichukkhon.android.travelpartner.Database.Tables.AlarmEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.ExpenseEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.NoteEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.TourEntry;
 
 /**
  * Created by Bridget on 8/24/2016.
@@ -19,7 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String INTEGER_TYPE = " INTEGER";
     private static final String REAL_TYPE = " REAL";
     private static final String COMMA_SEP = ",";
-    private static final String BOOLEAN_TYPE = "boolean";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -38,26 +40,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + TourEntry.LOCATION_LON + INTEGER_TYPE + COMMA_SEP
             + TourEntry.TRANSPORT + TEXT_TYPE + COMMA_SEP
             + TourEntry.BUDGET + REAL_TYPE + COMMA_SEP
-            + TourEntry.DELETED + BOOLEAN_TYPE + " )";
+            + TourEntry.DELETED + INTEGER_TYPE + " )";
 
-    public static final String CREATE_EXPENSE_TABLE="CREATE TABLE"+ ExpenseEntry.EXPENSE_TABLE
-            +"( "+ ExpenseEntry._ID+"INTEGER PRIMARY KEY "+COMMA_SEP
-            +ExpenseEntry.TOUR_ID+INTEGER_TYPE+COMMA_SEP
-            +ExpenseEntry.PURPOSE+TEXT_TYPE+COMMA_SEP
-            +ExpenseEntry.AMOUNT+REAL_TYPE+COMMA_SEP
-            +ExpenseEntry.DATE_TIME+INTEGER_TYPE+" )";
+    public static final String CREATE_EXPENSE_TABLE = " CREATE TABLE " + ExpenseEntry.EXPENSE_TABLE
+            + "( " + ExpenseEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
+            + ExpenseEntry.TOUR_ID + INTEGER_TYPE + COMMA_SEP
+            + ExpenseEntry.PURPOSE + TEXT_TYPE + COMMA_SEP
+            + ExpenseEntry.AMOUNT + REAL_TYPE + COMMA_SEP
+            + ExpenseEntry.DATE_TIME + INTEGER_TYPE + " )";
 
-    public static final String CREATE_ALARM_TABLE="CREATE TABLE"+ AlarmEntry.ALARM_TABLE
-            +"( "+ AlarmEntry._ID+"INTEGER PRIMARY KEY "+COMMA_SEP
-            +AlarmEntry.TOUR_ID+INTEGER_TYPE+COMMA_SEP
-            +AlarmEntry.DATE_TIME+INTEGER_TYPE+COMMA_SEP
-            +AlarmEntry.ALARM_NOTE+TEXT_TYPE+COMMA_SEP +" )";
+    public static final String CREATE_ALARM_TABLE = " CREATE TABLE " + AlarmEntry.ALARM_TABLE
+            + "( " + AlarmEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
+            + AlarmEntry.TOUR_ID + INTEGER_TYPE + COMMA_SEP
+            + AlarmEntry.DATE_TIME + INTEGER_TYPE + COMMA_SEP
+            + AlarmEntry.ALARM_NOTE + TEXT_TYPE + " )";
 
-    public static final String CREATE_NOTE_TABLE="CREATE TABLE"+ NoteEntry.NOTE_TABLE
-            +"( "+ NoteEntry._ID+"INTEGER PRIMARY KEY "+COMMA_SEP
-            +NoteEntry.TOUR_ID+INTEGER_TYPE+COMMA_SEP
-            +NoteEntry.TITLE+TEXT_TYPE+COMMA_SEP
-            +NoteEntry.NOTE+TEXT_TYPE+COMMA_SEP +" )";
+    public static final String CREATE_NOTE_TABLE = " CREATE TABLE " + NoteEntry.NOTE_TABLE
+            + "( " + NoteEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
+            + NoteEntry.TOUR_ID + INTEGER_TYPE + COMMA_SEP
+            + NoteEntry.TITLE + TEXT_TYPE + COMMA_SEP
+            + NoteEntry.NOTE + TEXT_TYPE +" )";
 
 
     public static DatabaseHelper getDbInstance(Context context) {

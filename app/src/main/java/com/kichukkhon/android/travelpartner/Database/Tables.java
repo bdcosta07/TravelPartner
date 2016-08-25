@@ -37,13 +37,13 @@ public class Tables{
         public static final String ALARM_TABLE="Alarm";
 
         public static final String TOUR_ID="tour_id";
-        public static final String DATE_TIME="tour_name";
-        public static final String ALARM_NOTE="tour_name";
+        public static final String DATE_TIME="date_time";
+        public static final String ALARM_NOTE="note";
 
 
     }
     public final static class NoteEntry implements BaseColumns{
-        public static final String NOTE_TABLE="Alarm";
+        public static final String NOTE_TABLE="Tour_Note";
 
         public static final String TOUR_ID="tour_id";
         public static final String TITLE="title";

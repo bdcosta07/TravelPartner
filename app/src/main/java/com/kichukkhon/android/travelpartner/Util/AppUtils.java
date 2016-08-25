@@ -6,6 +6,7 @@ import android.text.format.Time;
 import com.kichukkhon.android.travelpartner.R;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -108,5 +109,25 @@ public class AppUtils {
         DateFormat formatter = new SimpleDateFormat("h:mm a");
         String timeString = formatter.format(date);
         return timeString;
+    }
+
+    public static long convertDateStringToMillis(String dateString, String expectedPattern){
+        //String expectedPattern = "yyyy-MM-dd";
+        long timeInMillis=0l;
+        SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
+        try
+        {
+            Date date = formatter.parse(dateString);
+
+            timeInMillis= date.getTime();
+        }
+        catch (ParseException e)
+        {
+            // execution will come here if the String that is given
+            // does not match the expected format.
+            e.printStackTrace();
+        }
+
+        return timeInMillis;
     }
 }

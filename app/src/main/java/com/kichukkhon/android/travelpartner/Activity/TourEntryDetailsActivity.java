@@ -12,19 +12,31 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.kichukkhon.android.travelpartner.Class.Tour;
+import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
+import com.kichukkhon.android.travelpartner.Util.AppUtils;
 import com.kichukkhon.android.travelpartner.Util.DateSet;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TourEntryDetailsActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     EditText txtTourName;
     TextView tvShowStartDate;
     TextView tvShowEndDate;
+    EditText txtBudget;
     DatePicker startDateSet;
     DatePicker endDateSet;
     DateSet dateSet;
     private Toolbar toolbar;
+    Tour tourInfo;
+    TourDBManager tourDBManager;
+
 
 
     @Override
@@ -37,6 +49,7 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         tvShowEndDate = (TextView) findViewById(R.id.tvShowEndDate);
         startDateSet = (DatePicker) findViewById(R.id.startDatePicker);
         endDateSet = (DatePicker) findViewById(R.id.endDatePicker);
+        txtBudget=(EditText) findViewById(R.id.txtBudget);
 
         toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
 
@@ -103,10 +116,35 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.icon_save) {
-            return true;
+            saveTourInfo();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void saveTourInfo(){
+
+        String tourName=txtTourName.getText().toString();
+        double budget=Double.parseDouble(txtBudget.getText().toString());
+
+        String startDateStr=tvShowStartDate.getText().toString();
+        String endDateStr=tvShowEndDate.getText().toString();
+
+        long startDate= AppUtils.convertDateStringToMillis(startDateStr,"yyyy-MM-dd");
+        long endDate=AppUtils.convertDateStringToMillis(endDateStr,"yyyy-MM-dd");
+
+        tourInfo=new Tour();
+        tourDBManager=new TourDBManager(this);
+
+        tourInfo.setTourName(tourName);
+        tourInfo.setBudget(budget);
+        tourInfo.setStartDateTime(startDate);
+        tourInfo.setEndDateTime(endDate);
+
+        boolean inserted=tourDBManager.addTour(tourInfo);
+        if (inserted){
+            Toast.makeText(this, "Data Inserted", Toast.LENGTH_SHORT).show();
+        }else Toast.makeText(this, "Data not Inserted", Toast.LENGTH_SHORT).show();
     }
 
     /*@Override
