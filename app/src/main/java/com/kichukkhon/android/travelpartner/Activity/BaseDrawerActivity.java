@@ -1,8 +1,10 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.kichukkhon.android.travelpartner.R;
 
@@ -70,6 +73,11 @@ public class BaseDrawerActivity extends BaseActivity {
 
         if (id == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+        else if(id==R.id.menu_alarm){
+            Toast.makeText(this,"alarm clicked", Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(this,AlarmActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
