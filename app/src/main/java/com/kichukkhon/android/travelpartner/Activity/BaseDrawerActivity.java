@@ -55,7 +55,10 @@ public class BaseDrawerActivity extends BaseActivity {
                         // Set item in checked state
                         menuItem.setChecked(true);
 
-                        // TODO: handle navigation
+                        if(menuItem.getItemId()==R.id.menu_alarm){
+                            Intent intent=new Intent(BaseDrawerActivity.this,AlarmActivity.class);
+                            startActivity(intent);
+                        }
 
                         // Closing drawer on item click
                         mDrawerLayout.closeDrawers();
@@ -73,11 +76,6 @@ public class BaseDrawerActivity extends BaseActivity {
 
         if (id == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
-        }
-        else if(id==R.id.menu_alarm){
-            Toast.makeText(this,"alarm clicked", Toast.LENGTH_LONG).show();
-            Intent intent=new Intent(this,AlarmActivity.class);
-            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
