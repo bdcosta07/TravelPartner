@@ -1,10 +1,13 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.icu.util.Calendar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -13,7 +16,7 @@ import android.widget.TextView;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.DateSet;
 
-public class TourEntryDetailsActivity extends AppCompatActivity implements View.OnClickListener,DatePickerDialog.OnDateSetListener {
+public class TourEntryDetailsActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     EditText txtTourName;
     TextView tvShowStartDate;
@@ -21,7 +24,7 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
     DatePicker startDateSet;
     DatePicker endDateSet;
     DateSet dateSet;
-
+    private Toolbar toolbar;
 
 
     @Override
@@ -29,30 +32,35 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_entry_details);
 
-        txtTourName=(EditText)findViewById(R.id.txtTourName);
-        tvShowStartDate=(TextView)findViewById(R.id.tvShowStartDate);
-        tvShowEndDate=(TextView)findViewById(R.id.tvShowEndDate);
+        txtTourName = (EditText) findViewById(R.id.txtTourName);
+        tvShowStartDate = (TextView) findViewById(R.id.tvShowStartDate);
+        tvShowEndDate = (TextView) findViewById(R.id.tvShowEndDate);
         startDateSet = (DatePicker) findViewById(R.id.startDatePicker);
         endDateSet = (DatePicker) findViewById(R.id.endDatePicker);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        final Calendar calendar=Calendar.getInstance();
+        final Calendar calendar = Calendar.getInstance();
 
-        int year=calendar.get(Calendar.YEAR);
-        int month=calendar.get(Calendar.MONTH);
-        int day=calendar.get(Calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        tvShowStartDate.setText(year+"-"+(month+1)+"-"+day);
-        tvShowEndDate.setText(year+"-"+(month+1)+"-"+day);
+        tvShowStartDate.setText(year + "-" + (month + 1) + "-" + day);
+        tvShowEndDate.setText(year + "-" + (month + 1) + "-" + day);
 
         tvShowStartDate.setOnClickListener(this);
         tvShowEndDate.setOnClickListener(this);
     }
 
-    public void showDatePicker(){
-        dateSet=new DateSet();
-        dateSet.show(getFragmentManager(),"datePicker");
+    public void showDatePicker() {
+        dateSet = new DateSet();
+        dateSet.show(getFragmentManager(), "datePicker");
     }
 
 
@@ -75,11 +83,38 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-        tvShowStartDate.setText(new StringBuilder().append(year+"-"+(monthOfYear+1)+"-"+dayOfMonth));
-        datePicker.init(year,monthOfYear,dayOfMonth,null);
+        tvShowStartDate.setText(new StringBuilder().append(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth));
+        datePicker.init(year, monthOfYear, dayOfMonth, null);
 
-        tvShowEndDate.setText(new StringBuilder().append(year+"-"+(monthOfYear+1)+"-"+dayOfMonth));
-        datePicker.init(year,monthOfYear,dayOfMonth,null);
+        tvShowEndDate.setText(new StringBuilder().append(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth));
+        datePicker.init(year, monthOfYear, dayOfMonth, null);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_option, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.icon_save) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /*@Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem saveItem=menu.findItem(R.id.icon_save);
+        saveItem.setVisible(true);
+        return super.onPrepareOptionsMenu(menu);
+    }*/
+
 
 }
