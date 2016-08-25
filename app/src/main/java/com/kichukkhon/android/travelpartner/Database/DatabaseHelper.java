@@ -31,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "( " + TourEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
             + TourEntry.TOUR_NAME + TEXT_TYPE + COMMA_SEP
             + TourEntry.DESTINATION + TEXT_TYPE + COMMA_SEP
+            + TourEntry.PLACE_ID + TEXT_TYPE + COMMA_SEP
             + TourEntry.DESTINATION_LAT + REAL_TYPE + COMMA_SEP
             + TourEntry.DESTINATION_LON + REAL_TYPE + COMMA_SEP
             + TourEntry.STAR_DATE + INTEGER_TYPE + COMMA_SEP

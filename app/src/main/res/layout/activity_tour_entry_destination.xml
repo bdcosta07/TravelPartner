@@ -20,7 +20,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:src="@drawable/powered_by_google_light" />
+        android:src="@drawable/powered_by_google_light"
+        android:layout_below="@+id/autocomplete_destination"
+        android:layout_alignRight="@+id/autocomplete_destination"
+        android:layout_alignEnd="@+id/autocomplete_destination"
+        android:layout_marginTop="-5dp" />
 
 </RelativeLayout>

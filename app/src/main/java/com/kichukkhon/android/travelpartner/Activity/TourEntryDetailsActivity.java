@@ -35,7 +35,6 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
     TourDBManager tourDBManager;
     int selectedDatePickerCallerId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +65,8 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
 
         tvShowStartDate.setOnClickListener(this);
         tvShowEndDate.setOnClickListener(this);
+
+
     }
 
     public void showDatePicker() {
@@ -122,6 +123,12 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         long startDate = AppUtils.convertDateStringToMillis(startDateStr, Constants.DEFAULT_DATE_FORMAT);
         long endDate = AppUtils.convertDateStringToMillis(endDateStr, Constants.DEFAULT_DATE_FORMAT);
 
+        Bundle extras = getIntent().getExtras();
+        String placeId = extras.getString(Constants.PLACE_ID_KEY);
+        String placeName = extras.getString(Constants.PLACE_NAME_KEY);
+        double latitude = extras.getDouble(Constants.PLACE_LATITUDE_KEY);
+        double longitude = extras.getDouble(Constants.PLACE_LONGITUDE_KEY);
+
         tourInfo = new Tour();
         tourDBManager = new TourDBManager(this);
 
@@ -129,6 +136,10 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         tourInfo.setBudget(budget);
         tourInfo.setStartDateTime(startDate);
         tourInfo.setEndDateTime(endDate);
+        tourInfo.setPlaceId(placeId);
+        tourInfo.setDestination(placeName);
+        tourInfo.setDestLat(latitude);
+        tourInfo.setDestLon(longitude);
 
         boolean inserted = tourDBManager.addTour(tourInfo);
         if (inserted) {

@@ -11,6 +11,7 @@ public class Tables{
 
         public static final String TOUR_NAME="tour_name";
         public static final String DESTINATION="destination";
+        public static final String PLACE_ID="place_id";
         public static final String DESTINATION_LAT="des_latitude";
         public static final String DESTINATION_LON="des_longitude";
         public static final String STAR_DATE="start_time";

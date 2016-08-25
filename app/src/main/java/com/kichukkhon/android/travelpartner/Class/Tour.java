@@ -6,6 +6,7 @@ package com.kichukkhon.android.travelpartner.Class;
 public class Tour extends BaseEntity{
     private String tourName;
     private String destination;
+    private String placeId;
     private double destLat;
     private double destLon;
     private long startDateTime;
@@ -41,6 +42,14 @@ public class Tour extends BaseEntity{
 
     public void setTourName(String tourName) {
         this.tourName = tourName;
+    }
+
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
     }
 
     public long getStartDateTime() {

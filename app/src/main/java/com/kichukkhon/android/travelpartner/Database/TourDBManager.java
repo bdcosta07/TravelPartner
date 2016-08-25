@@ -35,6 +35,7 @@ public class TourDBManager {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(TourEntry.TOUR_NAME, tour.getTourName());
+        contentValues.put(TourEntry.PLACE_ID, tour.getPlaceId());
         contentValues.put(TourEntry.DESTINATION, tour.getDestination());
         contentValues.put(TourEntry.DESTINATION_LAT, tour.getDestLat());
         contentValues.put(TourEntry.DESTINATION_LON, tour.getDestLon());
@@ -121,6 +122,7 @@ public class TourDBManager {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TourEntry.TOUR_NAME, tour.getTourName());
         contentValues.put(TourEntry.DESTINATION, tour.getDestination());
+        contentValues.put(TourEntry.PLACE_ID, tour.getPlaceId());
         contentValues.put(TourEntry.DESTINATION_LAT, tour.getDestLat());
         contentValues.put(TourEntry.DESTINATION_LON, tour.getDestLon());
         contentValues.put(TourEntry.STAR_DATE, tour.getStartDateTime());
