@@ -24,4 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TourHomeActivity.class);
         startActivity(intent);
     }
+
+    public void btnDestinationClick(View view) {
+        Intent intent = new Intent(this, TourEntryDestinationActivity.class);
+        startActivity(intent);
+    }
 }
