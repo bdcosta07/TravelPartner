@@ -13,12 +13,9 @@
     <dimen name="md_keylines">16dp</dimen>
     <dimen name="app_bar_height">256dp</dimen>
     <dimen name="navheader_height">222dp</dimen>
-<<<<<<< HEAD
     <dimen name="dialog_layout_padding">24dp</dimen>
-=======
     <dimen name="tile_padding">8dp</dimen>
     <dimen name="tile_height">160dp</dimen>
     <dimen name="place_type_titles">10sp</dimen>
     <dimen name="tile_textview_height">42dp</dimen>
->>>>>>> 3c26e02999ad2c8b44688249eef53ee4dab37641
 </resources>

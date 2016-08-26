@@ -2,6 +2,7 @@ package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
 
 import com.kichukkhon.android.travelpartner.Adapter.ExpenseAdapter;
 import com.kichukkhon.android.travelpartner.Class.Expense;
@@ -22,6 +24,7 @@ import com.kichukkhon.android.travelpartner.Class.Tour;
 import com.kichukkhon.android.travelpartner.Database.ExpenseDBManager;
 import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
+import com.kichukkhon.android.travelpartner.Util.AppUtils;
 import com.kichukkhon.android.travelpartner.Util.Constants;
 
 import java.util.ArrayList;
@@ -31,6 +34,8 @@ public class ExpenseInfoActivity extends AppCompatActivity {
     TextView tvCurrent;
     TextView tvCurrentAmount;
     TextView tvBudgetAmount;
+    EditText txtPurpose;
+    EditText txtAmount;
     RecyclerView recyclerView;
     ExpenseAdapter expenseAdapter;
     Expense expense;
@@ -90,12 +95,28 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                String purpose=((EditText)dialogView.findViewById(R.id.txtPurpose))
+                /*String purpose=((EditText)dialogView.findViewById(R.id.txtPurpose))
                         .getText().toString().trim();
                 String amount=((EditText)dialogView.findViewById(R.id.txtAmount))
-                        .getText().toString().trim();
+                        .getText().toString().trim();*/
 
+                txtPurpose=(EditText)dialogView.findViewById(R.id.txtPurpose);
+                txtAmount=(EditText)dialogView.findViewById(R.id.txtAmount);
 
+                String purpose=txtPurpose.getText().toString();
+                double amount=Double.parseDouble(txtAmount.getText().toString());
+                long date=System.currentTimeMillis();
+
+                expense=new Expense();
+
+                expense.setPurpose(purpose);
+                expense.setAmount(amount);
+                expense.setDateTime(date);
+
+                boolean inserted=expenseDBManager.addExpense(expense);
+                if (inserted) {
+                    Toast.makeText(ExpenseInfoActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(ExpenseInfoActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
 
             }
         });
