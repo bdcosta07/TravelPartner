@@ -30,4 +30,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TourListActivity.class);
         startActivity(intent);
     }
+
+
+    public void btnExpenseListClick(View view) {
+        Intent intent = new Intent(this, ExpenseInfoActivity.class);
+        startActivity(intent);
+    }
 }

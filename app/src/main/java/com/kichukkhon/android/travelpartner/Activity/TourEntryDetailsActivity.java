@@ -1,6 +1,7 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,7 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
     int selectedDatePickerCallerId;
     String placeName, placeId;
     Bundle extras;
-    double latitude,longitude;
+    double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +69,16 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
 
         extrasBundleInten();
 
-        txtTourName.setText("Tour to "+placeName);
+        txtTourName.setText("Tour to " + placeName);
         tvShowStartDate.setOnClickListener(this);
         tvShowEndDate.setOnClickListener(this);
+
+        Intent intent = new Intent();
+        int tourId = tourInfo.getId();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constants.CURRENT_TOUR_ID_KEY, tourId);
+        intent.putExtras(bundle);
+        startActivity(intent);
 
     }
 
@@ -148,7 +156,7 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         } else Toast.makeText(this, "Data not Inserted", Toast.LENGTH_SHORT).show();
     }
 
-    public void extrasBundleInten(){
+    public void extrasBundleInten() {
         extras = getIntent().getExtras();
         placeId = extras.getString(Constants.PLACE_ID_KEY);
         placeName = extras.getString(Constants.PLACE_NAME_KEY);
