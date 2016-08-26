@@ -2,6 +2,7 @@ package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +26,7 @@ import com.kichukkhon.android.travelpartner.Util.Constants;
 
 public class TourEntryDestinationActivity extends BaseActivity
         implements GoogleApiClient.OnConnectionFailedListener {
+
 
     public static String TAG = "DestinationActivity";
 
@@ -55,6 +57,10 @@ public class TourEntryDestinationActivity extends BaseActivity
                 .build();
 
         setContentView(R.layout.activity_tour_entry_destination);
+
+        // Adding Toolbar to Main screen
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
+        setSupportActionBar(toolbar);
 
         mAutocompleteDestination = (AutoCompleteTextView) findViewById(R.id.autocomplete_destination);
 
