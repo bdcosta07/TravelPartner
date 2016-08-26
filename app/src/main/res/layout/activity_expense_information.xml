@@ -88,14 +88,20 @@
         </LinearLayout>
 
 
-
+        <View
+            android:id="@+id/viewCA"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#8E8D8D"
+            android:layout_below="@+id/linearTwo"></View>
 
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rvExpenseList"
-            android:layout_below="@+id/linearTwo"
+            android:layout_marginTop="@dimen/tour_margin_top"
+            android:layout_below="@+id/viewCA"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
