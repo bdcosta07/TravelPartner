@@ -24,4 +24,7 @@
 
 
     <string name="destination_search_hint">Where do you want to go?</string>
+    <string name="tv_budget">Budget</string>
+    <string name="current_amount">Current Amount</string>
+    <string name="tv_budget_amoount">amount</string>
 </resources>
