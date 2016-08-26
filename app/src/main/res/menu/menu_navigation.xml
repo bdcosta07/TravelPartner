@@ -44,6 +44,7 @@
             android:tint="@color/button_grey"
             android:title="Current Weather" />
         <item
+            android:id="@+id/menu_nearby"
             android:icon="@drawable/ic_place_black_24dp"
             android:tint="@color/button_grey"
             android:title="Important Places" />
