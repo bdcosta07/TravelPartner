@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.content.WakefulBroadcastReceiver;
+import android.util.Log;
 
 import com.kichukkhon.android.travelpartner.BackgroundService.AlarmService;
 
@@ -19,6 +20,8 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
     private AlarmManager alarmMgr;
     // The pending intent that is triggered when the alarm fires.
     private PendingIntent alarmIntent;
+
+    private String TAG = AlarmReceiver.class.getSimpleName();
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -38,6 +41,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
          * In this example, we simply create a new intent to deliver to the service.
          * This intent holds an extra identifying the wake lock.
          */
+        Log.d(TAG, "on receive called");
         Intent service = new Intent(context, AlarmService.class);
 
         //Start the service, keeping the device awake while it is launching.
@@ -54,11 +58,12 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
      * @param context
      */
     public void setAlarm(Context context, long timeInMillis) {
+        Log.d(TAG, "Alarm SET at " + timeInMillis);
         alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
-        alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        alarmIntent = PendingIntent.getBroadcast(context, 192837, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        //set the alrm
+        //set the alarm
         alarmMgr.set(AlarmManager.RTC_WAKEUP,
                 timeInMillis, alarmIntent);
 
