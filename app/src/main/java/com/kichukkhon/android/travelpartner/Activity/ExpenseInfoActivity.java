@@ -1,14 +1,20 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.support.v7.app.AlertDialog;
 
 import com.kichukkhon.android.travelpartner.Adapter.ExpenseAdapter;
 import com.kichukkhon.android.travelpartner.Class.Expense;
@@ -26,7 +32,6 @@ public class ExpenseInfoActivity extends AppCompatActivity {
     TextView tvCurrentAmount;
     TextView tvBudgetAmount;
     RecyclerView recyclerView;
-    FloatingActionButton fab;
     ExpenseAdapter expenseAdapter;
     Expense expense;
     ArrayList<Expense> expenseList;
@@ -34,6 +39,7 @@ public class ExpenseInfoActivity extends AppCompatActivity {
     TourDBManager tourDBManager;
     Tour tour;
     int currentTourId;
+    View dialogView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +51,7 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         tvBudgetAmount = (TextView) findViewById(R.id.tvAmount);
         tvCurrent = (TextView) findViewById(R.id.tvCAmount);
         recyclerView = (RecyclerView) findViewById(R.id.rvExpenseList);
-        fab=(FloatingActionButton)findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(ExpenseInfoActivity.this, TourEntryDestinationActivity.class);
-                startActivity(intent);
-            }
-        });
 
         expenseDBManager = new ExpenseDBManager(this);
         tourDBManager = new TourDBManager(this);
@@ -80,5 +78,38 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         expenseAdapter.notifyDataSetChanged();
 
         recyclerView.setAdapter(expenseAdapter);
+    }
+
+    public void fabAddExpense(View view) {
+        setupDialog();
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(this,R.style.AppCompatAlertDialogStyle);
+
+        builder.setTitle(getString(R.string.dialog_title));
+        builder.setView(dialogView);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String purpose=((EditText)dialogView.findViewById(R.id.txtPurpose))
+                        .getText().toString().trim();
+                String amount=((EditText)dialogView.findViewById(R.id.txtAmount))
+                        .getText().toString().trim();
+
+
+
+            }
+        });
+        builder.setNegativeButton("Cancel",null);
+        builder.show().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+    }
+
+    private void setupDialog(){
+        dialogView= LayoutInflater.from(this).inflate(R.layout.expense_dialog_layout,null,false);
+
+        final TextInputLayout purposeInputLayout=(TextInputLayout)dialogView.findViewById(R.id.purposeTitle);
+        final TextInputLayout amountInputLayout=(TextInputLayout)dialogView.findViewById(R.id.titleAmount);
+
+        purposeInputLayout.setErrorEnabled(true);
+        amountInputLayout.setErrorEnabled(true);
     }
 }

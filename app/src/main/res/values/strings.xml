@@ -27,4 +27,7 @@
     <string name="tv_budget">Budget</string>
     <string name="current_amount">Current Amount</string>
     <string name="tv_amount">amount</string>
+    <string name="txt_purpose">Purpose</string>
+    <string name="txt_amount">Amount</string>
+    <string name="dialog_title">Add Expense</string>
 </resources>

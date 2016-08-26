@@ -72,14 +72,6 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         txtTourName.setText("Tour to " + placeName);
         tvShowStartDate.setOnClickListener(this);
         tvShowEndDate.setOnClickListener(this);
-
-        Intent intent = new Intent();
-        int tourId = tourInfo.getId();
-        Bundle bundle = new Bundle();
-        bundle.putInt(Constants.CURRENT_TOUR_ID_KEY, tourId);
-        intent.putExtras(bundle);
-        startActivity(intent);
-
     }
 
     public void showDatePicker() {
