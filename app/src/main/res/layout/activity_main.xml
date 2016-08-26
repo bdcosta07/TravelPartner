@@ -97,4 +97,10 @@
         android:layout_height="wrap_content"
         android:text="Tour List"
         android:onClick="btnTourListClick"/>
+    <Button
+        android:id="@+id/btnExpenseList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tour List"
+        android:onClick="btnExpenseListClick"/>
 </LinearLayout>

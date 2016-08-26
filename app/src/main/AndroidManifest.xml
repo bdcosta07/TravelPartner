@@ -42,8 +42,9 @@
 
         <service android:name=".BackgroundService.AlarmService" />
 
-        <activity android:name=".Activity.ExpenseInformation" />
+
         <activity android:name=".Activity.NearbyPlacesHomeActivity"></activity>
+        <activity android:name=".Activity.ExpenseInfoActivity"></activity>
     </application>
 
 </manifest>

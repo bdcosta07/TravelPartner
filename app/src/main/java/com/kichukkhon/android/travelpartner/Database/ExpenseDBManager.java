@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.kichukkhon.android.travelpartner.Class.Expense;
-import com.kichukkhon.android.travelpartner.Database.Tables.*;
+import com.kichukkhon.android.travelpartner.Database.Tables.ExpenseEntry;
 
 import java.util.ArrayList;
 
@@ -34,10 +34,10 @@ public class ExpenseDBManager {
         this.open();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ExpenseEntry.TOUR_ID,expense.getTourId());
-        contentValues.put(ExpenseEntry.PURPOSE,expense.getPurpose());
-        contentValues.put(ExpenseEntry.AMOUNT,expense.getAmount());
-        contentValues.put(ExpenseEntry.DATE_TIME,expense.getDateTime());
+        contentValues.put(ExpenseEntry.TOUR_ID, expense.getTourId());
+        contentValues.put(ExpenseEntry.PURPOSE, expense.getPurpose());
+        contentValues.put(ExpenseEntry.AMOUNT, expense.getAmount());
+        contentValues.put(ExpenseEntry.DATE_TIME, expense.getDateTime());
 
         long inserted = database.insert(ExpenseEntry.EXPENSE_TABLE, null, contentValues);
         this.close();
@@ -48,25 +48,27 @@ public class ExpenseDBManager {
         } else return false;
     }
 
-    public ArrayList<Expense> getAllExpenseInfo() {
+    public ArrayList<Expense> getExpenseInfoByTourId(int tourId) {
         this.open();
 
         ArrayList<Expense> expenseList = new ArrayList<>();
 
-        Cursor cursor = database.query(ExpenseEntry.EXPENSE_TABLE, null, null, null, null, null, null);
+        Cursor cursor = database.query(ExpenseEntry.EXPENSE_TABLE,
+                null,
+                ExpenseEntry.TOUR_ID + "= " + tourId,
+                null, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
 
             for (int i = 0; i < cursor.getCount(); i++) {
                 int id = cursor.getInt(cursor.getColumnIndex(ExpenseEntry._ID));
-                int tourId = cursor.getInt(cursor.getColumnIndex(ExpenseEntry.TOUR_ID));
                 String purpose = cursor.getString(cursor.getColumnIndex(ExpenseEntry.PURPOSE));
                 double amount = cursor.getDouble(cursor.getColumnIndex(ExpenseEntry.AMOUNT));
-                long dateTime=cursor.getLong(cursor.getColumnIndex(ExpenseEntry.DATE_TIME));
+                long dateTime = cursor.getLong(cursor.getColumnIndex(ExpenseEntry.DATE_TIME));
 
 
-                expense = new Expense(id,tourId,purpose,amount,dateTime);
+                expense = new Expense(id, tourId, purpose, amount, dateTime);
                 expenseList.add(expense);
                 cursor.moveToNext();
             }
@@ -76,20 +78,21 @@ public class ExpenseDBManager {
         return expenseList;
     }
 
-    public Expense getExpenseInfoById(int id){
+    public Expense getExpenseInfoById(int id) {
         this.open();
 
-        Cursor cursor=database.query(ExpenseEntry.EXPENSE_TABLE,null,
-                ExpenseEntry._ID+"= "+id,
-                null,null,null,null);
+        Cursor cursor = database.query(ExpenseEntry.EXPENSE_TABLE,
+                null,
+                ExpenseEntry._ID + "= " + id,
+                null, null, null, null);
 
         int mid = cursor.getInt(cursor.getColumnIndex(ExpenseEntry._ID));
         int tourId = cursor.getInt(cursor.getColumnIndex(ExpenseEntry.TOUR_ID));
         String purpose = cursor.getString(cursor.getColumnIndex(ExpenseEntry.PURPOSE));
         double amount = cursor.getDouble(cursor.getColumnIndex(ExpenseEntry.AMOUNT));
-        long dateTime=cursor.getLong(cursor.getColumnIndex(ExpenseEntry.DATE_TIME));
+        long dateTime = cursor.getLong(cursor.getColumnIndex(ExpenseEntry.DATE_TIME));
 
-        expense=new Expense(mid,tourId,purpose,amount,dateTime);
+        expense = new Expense(mid, tourId, purpose, amount, dateTime);
         this.close();
         return expense;
 
@@ -99,10 +102,10 @@ public class ExpenseDBManager {
         this.open();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ExpenseEntry.TOUR_ID,expense.getTourId());
-        contentValues.put(ExpenseEntry.PURPOSE,expense.getPurpose());
-        contentValues.put(ExpenseEntry.AMOUNT,expense.getAmount());
-        contentValues.put(ExpenseEntry.DATE_TIME,expense.getDateTime());
+        contentValues.put(ExpenseEntry.TOUR_ID, expense.getTourId());
+        contentValues.put(ExpenseEntry.PURPOSE, expense.getPurpose());
+        contentValues.put(ExpenseEntry.AMOUNT, expense.getAmount());
+        contentValues.put(ExpenseEntry.DATE_TIME, expense.getDateTime());
 
 
         int updated = database.update(ExpenseEntry.EXPENSE_TABLE, contentValues, ExpenseEntry._ID + " = " + id, null);
