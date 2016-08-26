@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,18 +41,19 @@
                 tools:text="@string/tv_budget"
                 android:id="@+id/tvBudget"
                 android:textSize="20sp"
-                android:layout_marginBottom="@dimen/tour_margin_bottom" />
+                android:layout_marginBottom="@dimen/tour_margin_bottom"
+                android:layout_weight="1"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:text="@string/tv_budget_amoount"
+                tools:text="@string/tv_amount"
                 android:id="@+id/tvAmount"
                 android:textSize="30sp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="@dimen/tour_margin_bottom" />
+               android:layout_marginBottom="@dimen/tour_margin_bottom"
+                android:layout_weight="1"
+                android:gravity="right"/>
 
         </LinearLayout>
 
@@ -68,17 +70,20 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 tools:text="Current Amount"
                 android:id="@+id/tvCurrentAmount"
-                android:textSize="@dimen/tour_text_size"
-               android:layout_marginBottom="@dimen/tour_margin_bottom" />
+                android:textSize="20dp"
+               android:layout_marginBottom="@dimen/tour_margin_bottom"
+                android:layout_weight="1"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:text="amount"
+                tools:text="@string/tv_amount"
                 android:id="@+id/tvCAmount"
                 android:textSize="30sp"
-                android:layout_marginBottom="@dimen/tour_margin_bottom"/>
+                android:layout_marginBottom="@dimen/tour_margin_bottom"
+                android:layout_weight="1"
+                android:gravity="right"/>
 
         </LinearLayout>
 
