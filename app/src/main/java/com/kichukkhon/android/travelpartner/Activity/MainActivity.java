@@ -14,19 +14,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    public void btnTourEntryOnClick(View view) {
-        Intent intent = new Intent(this, TourEntryDetailsActivity.class);
-        startActivity(intent);
-    }
-
+    
     public void btnTourHomeClick(View view) {
-        Intent intent = new Intent(this, TourHomeActivity.class);
+        Intent intent = new Intent(this, TourDetailsActivity.class);
         startActivity(intent);
     }
 
     public void btnDestinationClick(View view) {
         Intent intent = new Intent(this, TourEntryDestinationActivity.class);
+        startActivity(intent);
+    }
+
+
+    public void btnTourListClick(View view) {
+        Intent intent = new Intent(this, TourListActivity.class);
         startActivity(intent);
     }
 }

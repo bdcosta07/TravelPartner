@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer"
     android:fitsSystemWindows="true"
-    tools:context="com.kichukkhon.android.travelpartner.Activity.TourHomeActivity">
+    tools:context=".Activity.TourDetailsActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,6 +18,8 @@
 
 
     </RelativeLayout>
+
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
