@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kichukkhon.android.travelpartner">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,11 +28,16 @@
         <activity android:name=".Activity.TourListActivity"></activity>
         <activity android:name=".Activity.AlarmActivity"></activity>
 
-        <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
+        <receiver android:name=".BroadcastReceiver.AlarmReceiver"></receiver>
 
-        <service android:name=".BackgroundService.AlarmService"
-            android:enabled="true">
-        </service>
+        <receiver android:name=".BroadcastReceiver.AlarmBootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
+        <service android:name=".BackgroundService.AlarmService" />
+
     </application>
 
 </manifest>

@@ -1,120 +1,58 @@
 package com.kichukkhon.android.travelpartner.BackgroundService;
 
-import android.app.Notification;
+import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.os.IBinder;
-import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.v4.app.NotificationCompat;
 
 import com.kichukkhon.android.travelpartner.Activity.AlarmActivity;
+import com.kichukkhon.android.travelpartner.BroadcastReceiver.AlarmReceiver;
 import com.kichukkhon.android.travelpartner.R;
 
-import java.util.Random;
-
 /**
- * Created by Ratul on 8/26/2016.
+ * This {@code IntentService} does the app's actual work.
+ * {@code SampleAlarmReceiver} (a {@code WakefulBroadcastReceiver}) holds a
+ * partial wake lock for this service while the service does its work. When the
+ * service is finished, it calls {@code completeWakefulIntent()} to release the
+ * wake lock.
  */
-public class AlarmService extends Service {
-
-    private boolean isRunning;
-    Ringtone mRingtone;
-    private int startId;
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+public class AlarmService extends IntentService {
+    public AlarmService() {
+        super("travelPartnerAlarmService");
     }
 
+    public static final String TAG = "Travel Partner";
+    //An ID used to post the notification
+    public static final int NOTIFICATION_ID = 1;
+    private NotificationManager mNotificationManager;
+    NotificationCompat.Builder builder;
+
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        final NotificationManager mNM = (NotificationManager)
-                getSystemService(NOTIFICATION_SERVICE);
+    protected void onHandleIntent(Intent intent) {
+        sendNotification("alarm alarm alarm .....");
 
-        Intent intent1 = new Intent(this.getApplicationContext(), AlarmActivity.class);
-        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent1, 0);
-
-        Notification mNotify  = new Notification.Builder(this)
-                .setContentTitle("Richard Dawkins is talking" + "!")
-                .setContentText("Click me!")
-                .setSmallIcon(R.drawable.ic_alarm_black_24dp)
-                .setContentIntent(pIntent)
-                .setAutoCancel(true)
-                .build();
-
-        String state = intent.getExtras().getString("extra");
-
-        Log.e("what is going on here  ", state);
-
-        assert state != null;
-        switch (state) {
-            case "no":
-                startId = 0;
-                break;
-            case "yes":
-                startId = 1;
-                break;
-            default:
-                startId = 0;
-                break;
-        }
-
-        if(!this.isRunning && startId == 1) {
-            Log.e("if there was not sound ", " and you want start");
-
-            mRingtone=RingtoneManager.getRingtone(this, Settings.System.DEFAULT_RINGTONE_URI);
-
-
-
-            mRingtone.play();
-
-            mNM.notify(0, mNotify);
-
-            this.isRunning = true;
-            this.startId = 0;
-
-        }
-        else if (!this.isRunning && startId == 0){
-            Log.e("if there was not sound ", " and you want end");
-
-            this.isRunning = false;
-            this.startId = 0;
-
-        }
-
-        else if (this.isRunning && startId == 1){
-            Log.e("if there is sound ", " and you want start");
-
-            this.isRunning = true;
-            this.startId = 0;
-
-        }
-        else {
-            Log.e("if there is sound ", " and you want end");
-
-            mRingtone.stop();
-
-            this.isRunning = false;
-            this.startId = 0;
-        }
-
-
-        Log.e("MyActivity", "In the service");
-
-        return START_NOT_STICKY;
+        // Release the wake lock provided by the BroadcastReceiver.
+        AlarmReceiver.completeWakefulIntent(intent);
+        // END_INCLUDE(service_onhandle)
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    //Post a notification for alarm
+    private void sendNotification(String msg) {
+        mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        this.isRunning=false;
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, AlarmActivity.class), 0);
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_alarm_black_24dp)
+                        .setContentTitle(getString(R.string.app_name))
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText(msg))
+                        .setContentText(msg);
+
+        mBuilder.setContentIntent(contentIntent);
+        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 }
