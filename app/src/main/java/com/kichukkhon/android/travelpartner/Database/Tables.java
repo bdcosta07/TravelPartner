@@ -30,7 +30,7 @@ public class Tables{
         public static final String TOUR_ID="tour_id";
         public static final String PURPOSE="purpose";
         public static final String AMOUNT="amount";
-        public static final String DATE_TIME="date_time";
+        public static final String DATE_TIME="date";
 
     }
 
