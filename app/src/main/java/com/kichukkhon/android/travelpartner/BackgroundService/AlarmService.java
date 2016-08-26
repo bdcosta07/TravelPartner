@@ -27,7 +27,6 @@ public class AlarmService extends IntentService {
     //An ID used to post the notification
     public static final int NOTIFICATION_ID = 1;
     private NotificationManager mNotificationManager;
-    NotificationCompat.Builder builder;
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -42,7 +41,7 @@ public class AlarmService extends IntentService {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, AlarmActivity.class), 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 192837, new Intent(this, AlarmActivity.class), 0);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)

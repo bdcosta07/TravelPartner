@@ -59,8 +59,10 @@ public class AlarmActivity extends BaseDrawerActivity {
                     hour_string = String.valueOf(hour - 12);
                 }
 
-                alarmReceiver.setAlarm(AlarmActivity.this, calendar.getTimeInMillis());
-                preference.saveAlarmTime(calendar.getTimeInMillis());
+                long alarmTime=calendar.getTimeInMillis()-21600000;
+
+                alarmReceiver.setAlarm(AlarmActivity.this, alarmTime);
+                preference.saveAlarmTime(alarmTime);
 
                 setAlarmText("Alarm set to " + hour_string + ":" + minute_string);
             }
