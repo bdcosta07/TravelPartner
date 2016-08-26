@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer"
     android:fitsSystemWindows="true"
-    tools:context="com.kichukkhon.android.travelpartner.Activity.TourHomeActivity">
+    tools:context=".Activity.TourDetailsActivity">
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

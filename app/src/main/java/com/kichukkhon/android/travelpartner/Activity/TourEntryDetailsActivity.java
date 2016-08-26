@@ -34,6 +34,9 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
     Tour tourInfo;
     TourDBManager tourDBManager;
     int selectedDatePickerCallerId;
+    String placeName, placeId;
+    Bundle extras;
+    double latitude,longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +66,11 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         tvShowStartDate.setText(year + "-" + (month + 1) + "-" + day);
         tvShowEndDate.setText(year + "-" + (month + 1) + "-" + day);
 
+        extrasBundleInten();
+
+        txtTourName.setText("Tour to "+placeName);
         tvShowStartDate.setOnClickListener(this);
         tvShowEndDate.setOnClickListener(this);
-
 
     }
 
@@ -123,14 +128,10 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         long startDate = AppUtils.convertDateStringToMillis(startDateStr, Constants.DEFAULT_DATE_FORMAT);
         long endDate = AppUtils.convertDateStringToMillis(endDateStr, Constants.DEFAULT_DATE_FORMAT);
 
-        Bundle extras = getIntent().getExtras();
-        String placeId = extras.getString(Constants.PLACE_ID_KEY);
-        String placeName = extras.getString(Constants.PLACE_NAME_KEY);
-        double latitude = extras.getDouble(Constants.PLACE_LATITUDE_KEY);
-        double longitude = extras.getDouble(Constants.PLACE_LONGITUDE_KEY);
-
         tourInfo = new Tour();
         tourDBManager = new TourDBManager(this);
+
+        extrasBundleInten();
 
         tourInfo.setTourName(tourName);
         tourInfo.setBudget(budget);
@@ -145,6 +146,15 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         if (inserted) {
             Toast.makeText(this, "Data Inserted", Toast.LENGTH_SHORT).show();
         } else Toast.makeText(this, "Data not Inserted", Toast.LENGTH_SHORT).show();
+    }
+
+    public void extrasBundleInten(){
+        extras = getIntent().getExtras();
+        placeId = extras.getString(Constants.PLACE_ID_KEY);
+        placeName = extras.getString(Constants.PLACE_NAME_KEY);
+        latitude = extras.getDouble(Constants.PLACE_LATITUDE_KEY);
+        longitude = extras.getDouble(Constants.PLACE_LONGITUDE_KEY);
+
     }
 
     /*@Override

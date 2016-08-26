@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.kichukkhon.android.travelpartner.Fragment.UpcomingTourListFragment;
 import com.kichukkhon.android.travelpartner.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,14 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    public void btnTourEntryOnClick(View view) {
-        Intent intent = new Intent(this, TourEntryDetailsActivity.class);
-        startActivity(intent);
-    }
-
+    
     public void btnTourHomeClick(View view) {
-        Intent intent = new Intent(this, TourHomeActivity.class);
+        Intent intent = new Intent(this, TourDetailsActivity.class);
         startActivity(intent);
     }
 
