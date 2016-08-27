@@ -291,6 +291,12 @@ public class Places_list extends BaseActivity
         setUpGoogleApiClient();
     }
 
+    @Override
+    protected void onStop() {
+        disconnectGoogleApiClient();
+        super.onStop();
+    }
+
     private boolean hasGooglePlayServices() {
         return GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this) ==
                 ConnectionResult.SUCCESS;

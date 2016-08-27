@@ -33,4 +33,6 @@
     <string name="expnse_date">Date</string>
     <string name="expense_purpose">Purpose</string>
     <string name="title_current_amount">Current Amount</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyByx9U24wnHD_BKygLWX8O8trClWHk_djk</string>
 </resources>

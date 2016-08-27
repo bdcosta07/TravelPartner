@@ -19,6 +19,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDy3pjTryOxN4S3KZpRyRsGY1egBKkoxns" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,11 +46,16 @@
         </receiver>
 
         <service android:name=".BackgroundService.AlarmService" />
+        <service
+            android:name=".BackgroundService.LocationTrackerService"
+            android:exported="false" />
 
         <activity android:name=".Activity.NearbyPlacesHomeActivity" />
         <activity android:name=".Activity.ExpenseInfoActivity" />
         <activity android:name=".Activity.Places_list" />
         <activity android:name=".WeatherActivity"></activity>
+        <activity android:name=".Activity.RouteListActivity" />
+        <activity android:name=".Activity.RouteMapActivity"></activity>
     </application>
 
 </manifest>
