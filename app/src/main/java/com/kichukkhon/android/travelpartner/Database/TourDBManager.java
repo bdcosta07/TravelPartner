@@ -98,6 +98,8 @@ public class TourDBManager {
                 TourEntry._ID + "= " + id,
                 null, null, null, null);
 
+        cursor.moveToFirst();
+
         int mid = cursor.getInt(cursor.getColumnIndex(TourEntry._ID));
         String tourName = cursor.getString(cursor.getColumnIndex(TourEntry.TOUR_NAME));
         String destination = cursor.getString(cursor.getColumnIndex(TourEntry.DESTINATION));

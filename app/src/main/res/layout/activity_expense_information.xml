@@ -112,6 +112,7 @@
             android:layout_gravity="right|bottom"
             app:srcCompat="@drawable/ic_add"
             android:tint="@color/white"
+            android:onClick="fabAddExpense"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
