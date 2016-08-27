@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,8 +31,6 @@ import com.kichukkhon.android.travelpartner.Util.Constants;
 import java.util.ArrayList;
 
 public class ExpenseInfoActivity extends AppCompatActivity {
-    TextView tvBudget;
-    TextView tvCurrent;
     TextView tvCurrentAmount;
     TextView tvBudgetAmount;
     EditText txtPurpose;
@@ -45,16 +44,21 @@ public class ExpenseInfoActivity extends AppCompatActivity {
     Tour tour;
     int currentTourId;
     View dialogView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense_information);
 
-        tvBudget = (TextView) findViewById(R.id.tvBudget);
-        tvCurrentAmount = (TextView) findViewById(R.id.tvCurrentAmount);
+        toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Expense Info");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
         tvBudgetAmount = (TextView) findViewById(R.id.tvAmount);
-        tvCurrent = (TextView) findViewById(R.id.tvCAmount);
+        tvCurrentAmount = (TextView) findViewById(R.id.tvCurrentAmount);
         recyclerView = (RecyclerView) findViewById(R.id.rvExpenseList);
 
 
@@ -66,20 +70,23 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         currentTourId=1;
 
         tour = tourDBManager.getTourInfoById(currentTourId);
+
         getExpenseData();
+        calculateCurrentBalance(tour.getBudget(),expenseList);
+
     }
 
     public void getExpenseData() {
         double budget = tour.getBudget();
-
         tvBudgetAmount.setText(String.valueOf(budget));
+
         expenseList = expenseDBManager.getExpenseInfoByTourId(currentTourId);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        expenseAdapter = new ExpenseAdapter(expenseList, this);
+        expenseAdapter = new ExpenseAdapter(this,expenseList);
         expenseAdapter.notifyDataSetChanged();
 
         recyclerView.setAdapter(expenseAdapter);
@@ -95,16 +102,11 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                /*String purpose=((EditText)dialogView.findViewById(R.id.txtPurpose))
-                        .getText().toString().trim();
-                String amount=((EditText)dialogView.findViewById(R.id.txtAmount))
-                        .getText().toString().trim();*/
-
                 txtPurpose=(EditText)dialogView.findViewById(R.id.txtPurpose);
                 txtAmount=(EditText)dialogView.findViewById(R.id.txtAmount);
 
-                String purpose=txtPurpose.getText().toString();
-                double amount=Double.parseDouble(txtAmount.getText().toString());
+                String purpose=txtPurpose.getText().toString().trim();
+                double amount=Double.parseDouble(txtAmount.getText().toString().trim());
                 long date=System.currentTimeMillis();
 
                 expense=new Expense();
@@ -112,12 +114,15 @@ public class ExpenseInfoActivity extends AppCompatActivity {
                 expense.setPurpose(purpose);
                 expense.setAmount(amount);
                 expense.setDateTime(date);
+                expense.setTourId(currentTourId);
 
                 boolean inserted=expenseDBManager.addExpense(expense);
                 if (inserted) {
                     Toast.makeText(ExpenseInfoActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
                 } else Toast.makeText(ExpenseInfoActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
 
+                getExpenseData();
+                calculateCurrentBalance(tour.getBudget(),expenseList);
             }
         });
         builder.setNegativeButton("Cancel",null);
@@ -133,4 +138,17 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         purposeInputLayout.setErrorEnabled(true);
         amountInputLayout.setErrorEnabled(true);
     }
+
+    private double calculateCurrentBalance(double budget, ArrayList<Expense> expenseList){
+        double totalExpense=0.0;
+
+        for (Expense expense:expenseList) {
+            totalExpense+=expense.getAmount();
+        }
+        double result=budget-totalExpense;
+        tvCurrentAmount.setText(String.valueOf(result));
+        return result;
+    }
+
+
 }

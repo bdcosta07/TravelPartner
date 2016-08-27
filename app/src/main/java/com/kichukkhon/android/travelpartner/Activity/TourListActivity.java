@@ -34,6 +34,7 @@ public class TourListActivity extends AppCompatActivity {
         // Adding Toolbar to Main screen
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("My Tours");
         // Setting ViewPager for each Tabs
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);

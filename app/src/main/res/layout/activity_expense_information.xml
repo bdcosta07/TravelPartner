@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <include
-            android:id="@+id/toolbar"
+            android:id="@+id/expenseToolbar"
             layout="@layout/shared_toolbar_with_appbar" />
     </LinearLayout>
 
@@ -68,9 +68,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Current Amount"
-                android:id="@+id/tvCurrentAmount"
-                android:textSize="20dp"
+                android:text="@string/title_current_amount"
+                android:id="@+id/tvCAmount"
+                android:textSize="20sp"
                android:layout_marginBottom="@dimen/tour_margin_bottom"
                 android:layout_weight="1"/>
 
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 tools:text="@string/tv_amount"
-                android:id="@+id/tvCAmount"
+                android:id="@+id/tvCurrentAmount"
                 android:textSize="30sp"
                 android:layout_marginBottom="@dimen/tour_margin_bottom"
                 android:layout_weight="1"
@@ -95,15 +95,27 @@
             android:background="#8E8D8D"
             android:layout_below="@+id/linearTwo"></View>
 
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rvExpenseList"
-            android:layout_marginTop="@dimen/tour_margin_top"
+            android:text="Expenses"
+            android:textSize="20sp"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/titleExpense"
             android:layout_below="@+id/viewCA"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rvExpenseList"
+            android:layout_marginTop="@dimen/tour_margin_top"
+            android:layout_below="@+id/titleExpense"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" >
+        </android.support.v7.widget.RecyclerView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -116,6 +128,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+
 
     </RelativeLayout>
 

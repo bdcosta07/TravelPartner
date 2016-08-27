@@ -61,6 +61,7 @@ public class TourEntryDestinationActivity extends BaseActivity
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Select Destination");
 
         mAutocompleteDestination = (AutoCompleteTextView) findViewById(R.id.autocomplete_destination);
 

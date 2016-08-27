@@ -54,6 +54,7 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("New Tour");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

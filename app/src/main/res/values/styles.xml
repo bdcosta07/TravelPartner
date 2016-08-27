@@ -11,6 +11,6 @@
 
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:background">@color/test</item>
+        <item name="android:background">@color/white</item>
     </style>
 </resources>

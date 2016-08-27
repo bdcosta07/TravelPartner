@@ -29,20 +29,20 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
             super(itemView);
 
             tvPurpose=(TextView)itemView.findViewById(R.id.tvPurpose);
-            tvAmount=(TextView)itemView.findViewById(R.id.tvAmount);
+            tvAmount=(TextView)itemView.findViewById(R.id.tvPurposeAmount);
             tvDate=(TextView)itemView.findViewById(R.id.tvDate);
         }
 
     }
 
-    public ExpenseAdapter(ArrayList<Expense> expenseList, Context context) {
+    public ExpenseAdapter(Context context,ArrayList<Expense> expenseList) {
         this.expenseList = expenseList;
         this.context = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View rowView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.tour_row_layout, viewGroup, false);
+        View rowView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.expense_row, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(rowView);
         return viewHolder;
     }
