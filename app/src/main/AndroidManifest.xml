@@ -53,6 +53,7 @@
         <activity android:name=".Activity.NearbyPlacesHomeActivity" />
         <activity android:name=".Activity.ExpenseInfoActivity" />
         <activity android:name=".Activity.Places_list" />
+        <activity android:name=".Activity.WeatherActivity"></activity>
         <activity android:name=".Activity.RouteListActivity" />
         <activity android:name=".Activity.RouteMapActivity"></activity>
     </application>
