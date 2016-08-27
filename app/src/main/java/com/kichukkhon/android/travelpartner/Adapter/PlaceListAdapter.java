@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.kichukkhon.android.travelpartner.Class.PlaceBean;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.GetCurrentLocation;
@@ -22,7 +23,8 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
 
     Context context;
     List<PlaceBean> list;
-    GetCurrentLocation location;
+    //GetCurrentLocation location;
+    LatLng latLng;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
@@ -43,10 +45,10 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
         }
     }
 
-    public PlaceListAdapter(Context context, List<PlaceBean> list, GetCurrentLocation location){
+    public PlaceListAdapter(Context context, List<PlaceBean> list, LatLng latLng){
         this.context = context;
         this.list = list;
-        this.location = location;
+        this.latLng = latLng;
     }
 
     @Override
@@ -78,7 +80,7 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
             holder.isOpen.setText("Currently Closed");
         }
         holder.address.setText(list.get(position).getVicinity());
-        double distance = distance(location.latitude, location.longitude, list.get(position).getLatitude(), list.get(position).getLongitude(), "K");
+        double distance = distance(latLng.latitude, latLng.longitude, list.get(position).getLatitude(), list.get(position).getLongitude(), "K");
         holder.time.setText(String.format("%.2f", ((distance / 5) * 60)) + " min");
         if(distance < 1)
             holder.distance.setText(String.format("%.0f", distance * 1000) + " m");
