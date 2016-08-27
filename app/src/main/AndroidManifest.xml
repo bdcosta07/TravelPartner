@@ -45,7 +45,8 @@
 
         <activity android:name=".Activity.NearbyPlacesHomeActivity" />
         <activity android:name=".Activity.ExpenseInfoActivity" />
-        <activity android:name=".Activity.Places_list"></activity>
+        <activity android:name=".Activity.Places_list" />
+        <activity android:name=".WeatherActivity"></activity>
     </application>
 
 </manifest>
