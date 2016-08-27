@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/route_list_row_padding_top"
+    android:paddingLeft="@dimen/route_list_row_padding_left"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/date"
+        android:textSize="@dimen/route_list_row_row_day"
+        android:textColor="@color/blue"/>
+    <TextView
+        android:id="@+id/tvStarTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/tools_start_time"
+        android:textSize="@dimen/tour_text_size"
+        android:textColor="@color/green"/>
+    <TextView
+        android:id="@+id/tvStopTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tour_text_size"/>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/listMap"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/travel_list_map_view_height"
+        map:liteMode="true"
+        map:mapType="none" />
+
+</LinearLayout>

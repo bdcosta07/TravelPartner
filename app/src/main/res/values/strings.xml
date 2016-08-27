@@ -35,4 +35,11 @@
     <string name="title_current_amount">Current Amount</string>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyByx9U24wnHD_BKygLWX8O8trClWHk_djk</string>
+
+    <!-- Route tracker -->
+    <string name="title_activity_route">Map</string>
+    <string name="toggle_button_text">Track my route</string>
+    <string name="tools_start_time">Start</string>
+    <string name="tools_stop_time">Stop</string>
+    <string name="date">Date</string>
 </resources>
