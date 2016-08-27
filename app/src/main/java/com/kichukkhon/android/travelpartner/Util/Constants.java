@@ -14,4 +14,13 @@ public final class Constants {
     public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
 
     public static final String CURRENT_TOUR_ID_KEY = "current_tour_id_key";
+
+    //nearby places
+    public static final String PLACE_TYPE_ID_KEY = "place_type_id";
+
+    public static final String PLACE_API_KEY = "AIzaSyCzz58Ktc7px0JXqwibVPzqkoNsfwwEZr0";
+
+    public static final long INTERVAL_FOR_NEARBY_LOCATION = 1800000; //30 minutes
+    public static final long FASTEST_INTERVAL_FOR_NEARBY_LOCATION = 1200000; //20 minutes
+
 }

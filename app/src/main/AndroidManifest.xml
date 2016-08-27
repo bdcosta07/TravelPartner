@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".VolleyAppController.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -42,9 +43,9 @@
 
         <service android:name=".BackgroundService.AlarmService" />
 
-
-        <activity android:name=".Activity.NearbyPlacesHomeActivity"></activity>
-        <activity android:name=".Activity.ExpenseInfoActivity"></activity>
+        <activity android:name=".Activity.NearbyPlacesHomeActivity" />
+        <activity android:name=".Activity.ExpenseInfoActivity" />
+        <activity android:name=".Activity.Places_list"></activity>
     </application>
 
 </manifest>

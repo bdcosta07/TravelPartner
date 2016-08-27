@@ -1,6 +1,7 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kichukkhon.android.travelpartner.R;
+import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.PlaceTypes;
 
 public class NearbyPlacesHomeActivity extends BaseLocationAwareActivity {
@@ -46,7 +48,12 @@ public class NearbyPlacesHomeActivity extends BaseLocationAwareActivity {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Context context = view.getContext();
+                    PlaceTypes placeTypes = new PlaceTypes();
+                    Intent intent = new Intent(context, Places_list.class);
+                    String place = placeTypes.place_type_list[getAdapterPosition()];
+                    intent.putExtra(Constants.PLACE_TYPE_ID_KEY, place);
+                    context.startActivity(intent);
                 }
             });
         }
