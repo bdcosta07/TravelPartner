@@ -1,7 +1,9 @@
-package com.kichukkhon.android.travelpartner;
+package com.kichukkhon.android.travelpartner.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.kichukkhon.android.travelpartner.R;
 
 public class WeatherActivity extends AppCompatActivity {
 

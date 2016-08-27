@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kichukkhon.android.travelpartner.WeatherActivity">
+    tools:context=".Activity.WeatherActivity">
 
     <LinearLayout
         android:id="@+id/toolbar_layout"
