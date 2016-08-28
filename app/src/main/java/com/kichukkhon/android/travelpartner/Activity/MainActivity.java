@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.kichukkhon.android.travelpartner.Fragment.CurrentWeatherFragment;
 import com.kichukkhon.android.travelpartner.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnExpenseListClick(View view) {
         Intent intent = new Intent(this, ExpenseInfoActivity.class);
+        startActivity(intent);
+    }
+
+    public void btnWeatherClick(View view) {
+        Intent intent = new Intent(this, CurrentWeatherFragment.class);
         startActivity(intent);
     }
 }
