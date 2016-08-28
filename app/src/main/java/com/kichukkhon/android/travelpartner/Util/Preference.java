@@ -57,4 +57,14 @@ public class Preference {
         boolean trackAllowed = sharedPreferences.getBoolean(TRACK_ALLOWED_KEY, false);
         return trackAllowed;
     }
+
+    public void saveCurrentSelectedTourId(int tourId) {
+        editor.putInt(Constants.CURRENT_TOUR_ID_KEY, tourId);
+        editor.commit();
+    }
+
+    public int getCurrentlySelectedTourId() {
+        int currentlySelectedTourId = sharedPreferences.getInt(Constants.CURRENT_TOUR_ID_KEY, 1);
+        return currentlySelectedTourId;
+    }
 }

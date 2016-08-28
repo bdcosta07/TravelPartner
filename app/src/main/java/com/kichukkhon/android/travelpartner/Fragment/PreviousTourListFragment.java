@@ -17,7 +17,10 @@ import com.kichukkhon.android.travelpartner.Util.Constants;
 
 import java.util.ArrayList;
 
-public class UpcomingTourListFragment extends Fragment {
+/**
+ * Created by Ratul on 8/28/2016.
+ */
+public class PreviousTourListFragment extends Fragment {
     RecyclerView recyclerView;
     TourAdapter tourAdapter;
     TextView emptyView;
@@ -47,7 +50,7 @@ public class UpcomingTourListFragment extends Fragment {
 
     public ArrayList<Tour> getTourData() {
         TourDBManager tourDBManager = new TourDBManager(getContext());
-        ArrayList<Tour> tourList = tourDBManager.getAllTourInfo(Constants.SEARCH_FOR_UPCOMING);
+        ArrayList<Tour> tourList = tourDBManager.getAllTourInfo(Constants.SEARCH_FOR_PREVIOUS);
 
         return tourList;
 

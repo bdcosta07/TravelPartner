@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.kichukkhon.android.travelpartner.Class.Tour;
 import com.kichukkhon.android.travelpartner.Database.Tables.TourEntry;
+import com.kichukkhon.android.travelpartner.Util.Constants;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Bridget on 8/24/2016.
@@ -57,12 +59,43 @@ public class TourDBManager {
         } else return false;
     }
 
-    public ArrayList<Tour> getAllTourInfo() {
+    public ArrayList<Tour> getAllTourInfo(int searchType) {
         this.open();
 
         ArrayList<Tour> tourList = new ArrayList<>();
 
-        Cursor cursor = database.query(TourEntry.TOUR_TABLE, null, null, null, null, null, null);
+        String whereClause = "";
+        //String whereArgs = "";
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        long today = calendar.getTimeInMillis();
+
+        String sortOrder = TourEntry.STAR_DATE + " ASC";
+
+        switch (searchType) {
+            case Constants.SEARCH_FOR_UPCOMING:
+                whereClause = TourEntry.STAR_DATE + " >= " + (today+ (24*60*60*1000)); //tomorrow 1st hour
+                break;
+            case Constants.SEARCH_FOR_PREVIOUS:
+                whereClause = TourEntry.END_DATE + " <= " + today;
+                break;
+            case Constants.SEARCH_FOR_RUNNING:
+                whereClause = TourEntry.STAR_DATE + " <= " + today + " AND " + TourEntry.END_DATE + " >= " + today;
+                break;
+        }
+
+        Cursor cursor = database.query(
+                TourEntry.TOUR_TABLE,
+                null,
+                whereClause,
+                null,
+                null,
+                null,
+                sortOrder);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();

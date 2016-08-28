@@ -1,6 +1,7 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.kichukkhon.android.travelpartner.Adapter.TourAdapter;
+import com.kichukkhon.android.travelpartner.Fragment.PreviousTourListFragment;
+import com.kichukkhon.android.travelpartner.Fragment.RunningTourListFragment;
 import com.kichukkhon.android.travelpartner.Fragment.UpcomingTourListFragment;
 import com.kichukkhon.android.travelpartner.R;
 
@@ -43,29 +45,30 @@ public class TourListActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         // Adding Floating Action Button to bottom right of main view
-        fab=(FloatingActionButton)findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TourListActivity.this, TourEntryDestinationActivity.class);
+                Intent intent = new Intent(TourListActivity.this, TourEntryDestinationActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    private void setupViewPager(ViewPager viewPager){
-        ViewPagerAdapter adapter=new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new UpcomingTourListFragment(),"Upcoming");
-        adapter.addFragment(new UpcomingTourListFragment(),"Incoming");
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new RunningTourListFragment(), "Active");
+        adapter.addFragment(new UpcomingTourListFragment(), "Upcoming");
+        adapter.addFragment(new PreviousTourListFragment(), "Previous");
         viewPager.setAdapter(adapter);
     }
 
-    static class ViewPagerAdapter extends FragmentPagerAdapter{
-        private final List<Fragment> fragmentList=new ArrayList<>();
-        private final List<String> fragmentTitleList=new ArrayList<>();
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> fragmentList = new ArrayList<>();
+        private final List<String> fragmentTitleList = new ArrayList<>();
 
         public ViewPagerAdapter(FragmentManager fragmentManager) {
-           super(fragmentManager);
+            super(fragmentManager);
         }
 
         @Override
@@ -78,7 +81,7 @@ public class TourListActivity extends AppCompatActivity {
             return fragmentList.size();
         }
 
-        public void addFragment(Fragment fragment,String titile){
+        public void addFragment(Fragment fragment, String titile) {
             fragmentList.add(fragment);
             fragmentTitleList.add(titile);
         }

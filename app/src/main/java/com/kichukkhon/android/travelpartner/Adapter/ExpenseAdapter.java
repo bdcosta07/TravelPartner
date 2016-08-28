@@ -17,10 +17,10 @@ import java.util.ArrayList;
  * Created by Bridget on 8/26/2016.
  */
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHolder> {
-    ArrayList<Expense> expenseList=new ArrayList<>();
+    ArrayList<Expense> expenseList = new ArrayList<>();
     Context context;
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvPurpose;
         TextView tvAmount;
         TextView tvDate;
@@ -28,14 +28,14 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-            tvPurpose=(TextView)itemView.findViewById(R.id.tvPurpose);
-            tvAmount=(TextView)itemView.findViewById(R.id.tvPurposeAmount);
-            tvDate=(TextView)itemView.findViewById(R.id.tvDate);
+            tvPurpose = (TextView) itemView.findViewById(R.id.tvPurpose);
+            tvAmount = (TextView) itemView.findViewById(R.id.tvPurposeAmount);
+            tvDate = (TextView) itemView.findViewById(R.id.tvDate);
         }
 
     }
 
-    public ExpenseAdapter(Context context,ArrayList<Expense> expenseList) {
+    public ExpenseAdapter(Context context, ArrayList<Expense> expenseList) {
         this.expenseList = expenseList;
         this.context = context;
     }
@@ -49,13 +49,13 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        String purpose=expenseList.get(position).getPurpose();
-        double amount=expenseList.get(position).getAmount();
-        long date=expenseList.get(position).getDateTime();
+        String purpose = expenseList.get(position).getPurpose();
+        double amount = expenseList.get(position).getAmount();
+        long date = expenseList.get(position).getDateTime();
 
         viewHolder.tvPurpose.setText(purpose);
         viewHolder.tvAmount.setText(String.valueOf(amount));
-        viewHolder.tvDate.setText(AppUtils.getFriendlyDayString(context,date));
+        viewHolder.tvDate.setText(AppUtils.getFriendlyDayString(context, date));
 
     }
 
