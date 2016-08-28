@@ -116,4 +116,11 @@
         android:layout_height="wrap_content"
         android:text="Route"
         android:onClick="btnRouteTrackerClick" />
+
+    <Button
+        android:id="@+id/btnNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note"
+        android:onClick="btnNoteClick" />
 </LinearLayout>

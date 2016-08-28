@@ -47,4 +47,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RouteListActivity.class);
         startActivity(intent);
     }
+
+    public void btnNoteClick(View view) {
+        Intent intent = new Intent(this, NoteEntryActivity.class);
+        startActivity(intent);
+    }
 }

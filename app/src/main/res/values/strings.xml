@@ -66,7 +66,7 @@
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBIw7hC2oFZOlELS4gS8jPkmlU1U-_sac4</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBElBzb7tHyiGqYxTrCCP3gBOoBq7L6Qvg</string>
 
     <!-- Route tracker -->
     <string name="title_activity_route">Map</string>
@@ -75,4 +75,6 @@
     <string name="tools_stop_time">Stop</string>
     <string name="date">Date</string>
     <string name="next_10_days_forecast">Next 10 days</string>
+    <string name="hint_note_title">Title</string>
+    <string name="hint_note_content">Content</string>
 </resources>
