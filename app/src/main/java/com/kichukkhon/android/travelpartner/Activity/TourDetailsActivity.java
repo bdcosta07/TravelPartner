@@ -8,6 +8,7 @@ import com.kichukkhon.android.travelpartner.Class.Tour;
 import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
+import com.kichukkhon.android.travelpartner.Util.Preference;
 
 public class TourDetailsActivity extends BaseDrawerActivity {
     TextView tvDestination;
@@ -17,6 +18,8 @@ public class TourDetailsActivity extends BaseDrawerActivity {
     TourDBManager tourDBManager;
     Toolbar toolbar;
     Tour tourInfo;
+    Preference preference;
+    int curentTourId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +27,30 @@ public class TourDetailsActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_tour_details);
 
         InitCommonUIElements();
+        preference = new Preference(this);
 
-        tvDestination =(TextView)findViewById(R.id.tvDestination);
-        tvStartDate=(TextView)findViewById(R.id.tvStartDate);
-        tvEndDate=(TextView)findViewById(R.id.tvEndDate);
-        tvBudget=(TextView)findViewById(R.id.tvBudget);
+        curentTourId = preference.getCurrentlySelectedTourId();
 
-        tourDBManager=new TourDBManager(this);
-        tourInfo=new Tour();
+        tvDestination = (TextView) findViewById(R.id.tvDestination);
+        tvStartDate = (TextView) findViewById(R.id.tvShowStartDate);
+        tvEndDate = (TextView) findViewById(R.id.tvShowEndDate);
+        tvBudget = (TextView) findViewById(R.id.tvCurrentBudget);
+
+        tourDBManager = new TourDBManager(this);
+        tourInfo = tourDBManager.getTourInfoById(curentTourId);
+        getTourData();
 
     }
 
-    public void getTourData(){
-        String destination=tourInfo.getDestination();
+    public void getTourData() {
+        String destination = tourInfo.getDestination();
+        String startDate = AppUtils.getFormattedDate(this, tourInfo.getStartDateTime());
+        String endDate=AppUtils.getFormattedDate(this,tourInfo.getEndDateTime());
+        double budget=tourInfo.getBudget();
 
-
-        //long startDate= AppUtils.getFriendlyDayString()
+        tvDestination.setText(destination);
+        tvStartDate.setText(startDate);
+        tvEndDate.setText(endDate);
+        tvBudget.setText(String.valueOf("BDT "+budget));
     }
 }

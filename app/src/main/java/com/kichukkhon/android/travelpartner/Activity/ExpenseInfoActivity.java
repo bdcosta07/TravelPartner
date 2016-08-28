@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,12 +21,11 @@ import com.kichukkhon.android.travelpartner.Class.Tour;
 import com.kichukkhon.android.travelpartner.Database.ExpenseDBManager;
 import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
-import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.util.ArrayList;
 
-public class ExpenseInfoActivity extends AppCompatActivity {
+public class ExpenseInfoActivity extends BaseDrawerActivity {
     TextView tvCurrentAmount;
     TextView tvBudgetAmount;
     EditText txtPurpose;
@@ -54,7 +52,9 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Expense Info");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        preference=new Preference(this);
+        InitCommonUIElements();
+
+        preference = new Preference(this);
 
 
         tvBudgetAmount = (TextView) findViewById(R.id.tvAmount);
