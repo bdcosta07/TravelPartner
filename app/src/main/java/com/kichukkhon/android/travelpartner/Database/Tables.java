@@ -39,7 +39,7 @@ public class Tables {
 
         public static final String TOUR_ID = "tour_id";
         public static final String DATE_TIME = "date_time";
-        public static final String ALARM_NOTE = "note";
+        public static final String ALARM_NOTE = "alarm_note";
 
 
     }
@@ -50,6 +50,7 @@ public class Tables {
         public static final String TOUR_ID = "tour_id";
         public static final String TITLE = "title";
         public static final String NOTE = "note";
+        public static final String CREATED_AT = "created_at";
     }
 
     public static final class LocationEntryTable implements BaseColumns {
@@ -69,4 +70,6 @@ public class Tables {
         public static final String START_TIME_IN_MILLIS = "start_time_in_millis";
         public static final String STOP_TIME_IN_MILLIS = "stop_time_in_millis";
     }
+
+
 }

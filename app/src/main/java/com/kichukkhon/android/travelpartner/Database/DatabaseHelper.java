@@ -62,7 +62,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "( " + NoteEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
             + NoteEntry.TOUR_ID + INTEGER_TYPE + COMMA_SEP
             + NoteEntry.TITLE + TEXT_TYPE + COMMA_SEP
-            + NoteEntry.NOTE + TEXT_TYPE + " )";
+            + NoteEntry.NOTE + TEXT_TYPE + COMMA_SEP
+            + NoteEntry.CREATED_AT + INTEGER_TYPE + " )";
 
     public static final String CREATE_SESSION_ENTRY_TABLE = "CREATE TABLE "
             + TravelSessionTable.TABLE_NAME +
