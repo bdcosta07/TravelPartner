@@ -31,7 +31,7 @@ public class NoteDBManager {
         helper.close();
     }
 
-    public boolean addNote(Note note) {
+    public boolean addNote(Note noteInfo) {
         this.open();
 
         ContentValues contentValues = new ContentValues();
@@ -82,7 +82,7 @@ public class NoteDBManager {
     public Note getNoteInfoById(int id) {
         this.open();
 
-        Cursor cursor = database.query(Tables.ExpenseEntry.EXPENSE_TABLE,
+        Cursor cursor = database.query(NoteEntry.NOTE_TABLE,
                 null,
                 Tables.ExpenseEntry._ID + "= " + id,
                 null, null, null, null);
@@ -94,7 +94,7 @@ public class NoteDBManager {
         long dateTime = cursor.getLong(cursor.getColumnIndex(NoteEntry.CREATED_AT));
 
 
-        noteInfo=new Note(id,tourId,title,note,dateTime);
+        noteInfo=new Note(mid,tourId,title,note,dateTime);
         this.close();
         return noteInfo;
 

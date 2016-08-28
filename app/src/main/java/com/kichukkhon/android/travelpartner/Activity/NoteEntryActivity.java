@@ -1,5 +1,6 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +22,7 @@ public class NoteEntryActivity extends AppCompatActivity {
     Note noteInfo;
     NoteDBManager noteDBManager;
     Toolbar toolbar;
+    int currentTourId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,18 @@ public class NoteEntryActivity extends AppCompatActivity {
         txtTitle=(EditText)findViewById(R.id.note_title);
         txtNote=(EditText)findViewById(R.id.note_content);
 
+        noteInfo = new Note();
+        noteDBManager = new NoteDBManager(this);
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("New Note");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        currentTourId=1;
+        //noteInfo = noteDBManager.getNoteInfoById(currentTourId);
 
     }
 
@@ -52,6 +61,8 @@ public class NoteEntryActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.icon_save) {
             saveNoteInfo();
+            Intent intent=new Intent(this,NoteListActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -61,12 +72,12 @@ public class NoteEntryActivity extends AppCompatActivity {
 
         String noteTitle = txtTitle.getText().toString();
         String noteDesc = txtNote.getText().toString();
-
-        noteInfo = new Note();
-        noteDBManager = new NoteDBManager(this);
+        long date=System.currentTimeMillis();
 
         noteInfo.setTitle(noteTitle);
         noteInfo.setNote(noteDesc);
+        noteInfo.setCreatedAt(date);
+        noteInfo.setTourId(currentTourId);
 
         boolean inserted = noteDBManager.addNote(noteInfo);
         if (inserted) {
