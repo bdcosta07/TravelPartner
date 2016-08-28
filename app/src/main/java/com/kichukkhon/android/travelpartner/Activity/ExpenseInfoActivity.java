@@ -23,6 +23,7 @@ import com.kichukkhon.android.travelpartner.Database.ExpenseDBManager;
 import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.Constants;
+import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class ExpenseInfoActivity extends AppCompatActivity {
     int currentTourId;
     View dialogView;
     Toolbar toolbar;
+    Preference preference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Expense Info");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        preference=new Preference(this);
+
 
         tvBudgetAmount = (TextView) findViewById(R.id.tvAmount);
         tvCurrentAmount = (TextView) findViewById(R.id.tvCurrentAmount);
@@ -61,7 +65,7 @@ public class ExpenseInfoActivity extends AppCompatActivity {
         expenseDBManager = new ExpenseDBManager(this);
         tourDBManager = new TourDBManager(this);
 
-        currentTourId = getIntent().getIntExtra(Constants.CURRENT_TOUR_ID_KEY, 1);
+        currentTourId = preference.getCurrentlySelectedTourId();
 
         tour = tourDBManager.getTourInfoById(currentTourId);
 

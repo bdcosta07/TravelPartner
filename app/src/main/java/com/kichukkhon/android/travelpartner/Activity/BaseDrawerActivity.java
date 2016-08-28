@@ -53,11 +53,26 @@ public class BaseDrawerActivity extends BaseActivity {
                         // Set item in checked state
                         menuItem.setChecked(true);
 
-                        if (menuItem.getItemId() == R.id.menu_alarm) {
+                        if (menuItem.getItemId() == R.id.menu_home) {
+                            Intent intent = new Intent(BaseDrawerActivity.this, TourDetailsActivity.class);
+                            startActivity(intent);
+                        } else if (menuItem.getItemId() == R.id.menu_expense) {
+                            Intent intent = new Intent(BaseDrawerActivity.this, ExpenseInfoActivity.class);
+                            startActivity(intent);
+                        } else if (menuItem.getItemId() == R.id.menu_note) {
+                            /*Intent intent = new Intent(BaseDrawerActivity.this, AlarmActivity.class);
+                            startActivity(intent);*/
+                        } else if (menuItem.getItemId() == R.id.menu_alarm) {
                             Intent intent = new Intent(BaseDrawerActivity.this, AlarmActivity.class);
+                            startActivity(intent);
+                        } else if (menuItem.getItemId() == R.id.menu_weather) {
+                            Intent intent = new Intent(BaseDrawerActivity.this, WeatherActivity.class);
                             startActivity(intent);
                         } else if (menuItem.getItemId() == R.id.menu_nearby) {
                             Intent intent = new Intent(BaseDrawerActivity.this, NearbyPlacesHomeActivity.class);
+                            startActivity(intent);
+                        } else if (menuItem.getItemId() == R.id.menu_route_tracker) {
+                            Intent intent = new Intent(BaseDrawerActivity.this, RouteListActivity.class);
                             startActivity(intent);
                         }
 

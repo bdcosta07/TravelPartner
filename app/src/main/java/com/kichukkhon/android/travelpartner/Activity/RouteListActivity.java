@@ -1,13 +1,11 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ListFragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +20,6 @@ import com.kichukkhon.android.travelpartner.Class.TravelSession;
 import com.kichukkhon.android.travelpartner.Database.TravelSessionDBManager;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
-import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.util.ArrayList;
@@ -49,9 +46,9 @@ public class RouteListActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_route_list);
 
         InitCommonUIElements();
+        preference = new Preference(this);
 
-        currentTourId = getIntent().getIntExtra(Constants.CURRENT_TOUR_ID_KEY, 1);
-
+        currentTourId = preference.getCurrentlySelectedTourId();
 
         listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.map_list);
 
@@ -78,7 +75,7 @@ public class RouteListActivity extends BaseDrawerActivity {
                     //start the service to track route
                     startService(mServiceIntent);
 
-                    TravelSession session = new TravelSession(currentTourId,currentTime, currentTime);
+                    TravelSession session = new TravelSession(currentTourId, currentTime, currentTime);
                     long sessionId = sessionDBManager.addSession(session);
 
                     if (sessionId > 0) {

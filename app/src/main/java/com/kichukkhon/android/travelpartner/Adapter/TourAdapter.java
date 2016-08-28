@@ -12,7 +12,7 @@ import com.kichukkhon.android.travelpartner.Activity.TourDetailsActivity;
 import com.kichukkhon.android.travelpartner.Class.Tour;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
-import com.kichukkhon.android.travelpartner.Util.Constants;
+import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,6 +24,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
 
     ArrayList<Tour> tourList = new ArrayList<>();
     Context context;
+    Preference preference;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTourName;
@@ -38,7 +39,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
                 public void onClick(View view) {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, TourDetailsActivity.class);
-                    intent.putExtra(Constants.CURRENT_TOUR_ID_KEY, tourList.get(getAdapterPosition()).getTourName());
+                    preference.saveCurrentSelectedTourId(tourList.get(getAdapterPosition()).getId());
                     context.startActivity(intent);
                 }
             });
@@ -52,6 +53,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
     public TourAdapter(Context context, ArrayList<Tour> tourList) {
         this.tourList = tourList;
         this.context = context;
+        preference = new Preference(context);
     }
 
     @Override
