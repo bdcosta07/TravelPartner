@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnWeatherClick(View view) {
-        Intent intent = new Intent(this, CurrentWeatherFragment.class);
+        Intent intent = new Intent(this, WeatherActivity.class);
         startActivity(intent);
     }
 
