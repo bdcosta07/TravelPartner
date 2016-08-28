@@ -11,7 +11,14 @@ import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.EnumSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class AppUtils {
     // Format used for storing dates in the database.  ALso used for converting those strings
@@ -104,6 +111,14 @@ public class AppUtils {
         return monthDayString;
     }
 
+    public static String getFormattedDate(Context context, long dateInMillis) {
+        Time time = new Time();
+        time.setToNow();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+        String dateString = dateFormat.format(dateInMillis);
+        return dateString;
+    }
+
     public static String getFormattedTime(Context context, long dateInMillis) {
 //        SimpleDateFormat monthDayFormat = new SimpleDateFormat("h:mm a");
 //        String timeString = monthDayFormat.format(dateInMillis);
@@ -129,6 +144,41 @@ public class AppUtils {
         return timeInMillis;
     }
 
+    public static String getFriendlyDateDiff(long baseDate, long compareDate) {
+        Map<TimeUnit, Long> mapDiff = computeDiffBetweenTwoDates(baseDate, compareDate);
+        String result = "";
+        long day = 0;
+
+        for (Map.Entry<TimeUnit, Long> entry : mapDiff.entrySet()) {
+            if (entry.getKey() == TimeUnit.DAYS) {
+                day = entry.getValue();
+                break;
+            }
+        }
+
+        if (baseDate < compareDate)
+            result = day + " day(s) to go";
+        else
+            result = day + " day(s) ago";
+
+        return result;
+    }
+
+    public static Map<TimeUnit, Long> computeDiffBetweenTwoDates(long date1, long date2) {
+        long diffInMillis = Math.abs(date1 - date2);
+        List<TimeUnit> units = new ArrayList<TimeUnit>(EnumSet.allOf(TimeUnit.class));
+        Collections.reverse(units);
+        Map<TimeUnit, Long> result = new LinkedHashMap<TimeUnit, Long>();
+        long millisRest = diffInMillis;
+        for (TimeUnit unit : units) {
+            long diff = unit.convert(millisRest, TimeUnit.MILLISECONDS);
+            long diffInMillisForUnit = unit.toMillis(diff);
+            millisRest = millisRest - diffInMillisForUnit;
+            result.put(unit, diff);
+        }
+        return result;
+    }
+
     public static String formatTemperature(Context context, double temperature) {
         // Data fetched in Censius by default. If user prefers to see in Fahrenheit or Kelvin, convert the values here.
         String suffix = "";
@@ -145,7 +195,7 @@ public class AppUtils {
         return String.format(context.getString(R.string.format_temperature), temperature, suffix);
     }
 
-    public static int getArtResourceForYahooWeatherCondition(int weatherId){
+    public static int getArtResourceForYahooWeatherCondition(int weatherId) {
         /*if (weatherId==3)
             return R.drawable.severelthunderstoms;
         if (weatherId==4)
@@ -160,7 +210,8 @@ public class AppUtils {
             return R.drawable.mostlycloudy;
         else if (weatherId==26)
             return R.drawable.cloudy;
-        else */if (weatherId==32)
+        else */
+        if (weatherId == 32)
             return R.drawable.sunny;
         /*else if (weatherId==36)
             return R.drawable.hot;

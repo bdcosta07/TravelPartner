@@ -15,6 +15,7 @@ import com.kichukkhon.android.travelpartner.Util.AppUtils;
 import com.kichukkhon.android.travelpartner.Util.Constants;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Bridget on 8/24/2016.
@@ -26,8 +27,8 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTourName;
-        TextView tvStarDate;
-        TextView tvEndDate;
+        TextView tvDuration;
+        TextView tvTimeLeft;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -43,8 +44,8 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
             });
 
             tvTourName = (TextView) itemView.findViewById(R.id.tvTourName);
-            tvStarDate = (TextView) itemView.findViewById(R.id.tvStartDate);
-            tvEndDate = (TextView) itemView.findViewById(R.id.tvEndDate);
+            tvDuration = (TextView) itemView.findViewById(R.id.tvTourDuration);
+            tvTimeLeft = (TextView) itemView.findViewById(R.id.tvTimeLeft);
         }
     }
 
@@ -66,10 +67,13 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
         viewHolder.tvTourName.setText(tourName);
 
         long startDate = tourList.get(position).getStartDateTime();
-        viewHolder.tvStarDate.setText(AppUtils.getFriendlyDayString(context, startDate));
-
         long endDate = tourList.get(position).getEndDateTime();
-        viewHolder.tvEndDate.setText(AppUtils.getFriendlyDayString(context, endDate));
+        String duration = AppUtils.getFormattedDate(context, startDate) + " - " + AppUtils.getFormattedDate(context, endDate);
+        viewHolder.tvDuration.setText(duration);
+
+        Calendar calendar = Calendar.getInstance();
+        String timeLeft = AppUtils.getFriendlyDateDiff(calendar.getTimeInMillis(), startDate);
+        viewHolder.tvTimeLeft.setText(timeLeft);
     }
 
     @Override
