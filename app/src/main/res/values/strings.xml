@@ -77,4 +77,7 @@
     <string name="next_10_days_forecast">Next 10 days</string>
     <string name="hint_note_title">Title</string>
     <string name="hint_note_content">Content</string>
+    <string name="tv_start_date_set">Start Date</string>
+    <string name="destination">Destination</string>
+    <string name="current_budget">Budget</string>
 </resources>

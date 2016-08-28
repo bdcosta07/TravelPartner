@@ -23,4 +23,5 @@
     <dimen name="route_list_row_row_day">20sp</dimen>
     <dimen name="travel_list_map_view_height">150dp</dimen>
     <dimen name="toggle_button_text_size">16sp</dimen>
+    <dimen name="date_set_text_size">18sp</dimen>
 </resources>
