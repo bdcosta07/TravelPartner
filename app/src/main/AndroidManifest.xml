@@ -15,9 +15,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/TravelPartnerTheme">
-        <meta-data
+       <!-- <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDy3pjTryOxN4S3KZpRyRsGY1egBKkoxns" />
+            android:value="AIzaSyDy3pjTryOxN4S3KZpRyRsGY1egBKkoxns" />-->
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
