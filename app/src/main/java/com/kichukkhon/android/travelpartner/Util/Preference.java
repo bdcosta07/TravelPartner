@@ -16,6 +16,9 @@ public class Preference {
     //when the alarm is set key for shared pref
     public static final String ALARM_TIME_IN_MILLISECOND_KEY = "alarm_time_in_millis_key";
 
+    private static final String SESSION_ID_KEY = "current_session_id";
+    private static final String TRACK_ALLOWED_KEY = "track_allowed";
+
     public Preference(Context context) {
         this.context = context;
 
@@ -32,5 +35,26 @@ public class Preference {
     public long getAlarmTime() {
         long alarmTime = sharedPreferences.getLong(ALARM_TIME_IN_MILLISECOND_KEY, 0l);
         return alarmTime;
+    }
+
+    public void saveCurrentSession(int sessionId) {
+        editor.putInt(SESSION_ID_KEY, sessionId);
+
+        editor.commit();
+    }
+
+    public int getCurrentSession() {
+        int sessionId = sharedPreferences.getInt(SESSION_ID_KEY, 0);
+        return sessionId;
+    }
+
+    public void saveTrackAllowed(boolean trackAllowed) {
+        editor.putBoolean(TRACK_ALLOWED_KEY, trackAllowed);
+        editor.commit();
+    }
+
+    public boolean isTrackAllowed() {
+        boolean trackAllowed = sharedPreferences.getBoolean(TRACK_ALLOWED_KEY, false);
+        return trackAllowed;
     }
 }

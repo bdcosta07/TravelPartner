@@ -1,48 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.kichukkhon.android.travelpartner">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kichukkhon.android.travelpartner">
 
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-<application android:name=".VolleyAppController.AppController" android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDy3pjTryOxN4S3KZpRyRsGY1egBKkoxns" />
+    <application
+        android:name=".VolleyAppController.AppController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/TravelPartnerTheme">
+        <!--<meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDy3pjTryOxN4S3KZpRyRsGY1egBKkoxns" />-->
 
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
-    <activity android:name=".Activity.MainActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity android:name=".Activity.TourEntryDetailsActivity" />
-    <activity android:name=".Activity.TourDetailsActivity" />
-    <activity android:name=".Activity.TourEntryDestinationActivity" />
-    <activity android:name=".Activity.TourListActivity" />
-    <activity android:name=".Activity.AlarmActivity" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.TourEntryDetailsActivity" />
+        <activity android:name=".Activity.TourDetailsActivity" />
+        <activity android:name=".Activity.TourEntryDestinationActivity" />
+        <activity android:name=".Activity.TourListActivity" />
+        <activity android:name=".Activity.AlarmActivity" />
 
-    <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
-    <receiver android:name=".BroadcastReceiver.AlarmBootReceiver" android:enabled="false">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-        </intent-filter>
-    </receiver>
+        <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
+        <receiver
+            android:name=".BroadcastReceiver.AlarmBootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
-    <service android:name=".BackgroundService.AlarmService" />
-    <service android:name=".BackgroundService.LocationTrackerService" android:exported="false" />
+        <service android:name=".BackgroundService.AlarmService" />
+        <service
+            android:name=".BackgroundService.LocationTrackerService"
+            android:exported="false" />
 
-    <activity android:name=".Activity.NearbyPlacesHomeActivity" />
-    <activity android:name=".Activity.ExpenseInfoActivity" />
-    <activity android:name=".Activity.Places_list" />
-    <activity android:name=".Activity.WeatherActivity"></activity>
-    <activity android:name=".Activity.RouteListActivity" />
-    <activity android:name=".Activity.RouteMapActivity"></activity>
-</application>
+        <activity android:name=".Activity.NearbyPlacesHomeActivity" />
+        <activity android:name=".Activity.ExpenseInfoActivity" />
+        <activity android:name=".Activity.Places_list" />
+        <activity android:name=".Activity.WeatherActivity"></activity>
+        <activity android:name=".Activity.RouteListActivity" />
+        <activity android:name=".Activity.RouteMapActivity"></activity>
+    </application>
 
 </manifest>

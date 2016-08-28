@@ -8,6 +8,8 @@ import com.kichukkhon.android.travelpartner.Database.Tables.AlarmEntry;
 import com.kichukkhon.android.travelpartner.Database.Tables.ExpenseEntry;
 import com.kichukkhon.android.travelpartner.Database.Tables.NoteEntry;
 import com.kichukkhon.android.travelpartner.Database.Tables.TourEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.LocationEntryTable;
+import com.kichukkhon.android.travelpartner.Database.Tables.TravelSessionTable;
 
 /**
  * Created by Bridget on 8/24/2016.
@@ -62,6 +64,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + NoteEntry.TITLE + TEXT_TYPE + COMMA_SEP
             + NoteEntry.NOTE + TEXT_TYPE +" )";
 
+    public static final String CREATE_LOCATION_ENTRY_TABLE = " CREATE TABLE "
+            + LocationEntryTable.TABLE_NAME +
+            "( " + LocationEntryTable._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
+            + LocationEntryTable.LATITUDE + REAL_TYPE + COMMA_SEP
+            + LocationEntryTable.LONGITUDE + REAL_TYPE + COMMA_SEP
+            + LocationEntryTable.ADDRESS + TEXT_TYPE + COMMA_SEP
+            + LocationEntryTable.TIME_IN_MILLIS + INTEGER_TYPE + COMMA_SEP
+            + LocationEntryTable.SESSION_ID + INTEGER_TYPE + " )";
+
+    public static final String CREATE_SESSION_ENTRY_TABLE = "CREATE TABLE "
+            + TravelSessionTable.TABLE_NAME +
+            "( " + TravelSessionTable._ID + " INTEGER PRIMARY KEY, "
+            + TravelSessionTable.START_TIME_IN_MILLIS + INTEGER_TYPE + COMMA_SEP
+            + TravelSessionTable.STOP_TIME_IN_MILLIS + INTEGER_TYPE + " )";
+
 
     public static DatabaseHelper getDbInstance(Context context) {
         if (dbInstance == null)
@@ -75,6 +92,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_EXPENSE_TABLE);
         sqLiteDatabase.execSQL(CREATE_ALARM_TABLE);
         sqLiteDatabase.execSQL(CREATE_NOTE_TABLE);
+        sqLiteDatabase.execSQL(CREATE_SESSION_ENTRY_TABLE);
+        sqLiteDatabase.execSQL(CREATE_LOCATION_ENTRY_TABLE);
     }
 
     @Override

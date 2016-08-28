@@ -18,4 +18,9 @@
     <dimen name="tile_height">160dp</dimen>
     <dimen name="place_type_titles">10sp</dimen>
     <dimen name="tile_textview_height">42dp</dimen>
+    <dimen name="route_list_row_padding_top">10dp</dimen>
+    <dimen name="route_list_row_padding_left">5dp</dimen>
+    <dimen name="route_list_row_row_day">20sp</dimen>
+    <dimen name="travel_list_map_view_height">150dp</dimen>
+    <dimen name="toggle_button_text_size">16sp</dimen>
 </resources>

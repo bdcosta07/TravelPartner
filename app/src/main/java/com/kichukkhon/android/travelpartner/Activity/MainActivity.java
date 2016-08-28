@@ -1,8 +1,8 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.kichukkhon.android.travelpartner.Fragment.CurrentWeatherFragment;
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    
+
     public void btnTourHomeClick(View view) {
         Intent intent = new Intent(this, TourDetailsActivity.class);
         startActivity(intent);
@@ -40,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnWeatherClick(View view) {
         Intent intent = new Intent(this, CurrentWeatherFragment.class);
+        startActivity(intent);
+    }
+
+    public void btnRouteTrackerClick(View view) {
+        Intent intent = new Intent(this, RouteListActivity.class);
         startActivity(intent);
     }
 }
