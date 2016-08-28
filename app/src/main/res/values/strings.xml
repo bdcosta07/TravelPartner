@@ -74,4 +74,5 @@
     <string name="tools_start_time">Start</string>
     <string name="tools_stop_time">Stop</string>
     <string name="date">Date</string>
+    <string name="next_10_days_forecast">Next 10 days</string>
 </resources>

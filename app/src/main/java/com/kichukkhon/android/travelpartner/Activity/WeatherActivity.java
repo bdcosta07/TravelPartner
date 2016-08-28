@@ -29,6 +29,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.kichukkhon.android.travelpartner.Fragment.CurrentWeatherFragment;
+import com.kichukkhon.android.travelpartner.Fragment.ForecastWeatherFragment;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Settings.SettingsUtils;
 
@@ -136,8 +137,8 @@ public class WeatherActivity extends BaseDrawerActivity implements GoogleApiClie
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                /*case 1:
-                    return HourlyWeatherFragment.newInstance(position);*/
+                case 1:
+                    return ForecastWeatherFragment.newInstance(position);
 
                 default:
                     return CurrentWeatherFragment.create(position);

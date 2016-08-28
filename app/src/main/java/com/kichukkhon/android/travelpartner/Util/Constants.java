@@ -28,6 +28,7 @@ public final class Constants {
     public static final String OPENWEATHER_BASE_URL = "http://api.openweathermap.org/data/2.5/";
     public static final String OPENWEATHER_API_KEY = "3f7228abe9f7983448ac7d087fa3b1ac";
 
+    public static final String OPENWEATHER_CALL_TYPE_FORECAST = "forecast";
     public static final String OPENWEATHER_CALL_TYPE_CURRENT = "weather";
     //route tracker
     public static final long INTERVAL_PERIOD = 420000; // 1000 * 60 * 7 = 7 Minutes
