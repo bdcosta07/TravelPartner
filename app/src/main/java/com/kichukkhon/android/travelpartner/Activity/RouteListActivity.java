@@ -22,6 +22,7 @@ import com.kichukkhon.android.travelpartner.Class.TravelSession;
 import com.kichukkhon.android.travelpartner.Database.TravelSessionDBManager;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
+import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.util.ArrayList;
@@ -49,9 +50,7 @@ public class RouteListActivity extends BaseDrawerActivity {
 
         InitCommonUIElements();
 
-        Bundle extras = getIntent().getExtras();
-        //currentTourId = extras.getInt(Constants.CURRENT_TOUR_ID_KEY, 1);
-        currentTourId=1;
+        currentTourId = getIntent().getIntExtra(Constants.CURRENT_TOUR_ID_KEY, 1);
 
 
         listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.map_list);
