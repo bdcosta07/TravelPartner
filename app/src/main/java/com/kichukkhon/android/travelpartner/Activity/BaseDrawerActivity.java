@@ -54,7 +54,7 @@ public class BaseDrawerActivity extends BaseActivity {
                         menuItem.setChecked(true);
 
                         if (menuItem.getItemId() == R.id.menu_home) {
-                            Intent intent = new Intent(BaseDrawerActivity.this, TourDetailsActivity.class);
+                            Intent intent = new Intent(BaseDrawerActivity.this, TourListActivity.class);
                             startActivity(intent);
                         } else if (menuItem.getItemId() == R.id.menu_expense) {
                             Intent intent = new Intent(BaseDrawerActivity.this, ExpenseInfoActivity.class);
