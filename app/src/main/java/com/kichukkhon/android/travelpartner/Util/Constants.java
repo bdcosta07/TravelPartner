@@ -23,11 +23,15 @@ public final class Constants {
     public static final long INTERVAL_FOR_NEARBY_LOCATION = 1800000; //30 minutes
     public static final long FASTEST_INTERVAL_FOR_NEARBY_LOCATION = 1200000; //20 minutes
 
+    public static final String YAHOO_BASE_URL = "https://query.yahooapis.com/v1/public/yql";
+
+    public static final String OPENWEATHER_BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    public static final String OPENWEATHER_API_KEY = "3f7228abe9f7983448ac7d087fa3b1ac";
+
+    public static final String OPENWEATHER_CALL_TYPE_CURRENT = "weather";
     //route tracker
     public static final long INTERVAL_PERIOD = 420000; // 1000 * 60 * 7 = 7 Minutes
     public static final long FASTEST_INTERVAL_PERIOD = 300000; //1000 * 60 * 5 = 5 Minutes
     public static final float SMALLEST_DISPLACEMENT_METERS = 1.5f; //1.5 meters
-
-
 
 }

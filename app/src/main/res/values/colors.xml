@@ -19,4 +19,7 @@
     <color name="primary">#FF5722</color>
     <color name="primary_light">#ff6636</color>
     <color name="primary_dark">#E64A19</color>
+
+    <color name="butter_bar_light">#eee0e0e0</color>
+    <color name="navdrawer_background">#ffffffff</color>
 </resources>

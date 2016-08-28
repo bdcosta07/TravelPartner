@@ -34,6 +34,38 @@
     <string name="expense_purpose">Purpose</string>
     <string name="title_current_amount">Current Amount</string>
 
+    <string name="location">Location</string>
+    <string name="date_time">Date Time</string>
+    <string name="temperature">Tp</string>
+    <string name="condition">Condition</string>
+    <string name="current_day">Day</string>
+    <string name="current_date">Date</string>
+
+    <string name="forecast_day">Day</string>
+    <string name="forecast_text">Text</string>
+    <string name="forecast_high">High</string>
+    <string name="forecast_low">Low</string>
+    <string name="current_wind">Wind</string>
+    <string name="description">Text</string>
+    <string name="current_high_temp">high</string>
+    <string name="current_low_temp">low</string>
+    <string name="current_lat">Lat</string>
+    <string name="current_long">Long</string>
+
+    <string name="pref_location_default">Dhaka</string>
+    <string name="pref_temperature_unit_default">C</string>
+    <string name="pref_wind_direction_format_default">arrow</string>
+    <!-- Strings for formatting weather-related data -->
+    <string name="format_temperature"><xliff:g id="temp">%1.0f</xliff:g>%2$s</string>
+    <!--Array values-->
+    <string name="temperature_unit_value_c">C</string>
+    <string name="temperature_unit_value_f">F</string>
+    <string name="temperature_unit_value_k">K</string>
+
+    <string name="search_title">Search for city</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBIw7hC2oFZOlELS4gS8jPkmlU1U-_sac4</string>
 
     <!-- Route tracker -->
