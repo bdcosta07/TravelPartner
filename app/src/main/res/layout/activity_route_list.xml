@@ -19,35 +19,52 @@
 
         <include layout="@layout/shared_toolbar_with_appbar" />
 
-        <LinearLayout
-            android:id="@+id/buttonContainer"
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
-                android:id="@+id/tvList"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/toggle_button_text"
-                android:textSize="@dimen/toggle_button_text_size"
-                android:textColor="@color/blue"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/trackingToggle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                app:showText="false"
-                app:switchMinWidth="60dp"
-                app:theme="@style/SwitchCompact" />
+                <LinearLayout
+                    android:id="@+id/buttonContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <TextView
+                        android:id="@+id/tvList"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/toggle_button_text"
+                        android:textSize="@dimen/toggle_button_text_size"
+                        android:textColor="@color/blue"/>
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/trackingToggle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        app:showText="false"
+                        app:switchMinWidth="60dp"
+                        app:theme="@style/SwitchCompact" />
 
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <include layout="@layout/recycler_view" />
+                <include layout="@layout/recycler_view" />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
 
     </android.support.design.widget.CoordinatorLayout>
 

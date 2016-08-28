@@ -34,7 +34,7 @@
     <string name="expense_purpose">Purpose</string>
     <string name="title_current_amount">Current Amount</string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyByx9U24wnHD_BKygLWX8O8trClWHk_djk</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBIw7hC2oFZOlELS4gS8jPkmlU1U-_sac4</string>
 
     <!-- Route tracker -->
     <string name="title_activity_route">Map</string>

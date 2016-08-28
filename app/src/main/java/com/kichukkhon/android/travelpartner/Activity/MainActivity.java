@@ -36,4 +36,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ExpenseInfoActivity.class);
         startActivity(intent);
     }
+
+    public void btnRouteTrackerClick(View view) {
+        Intent intent = new Intent(this, RouteListActivity.class);
+        startActivity(intent);
+    }
 }

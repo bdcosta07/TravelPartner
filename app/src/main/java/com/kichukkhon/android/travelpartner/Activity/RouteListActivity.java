@@ -26,7 +26,7 @@ import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.util.ArrayList;
 
-public class RouteListActivity extends AppCompatActivity {
+public class RouteListActivity extends BaseDrawerActivity {
 
     Toolbar toolbar;
 
@@ -46,9 +46,7 @@ public class RouteListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route_list);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        InitCommonUIElements();
 
 
         listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.map_list);

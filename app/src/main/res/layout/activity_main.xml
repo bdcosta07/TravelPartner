@@ -103,4 +103,11 @@
         android:layout_height="wrap_content"
         android:text="Expense"
         android:onClick="btnExpenseListClick"/>
+
+    <Button
+        android:id="@+id/btnRouteTracker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Route"
+        android:onClick="btnRouteTrackerClick" />
 </LinearLayout>
