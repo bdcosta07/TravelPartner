@@ -32,7 +32,7 @@ public class TourDBManager {
         helper.close();
     }
 
-    public boolean addTour(Tour tour) {
+    public long addTour(Tour tour) {
         this.open();
 
         ContentValues contentValues = new ContentValues();
@@ -54,9 +54,7 @@ public class TourDBManager {
         this.close();
         database.close();
 
-        if (inserted > 0) {
-            return true;
-        } else return false;
+        return inserted;
     }
 
     public ArrayList<Tour> getAllTourInfo(int searchType) {
