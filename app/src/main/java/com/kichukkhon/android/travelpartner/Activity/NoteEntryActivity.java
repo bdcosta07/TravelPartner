@@ -1,8 +1,9 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,8 +14,6 @@ import android.widget.Toast;
 import com.kichukkhon.android.travelpartner.Class.Note;
 import com.kichukkhon.android.travelpartner.Database.NoteDBManager;
 import com.kichukkhon.android.travelpartner.R;
-import com.kichukkhon.android.travelpartner.Util.AppUtils;
-import com.kichukkhon.android.travelpartner.Util.Constants;
 
 public class NoteEntryActivity extends AppCompatActivity {
     EditText txtTitle;
@@ -29,8 +28,8 @@ public class NoteEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_entry);
 
-        txtTitle=(EditText)findViewById(R.id.note_title);
-        txtNote=(EditText)findViewById(R.id.note_content);
+        txtTitle = (EditText) findViewById(R.id.note_title);
+        txtNote = (EditText) findViewById(R.id.note_content);
 
         noteInfo = new Note();
         noteDBManager = new NoteDBManager(this);
@@ -39,10 +38,13 @@ public class NoteEntryActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("New Note");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("New Note");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
-        currentTourId=1;
+        currentTourId = 1;
         //noteInfo = noteDBManager.getNoteInfoById(currentTourId);
 
     }
@@ -61,7 +63,7 @@ public class NoteEntryActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.icon_save) {
             saveNoteInfo();
-            Intent intent=new Intent(this,NoteListActivity.class);
+            Intent intent = new Intent(this, NoteListActivity.class);
             startActivity(intent);
         }
 
@@ -72,7 +74,7 @@ public class NoteEntryActivity extends AppCompatActivity {
 
         String noteTitle = txtTitle.getText().toString();
         String noteDesc = txtNote.getText().toString();
-        long date=System.currentTimeMillis();
+        long date = System.currentTimeMillis();
 
         noteInfo.setTitle(noteTitle);
         noteInfo.setNote(noteDesc);
