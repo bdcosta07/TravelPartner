@@ -83,7 +83,7 @@ public class TourDBManager {
                 whereClause = TourEntry.END_DATE + " <= " + today;
                 break;
             case Constants.SEARCH_FOR_RUNNING:
-                whereClause = TourEntry.STAR_DATE + " <= " + today + TourEntry.END_DATE + " >= " + today;
+                whereClause = TourEntry.STAR_DATE + " <= " + today + " AND " + TourEntry.END_DATE + " >= " + today;
                 break;
         }
 
