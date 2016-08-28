@@ -16,6 +16,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/grpHome" android:checkableBehavior="all">
         <item
+            android:id="@+id/menu_home"
             android:icon="@drawable/ic_home_black_24dp"
             android:tint="@color/button_gray"
             android:title="Home" />
@@ -23,14 +24,17 @@
 
     <group android:id="@+id/grpNav" android:checkableBehavior="all">
         <item
+            android:id="@+id/menu_gallery"
             android:icon="@drawable/ic_photo_library_black_24dp"
             android:tint="@color/button_gray"
             android:title="Picture Gallery" />
         <item
+            android:id="@+id/menu_expense"
             android:icon="@drawable/ic_account_balance_wallet_black_24dp"
             android:tint="@color/button_gray"
             android:title="Expense Info" />
         <item
+            android:id="@+id/menu_note"
             android:icon="@drawable/ic_event_note_black_24dp"
             android:tint="@color/button_gray"
             android:title="Note" />
@@ -40,6 +44,7 @@
             android:tint="@color/button_gray"
             android:title="Alarm" />
         <item
+            android:id="@+id/menu_weather"
             android:icon="@drawable/ic_cloud_black_24dp"
             android:tint="@color/button_gray"
             android:title="Current Weather" />
@@ -49,6 +54,7 @@
             android:tint="@color/button_gray"
             android:title="Important Places" />
         <item
+            android:id="@+id/menu_route_tracker"
             android:icon="@drawable/ic_navigation_black_24dp"
             android:tint="@color/button_gray"
             android:title="Record my Routes" />

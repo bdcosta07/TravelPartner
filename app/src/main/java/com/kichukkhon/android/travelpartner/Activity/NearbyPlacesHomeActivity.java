@@ -17,7 +17,7 @@ import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.PlaceTypes;
 
-public class NearbyPlacesHomeActivity extends BaseLocationAwareActivity {
+public class NearbyPlacesHomeActivity extends BaseDrawerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

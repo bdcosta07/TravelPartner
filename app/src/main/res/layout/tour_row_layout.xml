@@ -1,61 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="4dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
         android:orientation="vertical"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin">
+        android:background="#FFF"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
         <TextView
-            android:id="@+id/tvTourName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/tour_name"
-            android:textSize="@dimen/tour_text_size"
-            android:paddingBottom="@dimen/tour_padding_bottom"/>
+            android:minHeight="60dp"
+            android:id="@+id/tvTourName"
+            android:textSize="14sp"
+
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="8dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
             <TextView
-                android:id="@+id/tvStartDate"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="@string/start_date"
-                android:textSize="@dimen/tour_text_size"
-                android:paddingBottom="@dimen/tour_padding_bottom"
-                android:layout_weight=".5"/>
+                android:textStyle="bold"
+                android:textColor="#555"
+                android:text="date"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="14dp"
+                android:id="@+id/tvTourDuration"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
             <TextView
-                android:id="@+id/tvEndDate"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="@string/end_date"
-                android:textSize="@dimen/tour_text_size"
-                android:paddingBottom="@dimen/tour_padding_bottom"
-                android:layout_weight="1"/>
-
-
-
+                android:textStyle="bold"
+                android:textColor="#555"
+                android:text="Address"
+                android:id="@+id/tvTimeLeft"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="14dp"/>
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
-
 </android.support.v7.widget.CardView>
