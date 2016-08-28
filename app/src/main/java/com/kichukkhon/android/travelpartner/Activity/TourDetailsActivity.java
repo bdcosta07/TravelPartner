@@ -1,6 +1,7 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
@@ -31,6 +32,8 @@ public class TourDetailsActivity extends BaseDrawerActivity {
 
         curentTourId = preference.getCurrentlySelectedTourId();
 
+        ActionBar actionBar = getSupportActionBar();
+
         tvDestination = (TextView) findViewById(R.id.tvDestination);
         tvStartDate = (TextView) findViewById(R.id.tvShowStartDate);
         tvEndDate = (TextView) findViewById(R.id.tvShowEndDate);
@@ -40,17 +43,20 @@ public class TourDetailsActivity extends BaseDrawerActivity {
         tourInfo = tourDBManager.getTourInfoById(curentTourId);
         getTourData();
 
+        if (actionBar != null) {
+            actionBar.setTitle(tourInfo.getTourName());
+        }
     }
 
     public void getTourData() {
         String destination = tourInfo.getDestination();
         String startDate = AppUtils.getFormattedDate(this, tourInfo.getStartDateTime());
-        String endDate=AppUtils.getFormattedDate(this,tourInfo.getEndDateTime());
-        double budget=tourInfo.getBudget();
+        String endDate = AppUtils.getFormattedDate(this, tourInfo.getEndDateTime());
+        double budget = tourInfo.getBudget();
 
         tvDestination.setText(destination);
         tvStartDate.setText(startDate);
         tvEndDate.setText(endDate);
-        tvBudget.setText(String.valueOf("BDT "+budget));
+        tvBudget.setText(String.valueOf("BDT " + budget));
     }
 }
