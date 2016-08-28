@@ -34,4 +34,8 @@ public final class Constants {
     public static final long FASTEST_INTERVAL_PERIOD = 300000; //1000 * 60 * 5 = 5 Minutes
     public static final float SMALLEST_DISPLACEMENT_METERS = 1.5f; //1.5 meters
 
+    //Tour query helper (should be enum)
+    public static final int SEARCH_FOR_UPCOMING = 1;
+    public static final int SEARCH_FOR_PREVIOUS = 2;
+    public static final int SEARCH_FOR_RUNNING = 3;
 }

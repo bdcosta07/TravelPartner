@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.kichukkhon.android.travelpartner.Adapter.TourAdapter;
+import com.kichukkhon.android.travelpartner.Fragment.PreviousTourListFragment;
+import com.kichukkhon.android.travelpartner.Fragment.RunningTourListFragment;
 import com.kichukkhon.android.travelpartner.Fragment.UpcomingTourListFragment;
 import com.kichukkhon.android.travelpartner.R;
 
@@ -55,8 +57,9 @@ public class TourListActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new RunningTourListFragment(), "Active");
         adapter.addFragment(new UpcomingTourListFragment(), "Upcoming");
-        adapter.addFragment(new UpcomingTourListFragment(), "Incoming");
+        adapter.addFragment(new PreviousTourListFragment(), "Previous");
         viewPager.setAdapter(adapter);
     }
 
