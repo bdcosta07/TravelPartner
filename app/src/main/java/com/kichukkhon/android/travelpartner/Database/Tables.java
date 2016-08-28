@@ -65,6 +65,7 @@ public class Tables {
     public static final class TravelSessionTable implements BaseColumns {
         public static final String TABLE_NAME = "travel_session";
 
+        public static final String TOUR_ID = "tour_id";
         public static final String START_TIME_IN_MILLIS = "start_time_in_millis";
         public static final String STOP_TIME_IN_MILLIS = "stop_time_in_millis";
     }

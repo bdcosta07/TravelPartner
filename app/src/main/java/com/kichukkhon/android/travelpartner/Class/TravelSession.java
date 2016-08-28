@@ -5,16 +5,17 @@ package com.kichukkhon.android.travelpartner.Class;
  */
 public class TravelSession {
     int id;
+    int tourId;
     long startTime;
     long stopTime;
 
-    public TravelSession(int id, long startTime, long stopTime) {
+    public TravelSession(int id, int tourId, long startTime, long stopTime) {
         this.id = id;
         this.startTime = startTime;
         this.stopTime = stopTime;
     }
 
-    public TravelSession(long startTime, long stopTime) {
+    public TravelSession(int tourId, long startTime, long stopTime) {
         this.startTime = startTime;
         this.stopTime = stopTime;
     }
@@ -44,5 +45,13 @@ public class TravelSession {
 
     public void setStopTime(long stopTime) {
         this.stopTime = stopTime;
+    }
+
+    public int getTourId() {
+        return tourId;
+    }
+
+    public void setTourId(int tourId) {
+        this.tourId = tourId;
     }
 }

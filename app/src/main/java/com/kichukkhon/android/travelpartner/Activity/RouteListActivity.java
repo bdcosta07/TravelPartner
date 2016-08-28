@@ -40,6 +40,7 @@ public class RouteListActivity extends BaseDrawerActivity {
     Preference preference;
     TravelSessionDBManager sessionDBManager;
     int currentSessionId;
+    int currentTourId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,10 @@ public class RouteListActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_route_list);
 
         InitCommonUIElements();
+
+        Bundle extras = getIntent().getExtras();
+        //currentTourId = extras.getInt(Constants.CURRENT_TOUR_ID_KEY, 1);
+        currentTourId=1;
 
 
         listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.map_list);
@@ -74,7 +79,7 @@ public class RouteListActivity extends BaseDrawerActivity {
                     //start the service to track route
                     startService(mServiceIntent);
 
-                    TravelSession session = new TravelSession(currentTime, currentTime);
+                    TravelSession session = new TravelSession(currentTourId,currentTime, currentTime);
                     long sessionId = sessionDBManager.addSession(session);
 
                     if (sessionId > 0) {
@@ -110,7 +115,7 @@ public class RouteListActivity extends BaseDrawerActivity {
 
 
     public void getData() {
-        sessionArrayList = sessionDBManager.getAllSessions();
+        sessionArrayList = sessionDBManager.getAllSessionsByTourId(currentTourId);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);

@@ -65,13 +65,13 @@ public class TravelSessionDBManager {
         return null;
     }
 
-    public ArrayList<TravelSession> getAllSessions() {
+    public ArrayList<TravelSession> getAllSessionsByTourId(int tourId) {
         this.open();
 
         ArrayList<TravelSession> sessionList = new ArrayList<>();
 
         Cursor cursor = database.query(TravelSessionTable.TABLE_NAME,
-                null, null, null, null, null, TravelSessionTable._ID+" desc");
+                null, TravelSessionTable.TOUR_ID + "= " + tourId, null, null, null, TravelSessionTable._ID + " desc");
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
