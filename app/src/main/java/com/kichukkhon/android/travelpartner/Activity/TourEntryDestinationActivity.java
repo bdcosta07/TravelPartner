@@ -2,6 +2,7 @@ package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -61,7 +62,9 @@ public class TourEntryDestinationActivity extends BaseActivity
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Select Destination");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Select Destination");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mAutocompleteDestination = (AutoCompleteTextView) findViewById(R.id.autocomplete_destination);
 

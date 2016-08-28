@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -54,10 +55,9 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("New Tour");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("New Tour");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         final Calendar calendar = Calendar.getInstance();
 
