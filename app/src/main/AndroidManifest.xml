@@ -23,7 +23,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.TourListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +33,6 @@
         <activity android:name=".Activity.TourEntryDetailsActivity" />
         <activity android:name=".Activity.TourDetailsActivity" />
         <activity android:name=".Activity.TourEntryDestinationActivity" />
-        <activity android:name=".Activity.TourListActivity" />
         <activity android:name=".Activity.AlarmActivity" />
 
         <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
