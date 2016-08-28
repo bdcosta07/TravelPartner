@@ -67,6 +67,7 @@ public class TourDBManager {
         String whereClause = "";
         //String whereArgs = "";
         Calendar calendar = Calendar.getInstance();
+
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
@@ -77,7 +78,7 @@ public class TourDBManager {
 
         switch (searchType) {
             case Constants.SEARCH_FOR_UPCOMING:
-                whereClause = TourEntry.STAR_DATE + " >= " + today;
+                whereClause = TourEntry.STAR_DATE + " >= " + (today+ (24*60*60*1000)); //tomorrow 1st hour
                 break;
             case Constants.SEARCH_FOR_PREVIOUS:
                 whereClause = TourEntry.END_DATE + " <= " + today;
