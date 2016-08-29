@@ -6,6 +6,7 @@ import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class RouteMapActivity extends FragmentActivity implements
+public class RouteMapActivity extends AppCompatActivity implements
         OnMapReadyCallback {
 
     int sessionId;
@@ -38,19 +39,18 @@ public class RouteMapActivity extends FragmentActivity implements
     SupportMapFragment mapFragment;
     private static final int BOUNDING_BOX_PADDING_PX = 50;
     ArrayList<LocationEntry> locationEntries;
-    Toolbar toolbar;
-    AppCompatActivity compatActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route_map);
 
-        /*compatActivity=new AppCompatActivity();
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-
-        compatActivity.setSupportActionBar(toolbar);
-        compatActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);*/
+        // Adding Toolbar to Main screen
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Your Route");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
