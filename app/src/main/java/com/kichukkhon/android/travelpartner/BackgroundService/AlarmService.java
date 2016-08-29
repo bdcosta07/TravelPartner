@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 
 import com.kichukkhon.android.travelpartner.Activity.AlarmActivity;
 import com.kichukkhon.android.travelpartner.BroadcastReceiver.AlarmReceiver;
@@ -45,11 +46,20 @@ public class AlarmService extends IntentService {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_alarm_black_24dp)
                         .setContentTitle(getString(R.string.app_name))
+                        .setContentText(msg)
+                        .setColor(ContextCompat.getColor(this,R.color.colorPrimary))
+                        .setSmallIcon(R.drawable.ic_alarm_black_24dp)
+                        .setOngoing(true)
+                        .setAutoCancel(false)
+                        .setDefaults(NotificationCompat.DEFAULT_LIGHTS)
+                        .setWhen(0)
+                        .setCategory(NotificationCompat.CATEGORY_ALARM)
+                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                        .setLocalOnly(true)
                         .setStyle(new NotificationCompat.BigTextStyle()
-                                .bigText(msg))
-                        .setContentText(msg);
+                                .bigText(msg));
+
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());

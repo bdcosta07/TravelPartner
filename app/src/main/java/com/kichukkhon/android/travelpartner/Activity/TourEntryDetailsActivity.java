@@ -22,6 +22,7 @@ import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
 import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.DateSet;
+import com.kichukkhon.android.travelpartner.Util.Preference;
 
 public class TourEntryDetailsActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
@@ -39,6 +40,7 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
     String placeName, placeId;
     Bundle extras;
     double latitude, longitude;
+    Preference preference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +54,16 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         endDateSet = (DatePicker) findViewById(R.id.endDatePicker);
         txtBudget = (EditText) findViewById(R.id.txtBudget);
 
+        preference = new Preference(this);
+
         toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
 
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("New Tour");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("New Tour");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         final Calendar calendar = Calendar.getInstance();
 
@@ -143,9 +149,14 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         tourInfo.setDestLat(latitude);
         tourInfo.setDestLon(longitude);
 
-        boolean inserted = tourDBManager.addTour(tourInfo);
-        if (inserted) {
+        long tourId = tourDBManager.addTour(tourInfo);
+        if (tourId > 0) {
             Toast.makeText(this, "Data Inserted", Toast.LENGTH_SHORT).show();
+
+            //save the tour id in pref
+            preference.saveCurrentSelectedTourId((int) tourId);
+            Intent intent = new Intent(this, TourDetailsActivity.class);
+            startActivity(intent);
         } else Toast.makeText(this, "Data not Inserted", Toast.LENGTH_SHORT).show();
     }
 
@@ -155,15 +166,5 @@ public class TourEntryDetailsActivity extends AppCompatActivity implements View.
         placeName = extras.getString(Constants.PLACE_NAME_KEY);
         latitude = extras.getDouble(Constants.PLACE_LATITUDE_KEY);
         longitude = extras.getDouble(Constants.PLACE_LONGITUDE_KEY);
-
     }
-
-    /*@Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem saveItem=menu.findItem(R.id.icon_save);
-        saveItem.setVisible(true);
-        return super.onPrepareOptionsMenu(menu);
-    }*/
-
-
 }

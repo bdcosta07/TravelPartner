@@ -58,8 +58,13 @@
         <activity android:name=".Activity.WeatherActivity" />
         <activity android:name=".Activity.RouteListActivity" />
         <activity android:name=".Activity.RouteMapActivity" />
-        <activity android:name=".Activity.NoteEntryActivity" />
-        <activity android:name=".Activity.NoteListActivity"></activity>
+        <activity android:name=".Activity.NoteEntryActivity"
+            android:parentActivityName=".Activity.NoteListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.NoteListActivity" />
+        </activity>
+        <activity android:name=".Activity.NoteListActivity" />
 
         <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
         <receiver
