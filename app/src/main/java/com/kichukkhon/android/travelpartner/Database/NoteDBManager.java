@@ -35,10 +35,10 @@ public class NoteDBManager {
         this.open();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(NoteEntry.TOUR_ID,noteInfo.getTourId());
-        contentValues.put(NoteEntry.TITLE,noteInfo.getTitle());
-        contentValues.put(NoteEntry.NOTE,noteInfo.getNote());
-        contentValues.put(NoteEntry.CREATED_AT,noteInfo.getCreatedAt());
+        contentValues.put(NoteEntry.TOUR_ID, noteInfo.getTourId());
+        contentValues.put(NoteEntry.TITLE, noteInfo.getTitle());
+        contentValues.put(NoteEntry.NOTE, noteInfo.getNote());
+        contentValues.put(NoteEntry.CREATED_AT, noteInfo.getCreatedAt());
 
         long inserted = database.insert(NoteEntry.NOTE_TABLE, null, contentValues);
         this.close();
@@ -56,7 +56,7 @@ public class NoteDBManager {
 
         Cursor cursor = database.query(NoteEntry.NOTE_TABLE,
                 null,
-                NoteEntry.TOUR_ID + "= " + tourId,
+                NoteEntry.TOUR_ID + " = " + tourId,
                 null, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
@@ -69,7 +69,7 @@ public class NoteDBManager {
                 long dateTime = cursor.getLong(cursor.getColumnIndex(NoteEntry.CREATED_AT));
 
 
-                noteInfo=new Note(id,tourId,title,note,dateTime);
+                noteInfo = new Note(id, tourId, title, note, dateTime);
                 noteList.add(noteInfo);
                 cursor.moveToNext();
             }
@@ -94,7 +94,7 @@ public class NoteDBManager {
         long dateTime = cursor.getLong(cursor.getColumnIndex(NoteEntry.CREATED_AT));
 
 
-        noteInfo=new Note(mid,tourId,title,note,dateTime);
+        noteInfo = new Note(mid, tourId, title, note, dateTime);
         this.close();
         return noteInfo;
 
@@ -104,10 +104,10 @@ public class NoteDBManager {
         this.open();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(NoteEntry.TOUR_ID,noteInfo.getTourId());
-        contentValues.put(NoteEntry.TITLE,noteInfo.getTitle());
-        contentValues.put(NoteEntry.NOTE,noteInfo.getNote());
-        contentValues.put(NoteEntry.CREATED_AT,noteInfo.getCreatedAt());
+        contentValues.put(NoteEntry.TOUR_ID, noteInfo.getTourId());
+        contentValues.put(NoteEntry.TITLE, noteInfo.getTitle());
+        contentValues.put(NoteEntry.NOTE, noteInfo.getNote());
+        contentValues.put(NoteEntry.CREATED_AT, noteInfo.getCreatedAt());
 
         int updated = database.update(NoteEntry.NOTE_TABLE, contentValues, NoteEntry._ID + " = " + id, null);
         this.close();

@@ -2,6 +2,7 @@ package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.graphics.drawable.VectorDrawableCompat;
@@ -20,10 +21,19 @@ import com.kichukkhon.android.travelpartner.R;
 public class BaseDrawerActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
+    private int mNavItemId;
+
+    private static final String NAV_ITEM_ID = "navItemId";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState == null) {
+            //mNavItemId = R.id.menu_home;
+        } else {
+            mNavItemId = savedInstanceState.getInt(NAV_ITEM_ID);
+        }
     }
 
     public void InitCommonUIElements() {
@@ -52,6 +62,7 @@ public class BaseDrawerActivity extends BaseActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         // Set item in checked state
                         menuItem.setChecked(true);
+                        mNavItemId = menuItem.getItemId();
 
                         if (menuItem.getItemId() == R.id.menu_home) {
                             Intent intent = new Intent(BaseDrawerActivity.this, TourListActivity.class);
@@ -60,8 +71,8 @@ public class BaseDrawerActivity extends BaseActivity {
                             Intent intent = new Intent(BaseDrawerActivity.this, ExpenseInfoActivity.class);
                             startActivity(intent);
                         } else if (menuItem.getItemId() == R.id.menu_note) {
-                            /*Intent intent = new Intent(BaseDrawerActivity.this, AlarmActivity.class);
-                            startActivity(intent);*/
+                            Intent intent = new Intent(BaseDrawerActivity.this, NoteListActivity.class);
+                            startActivity(intent);
                         } else if (menuItem.getItemId() == R.id.menu_alarm) {
                             Intent intent = new Intent(BaseDrawerActivity.this, AlarmActivity.class);
                             startActivity(intent);
@@ -81,6 +92,7 @@ public class BaseDrawerActivity extends BaseActivity {
                         return true;
                     }
                 });
+        navigationView.getMenu().findItem(mNavItemId).setChecked(true);
     }
 
     @Override
@@ -95,5 +107,11 @@ public class BaseDrawerActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putInt(NAV_ITEM_ID, mNavItemId);
     }
 }

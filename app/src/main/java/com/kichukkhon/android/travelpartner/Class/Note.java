@@ -1,5 +1,7 @@
 package com.kichukkhon.android.travelpartner.Class;
 
+import android.support.v7.widget.RecyclerView;
+
 /**
  * Created by Bridget on 8/28/2016.
  */
