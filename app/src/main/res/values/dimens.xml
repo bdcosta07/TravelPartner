@@ -24,4 +24,7 @@
     <dimen name="travel_list_map_view_height">150dp</dimen>
     <dimen name="toggle_button_text_size">16sp</dimen>
     <dimen name="date_set_text_size">18sp</dimen>
+
+    <dimen name="ic_tour_overflow_width">24dp</dimen>
+    <dimen name="ic_tour_overflow_height">30dp</dimen>
 </resources>

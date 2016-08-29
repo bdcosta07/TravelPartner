@@ -28,6 +28,14 @@
             android:gravity="center_vertical|center_horizontal"
             android:padding="8dp" />
 
+        <!--<ImageView
+            android:id="@+id/overflow"
+            android:layout_height="@dimen/ic_tour_overflow_height"
+            android:layout_width="@dimen/ic_tour_overflow_width"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_more_vert_white_24dp" />
+-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +52,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="14dp"
                 android:id="@+id/tvTourDuration"/>
+
         </LinearLayout>
 
         <LinearLayout

@@ -54,9 +54,13 @@
         <activity android:name=".Activity.Places_list" />
         <activity android:name=".Activity.WeatherActivity" />
         <activity android:name=".Activity.RouteListActivity" />
-        <activity android:name=".Activity.RouteMapActivity" />
-        <activity
-            android:name=".Activity.NoteEntryActivity"
+        <activity android:name=".Activity.RouteMapActivity"
+            android:parentActivityName=".Activity.RouteListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.RouteListActivity" />
+        </activity>
+        <activity android:name=".Activity.NoteEntryActivity"
             android:parentActivityName=".Activity.NoteListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
