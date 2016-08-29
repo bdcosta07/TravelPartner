@@ -51,7 +51,7 @@ public class AlarmService extends IntentService {
                         .setColor(ContextCompat.getColor(this,R.color.colorPrimary))
                         .setSmallIcon(R.drawable.ic_alarm_black_24dp)
                         .setOngoing(true)
-                        .setAutoCancel(false)
+                        .setAutoCancel(true)
                         .setDefaults(NotificationCompat.DEFAULT_LIGHTS)
                         .setWhen(0)
                         .setCategory(NotificationCompat.CATEGORY_ALARM)
