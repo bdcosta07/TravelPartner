@@ -67,6 +67,8 @@ public class WeatherActivity extends BaseDrawerActivity implements GoogleApiClie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
+        //InitCommonUIElements();
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new WeatherPagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
