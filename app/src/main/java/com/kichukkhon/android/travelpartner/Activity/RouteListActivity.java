@@ -56,7 +56,6 @@ public class RouteListActivity extends BaseDrawerActivity {
         trackingToggle = (SwitchCompat) findViewById(R.id.trackingToggle);
 
         sessionDBManager = new TravelSessionDBManager(this);
-        preference = new Preference(this);
 
         final int currentSessionId = preference.getCurrentSession();
         isTrackAllowed = preference.isTrackAllowed();

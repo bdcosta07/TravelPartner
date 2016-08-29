@@ -34,6 +34,7 @@ public class TravelSessionDBManager {
         this.open();
 
         ContentValues contentValues = new ContentValues();
+        contentValues.put(TravelSessionTable.TOUR_ID, travelSession.getTourId());
         contentValues.put(TravelSessionTable.START_TIME_IN_MILLIS, travelSession.getStartTime());
         contentValues.put(TravelSessionTable.STOP_TIME_IN_MILLIS, travelSession.getStopTime());
 

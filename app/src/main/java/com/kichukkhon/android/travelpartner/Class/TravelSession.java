@@ -16,6 +16,7 @@ public class TravelSession {
     }
 
     public TravelSession(int tourId, long startTime, long stopTime) {
+        this.tourId = tourId;
         this.startTime = startTime;
         this.stopTime = stopTime;
     }
