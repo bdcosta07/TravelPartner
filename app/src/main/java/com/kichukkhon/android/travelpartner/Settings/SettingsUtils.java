@@ -79,17 +79,4 @@ public class SettingsUtils {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         return sp.getString(PREF_WIND_DIRECTION_FORMAT, context.getResources().getString(R.string.pref_wind_direction_format_default));
     }
-
-    public static String GetLocation(Context context) {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        return sp.getString(PREF_RECENT_CITY, "Sylhet");
-    }
-
-    public static void saveLocation(String result, Context context) {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString(PREF_RECENT_CITY, result);
-        editor.commit();
-    }
 }

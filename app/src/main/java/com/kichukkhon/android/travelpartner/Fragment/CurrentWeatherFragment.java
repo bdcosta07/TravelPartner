@@ -1,9 +1,8 @@
 package com.kichukkhon.android.travelpartner.Fragment;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.kichukkhon.android.travelpartner.Class.Tour;
+import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Settings.SettingsUtils;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
 import com.kichukkhon.android.travelpartner.Util.Constants;
+import com.kichukkhon.android.travelpartner.Util.Preference;
 import com.kichukkhon.android.travelpartner.VolleyAppController.AppController;
 
 import org.json.JSONException;
@@ -33,6 +35,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
     TextView tvTemperature, tvLocation, tvDescription, tvCurrentDate;
     TextView tvHighTemp, tvLowTemp, tvWind, tvHumidity, tvSunrise, tvSunset, tvCelFar;
     ImageView imgWeather;
+    String location;
 
     public static final String ARG_PAGE = "page";
 
@@ -43,6 +46,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, pageNumber);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -54,6 +58,19 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPageNumber = getArguments().getInt(ARG_PAGE);
+
+        //get location by current tour ID
+        Preference preference = new Preference(getActivity());
+        int currentTourId = preference.getCurrentlySelectedTourId();
+
+        TourDBManager dbManager = new TourDBManager(getActivity());
+        Tour tour = dbManager.getTourInfoById(currentTourId);
+
+        location = "Dhaka";
+
+        if (tour != null) {
+            location = tour.getDestination();
+        }
     }
 
     @Nullable
@@ -90,7 +107,6 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
 
     //get current weather data (JSON)
     public void getCurrentWeather() {
-        String location = SettingsUtils.GetLocation(getActivity());
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, AppUtils.BuildYahooURL(location), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -109,7 +125,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
                     String sunset = astronomy.getString("sunset");
                     JSONObject item = channel.getJSONObject("item");
                     JSONObject condition = item.getJSONObject("condition");
-                    String temperature = AppUtils.formatTemperature(getActivity(),Double.parseDouble(condition.getString("temp")));
+                    String temperature = AppUtils.formatTemperature(getActivity(), Double.parseDouble(condition.getString("temp")));
                     int conditionCode = Integer.parseInt(condition.getString("code"));
                     String text = condition.getString("text");
                     String date = condition.getString("date");
@@ -153,17 +169,15 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
 
 
     public void getCurrentHighLowTemp() {
-
-        String loc = SettingsUtils.GetLocation(getActivity());
-        String openUrl = AppUtils.BuildOpenWeatherURL(loc, Constants.OPENWEATHER_CALL_TYPE_CURRENT);
+        String openUrl = AppUtils.BuildOpenWeatherURL(location, Constants.OPENWEATHER_CALL_TYPE_CURRENT);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, openUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONObject main = response.getJSONObject("main");
-                    String highTemp = AppUtils.formatTemperature(getActivity(),main.getDouble("temp_max"));
-                    String lowTemp = AppUtils.formatTemperature(getActivity(),main.getDouble("temp_min"));
+                    String highTemp = AppUtils.formatTemperature(getActivity(), main.getDouble("temp_max"));
+                    String lowTemp = AppUtils.formatTemperature(getActivity(), main.getDouble("temp_min"));
 
                     tvHighTemp.setText(highTemp);
                     tvLowTemp.setText(lowTemp);

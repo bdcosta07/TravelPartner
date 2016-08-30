@@ -17,10 +17,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.kichukkhon.android.travelpartner.Adapter.ForecastWeatherAdapter;
 import com.kichukkhon.android.travelpartner.Class.Forecast;
+import com.kichukkhon.android.travelpartner.Class.Tour;
+import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Settings.SettingsUtils;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
 import com.kichukkhon.android.travelpartner.Util.Constants;
+import com.kichukkhon.android.travelpartner.Util.Preference;
 import com.kichukkhon.android.travelpartner.VolleyAppController.AppController;
 
 import org.json.JSONArray;
@@ -41,9 +44,7 @@ public class ForecastWeatherFragment extends Fragment {
     ArrayList<Forecast> forecastWeatherList;
     ForecastWeatherAdapter forecastAdapter;
     ListView listView;
-
-    String url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Dhaka%22)&format=json";
-
+    String location;
 
     public ForecastWeatherFragment() {
     }
@@ -63,6 +64,19 @@ public class ForecastWeatherFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mPageNumber = getArguments().getInt(ARG_PAGE);
+        }
+
+        //get location by current tour ID
+        Preference preference = new Preference(getActivity());
+        int currentTourId = preference.getCurrentlySelectedTourId();
+
+        TourDBManager dbManager = new TourDBManager(getActivity());
+        Tour tour = dbManager.getTourInfoById(currentTourId);
+
+        location = "Dhaka";
+
+        if (tour != null) {
+            location = tour.getDestination();
         }
     }
 
@@ -91,7 +105,7 @@ public class ForecastWeatherFragment extends Fragment {
     }
 
     public void getForecastWeather() {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, AppUtils.BuildYahooURL(location), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
