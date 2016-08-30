@@ -9,13 +9,14 @@ public class Forecast {
     private int high;
     private int low;
     private String description;
-    private String day;
+    private String date;
 
-    public Forecast(String day, int high, int low, String description) {
-        this.day = day;
+    public Forecast(String date, int high, int low, String description, int code) {
+        this.date = date;
         this.high = high;
         this.low = low;
         this.description = description;
+        this.code = code;
     }
 
     public Forecast() {
@@ -29,12 +30,12 @@ public class Forecast {
         this.imageId = imageId;
     }
 
-    public String getDay() {
-        return day;
+    public String getDate() {
+        return date;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getCode() {

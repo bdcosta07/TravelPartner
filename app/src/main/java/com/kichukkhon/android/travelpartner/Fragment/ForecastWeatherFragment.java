@@ -20,9 +20,7 @@ import com.kichukkhon.android.travelpartner.Class.Forecast;
 import com.kichukkhon.android.travelpartner.Class.Tour;
 import com.kichukkhon.android.travelpartner.Database.TourDBManager;
 import com.kichukkhon.android.travelpartner.R;
-import com.kichukkhon.android.travelpartner.Settings.SettingsUtils;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
-import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.Preference;
 import com.kichukkhon.android.travelpartner.VolleyAppController.AppController;
 
@@ -37,7 +35,6 @@ import java.util.ArrayList;
  */
 public class ForecastWeatherFragment extends Fragment {
     private static final String ARG_PAGE = "page";
-    // TODO: Rename and change types of parameters
     TextView tvLocation;
     TextView tvNextDays;
     private int mPageNumber;
@@ -49,7 +46,6 @@ public class ForecastWeatherFragment extends Fragment {
     public ForecastWeatherFragment() {
     }
 
-    // TODO: Rename and change types and number of parameters
     public static ForecastWeatherFragment newInstance(int pageNumber) {
         ForecastWeatherFragment fragment = new ForecastWeatherFragment();
         Bundle args = new Bundle();
@@ -89,7 +85,7 @@ public class ForecastWeatherFragment extends Fragment {
 
         listView = (ListView) rootView.findViewById(R.id.lvForecastList);
         tvLocation = (TextView) rootView.findViewById(R.id.tvLocation);
-        tvNextDays=(TextView)rootView.findViewById(R.id.tvNextDays);
+        tvNextDays = (TextView) rootView.findViewById(R.id.tvNextDays);
 
         forecastWeatherList = new ArrayList<>();
         forecastAdapter = new ForecastWeatherAdapter(getActivity(), forecastWeatherList);
@@ -115,8 +111,8 @@ public class ForecastWeatherFragment extends Fragment {
                     JSONObject item = channel.getJSONObject("item");
                     JSONArray forecast = item.getJSONArray("forecast");
 
-                    JSONObject location=channel.getJSONObject("location");
-                    String city=location.getString("city");
+                    JSONObject location = channel.getJSONObject("location");
+                    String city = location.getString("city");
 
                     tvLocation.setText(city);
                     tvNextDays.setText("Next 10 days");
@@ -124,16 +120,18 @@ public class ForecastWeatherFragment extends Fragment {
                     for (int i = 0; i < forecast.length(); i++) {
                         JSONObject jsonObject = forecast.getJSONObject(i);
 
-                        String day = jsonObject.getString("day");
+                        String date = jsonObject.getString("date");
                         int highTemp = Integer.parseInt(jsonObject.getString("high"));
                         int lowTemp = Integer.parseInt(jsonObject.getString("low"));
                         String description = jsonObject.getString("text");
+                        int code = Integer.parseInt(jsonObject.getString("code"));
 
                         Forecast forecastClass = new Forecast();
-                        forecastClass.setDay(day);
+                        forecastClass.setDate(date);
                         forecastClass.setHigh(highTemp);
                         forecastClass.setLow(lowTemp);
                         forecastClass.setDescription(description);
+                        forecastClass.setCode(code);
 
                         forecastWeatherList.add(forecastClass);
                     }
