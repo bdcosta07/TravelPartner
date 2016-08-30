@@ -82,7 +82,12 @@
             android:name=".BackgroundService.LocationTrackerService"
             android:exported="false" />
 
-        <activity android:name=".Activity.NoteDetailsActivity"></activity>
+        <activity android:name=".Activity.NoteDetailsActivity"
+            android:parentActivityName=".Activity.NoteListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.NoteListActivity"/>
+        </activity>
     </application>
 
 </manifest>

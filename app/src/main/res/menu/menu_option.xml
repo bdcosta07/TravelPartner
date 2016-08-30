@@ -5,7 +5,7 @@
     <item
         android:id="@+id/icon_save"
         android:title="Save"
-        android:icon="@drawable/ic_done_black_24dp"
+        android:icon="@drawable/ic_done_white_24dp"
         android:orderInCategory="100"
         app:showAsAction="always" />
 

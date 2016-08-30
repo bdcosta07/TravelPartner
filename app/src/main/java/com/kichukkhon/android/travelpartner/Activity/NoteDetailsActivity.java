@@ -2,6 +2,8 @@ package com.kichukkhon.android.travelpartner.Activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
@@ -10,7 +12,7 @@ import com.kichukkhon.android.travelpartner.Database.NoteDBManager;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
 
-public class NoteDetailsActivity extends BaseDrawerActivity {
+public class NoteDetailsActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView tvDate;
     TextView tvDetails;
@@ -30,8 +32,7 @@ public class NoteDetailsActivity extends BaseDrawerActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(noteInfo.getTitle());
-        InitCommonUIElements();
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tvDate = (TextView) findViewById(R.id.tvNoteDate);
         tvDetails = (TextView) findViewById(R.id.tvNoteDetails);
