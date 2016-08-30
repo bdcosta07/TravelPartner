@@ -86,6 +86,8 @@ public class ExpenseDBManager {
                 ExpenseEntry._ID + "= " + id,
                 null, null, null, null);
 
+        cursor.moveToFirst();
+
         int mid = cursor.getInt(cursor.getColumnIndex(ExpenseEntry._ID));
         int tourId = cursor.getInt(cursor.getColumnIndex(ExpenseEntry.TOUR_ID));
         String purpose = cursor.getString(cursor.getColumnIndex(ExpenseEntry.PURPOSE));

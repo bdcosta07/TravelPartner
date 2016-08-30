@@ -77,4 +77,56 @@ public class ImageDBManager {
         }
         return imageList;
     }
+
+    public Image getImageInfoById(int id) {
+        this.open();
+
+        Cursor cursor = database.query(ImageEntry.IMAGE_TABLE,
+                null,
+                ImageEntry._ID + "= " + id,
+                null, null, null, null);
+
+        cursor.moveToFirst();
+
+        int mid = cursor.getInt(cursor.getColumnIndex(ImageEntry._ID));
+        int tourId = cursor.getInt(cursor.getColumnIndex(ImageEntry.TOUR_ID));
+        String title = cursor.getString(cursor.getColumnIndex(ImageEntry.TITLE));
+        String path = cursor.getString(cursor.getColumnIndex(ImageEntry.PATH));
+        long dateTime = cursor.getLong(cursor.getColumnIndex(ImageEntry.DATETIME));
+
+        imageInfo = new Image(mid,tourId,title,path,dateTime);
+        this.close();
+        return imageInfo;
+
+    }
+
+    public boolean updateExpense(int id) {
+        this.open();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ImageEntry.TOUR_ID, imageInfo.getTourId());
+        contentValues.put(ImageEntry.TITLE, imageInfo.getTitle());
+        contentValues.put(ImageEntry.PATH, imageInfo.getPath());
+        contentValues.put(ImageEntry.DATETIME, imageInfo.getDateTime());;
+
+
+        int updated = database.update(ImageEntry.IMAGE_TABLE, contentValues, ImageEntry._ID + " = " + id, null);
+        this.close();
+        if (updated > 0) {
+            return true;
+        } else
+            return false;
+    }
+
+    public boolean deleteExpense(int id) {
+
+        this.open();
+        int deleted = database.delete(ImageEntry.IMAGE_TABLE, ImageEntry._ID + " = " + id, null);
+
+        this.close();
+        if (deleted > 0) {
+            return true;
+        } else
+            return false;
+    }
 }
