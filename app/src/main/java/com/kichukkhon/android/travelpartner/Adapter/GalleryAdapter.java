@@ -51,11 +51,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(GalleryAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         long dateTaken = imageList.get(position).getDateTime();
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Date taken:\n");
         sb.append(AppUtils.getFormattedDate(context, dateTaken));
         sb.append(" at ");
         sb.append(AppUtils.getFormattedTime(context, dateTaken));
@@ -68,7 +67,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return imageList.size();
     }
 
     private Bitmap getResizedBitmap(ViewHolder viewHolder, String imagePath) {
@@ -77,8 +76,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         /* So pre-scale the target bitmap into which the file is decoded */
 
 		/* Get the size of the ImageView */
-        int targetW = viewHolder.imageView.getWidth();
-        int targetH = viewHolder.imageView.getHeight();
+        int targetW = viewHolder.imageView.getWidth() == 0 ? 500 : viewHolder.imageView.getWidth();
+        int targetH = viewHolder.imageView.getHeight() == 0 ? 180 : viewHolder.imageView.getHeight();
 
 		/* Get the size of the image */
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
@@ -91,6 +90,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         int scaleFactor = 1;
         if ((targetW > 0) || (targetH > 0)) {
             scaleFactor = Math.min(photoW / targetW, photoH / targetH);
+
         }
 
 		/* Set bitmap options to scale the image decode target */

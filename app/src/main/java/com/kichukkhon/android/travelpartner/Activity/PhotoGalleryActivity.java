@@ -44,6 +44,8 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
 
     int currentTourId;
     PhotoGalleryDBManager galleryDBManager;
+    GalleryAdapter adapter;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +59,9 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
         currentTourId = preference.getCurrentlySelectedTourId();
 
         galleryDBManager = new PhotoGalleryDBManager(this);
-        ArrayList<PhotoGallery> imageList = galleryDBManager.getImageInfoByTourId(currentTourId);
+        recyclerView = (RecyclerView) findViewById(R.id.rvTourList);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvTourList);
-        GalleryAdapter adapter = new GalleryAdapter(imageList, recyclerView.getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        //set padding for tiles
-        int tilePadding = getResources().getDimensionPixelSize(R.dimen.tile_padding);
-        recyclerView.setPadding(tilePadding, tilePadding, tilePadding, tilePadding);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        createTile();
 
         // Adding Floating Action Button to bottom right of main view
         fab = (FloatingActionButton) findViewById(R.id.fabGallery);
@@ -76,6 +71,17 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
                 captureImage();
             }
         });
+    }
+
+    private void createTile(){
+        ArrayList<PhotoGallery> imageList = galleryDBManager.getImageInfoByTourId(currentTourId);
+        adapter = new GalleryAdapter(imageList, recyclerView.getContext());
+        recyclerView.setAdapter(adapter);
+        //recyclerView.setHasFixedSize(true);
+        //set padding for tiles
+        int tilePadding = getResources().getDimensionPixelSize(R.dimen.tile_padding);
+        recyclerView.setPadding(tilePadding, tilePadding, tilePadding, tilePadding);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
 
     private void captureImage() {
@@ -165,13 +171,19 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
             PhotoGallery photoGallery = new PhotoGallery(System.currentTimeMillis(), fileUri.getPath(), "", currentTourId);
 
             boolean inserted = galleryDBManager.addImage(photoGallery);
+            if(inserted) {
+                createTile();
+                //adapter.notifyDataSetChanged();
+            }
+
+
             //Toast.makeText(this,String.valueOf(inserted),Toast.LENGTH_SHORT).show();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    /*public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView picture;
         public TextView dateTaken;
 
@@ -183,16 +195,16 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /*Context context = view.getContext();
+                    *//*Context context = view.getContext();
                     PlaceTypes placeTypes = new PlaceTypes();
                     Intent intent = new Intent(context, Places_list.class);
                     String place = placeTypes.place_type_list[getAdapterPosition()];
                     intent.putExtra(Constants.PLACE_TYPE_ID_KEY, place);
-                    context.startActivity(intent);*/
+                    context.startActivity(intent);*//*
                 }
             });
         }
-    }
+    }*/
 
     /**
      * Here we store the file url as it will be null after returning from camera

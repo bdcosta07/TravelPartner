@@ -53,10 +53,12 @@ public class PhotoGalleryDBManager {
 
         ArrayList<PhotoGallery> imageList = new ArrayList<>();
 
+        String sortOrder = PhotoGalleryEntry._ID + " DESC";
+
         Cursor cursor = database.query(PhotoGalleryEntry.IMAGE_TABLE,
                 null,
                 PhotoGalleryEntry.TOUR_ID + "= " + tourId,
-                null, null, null, null);
+                null, null, null, sortOrder);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
