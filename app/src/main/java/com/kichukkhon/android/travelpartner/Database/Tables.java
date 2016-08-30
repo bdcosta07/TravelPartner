@@ -71,5 +71,16 @@ public class Tables {
         public static final String STOP_TIME_IN_MILLIS = "stop_time_in_millis";
     }
 
+    public static final class ImageEntry implements BaseColumns{
+        public static final String IMAGE_TABLE="image";
+
+        public static final String TOUR_ID="tour_id";
+
+        public static final String PATH = "path";
+        public static final String TITLE = "title";
+        public static final String DATETIME = "datetime";
+
+    }
+
 
 }
