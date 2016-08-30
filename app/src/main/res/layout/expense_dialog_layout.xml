@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text|textAutoComplete|textAutoCorrect"
-                android:hint="@string/txt_purpose"/>
+                android:hint="@string/txt_purpose" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -34,11 +34,10 @@
                 android:id="@+id/txtAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textAutoComplete|textAutoCorrect|textMultiLine"
-                android:hint="@string/txt_amount"/>
+                android:inputType="textAutoComplete|textAutoCorrect|textMultiLine|numberDecimal"
+                android:hint="@string/txt_amount" />
 
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
-
 </ScrollView>
