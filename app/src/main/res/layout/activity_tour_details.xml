@@ -44,7 +44,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/destination"
-                    android:textSize="15sp" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvDestination"
@@ -53,6 +54,7 @@
                     android:layout_marginBottom="15dp"
                     android:layout_marginTop="5dp"
                     android:textSize="@dimen/tour_entry_text_size"
+                    android:textColor="@color/black"
                     tools:text="@string/destination" />
 
                 <View
@@ -72,6 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/tv_start_date_set"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/date_set_text_size" />
 
                     <TextView
@@ -81,6 +84,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:textSize="@dimen/date_set_text_size"
+                        android:textColor="@color/black"
                         tools:text="@string/tv_start_date_set" />
 
                 </LinearLayout>
@@ -98,6 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/tv_end_date_set"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/date_set_text_size" />
 
                     <TextView
@@ -107,6 +112,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:textSize="@dimen/date_set_text_size"
+                        android:textColor="@color/black"
                         tools:text="@string/tv_end_date_set" />
 
                 </LinearLayout>
@@ -121,8 +127,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:hint="@string/current_budget"
-                    android:textSize="15sp" />
+                    android:text="@string/current_budget"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvCurrentBudget"
@@ -130,7 +137,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textSize="@dimen/tour_entry_text_size"
-                    tools:hint="@string/current_budget" />
+                    android:textColor="@color/black"
+                    tools:text="@string/current_budget" />
 
             </LinearLayout>
 

@@ -65,6 +65,7 @@
                         android:layout_marginBottom="@dimen/tour_margin_bottom"
                         android:layout_weight="1"
                         android:gravity="right"
+                        android:textColor="@color/black"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="30sp"
                         tools:text="@string/tv_amount" />
@@ -95,6 +96,7 @@
                         android:layout_marginBottom="@dimen/tour_margin_bottom"
                         android:layout_weight="1"
                         android:gravity="right"
+                        android:textColor="@color/black"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="30sp"
                         tools:text="@string/tv_amount" />
