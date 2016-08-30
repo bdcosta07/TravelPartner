@@ -83,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + LocationEntryTable.SESSION_ID + INTEGER_TYPE + " )";
 
     public static final String CREATE_PHOTO_GALLERY_TABLE = " CREATE TABLE "
-            + PhotoGalleryEntry.DATETIME + "( "
+            + PhotoGalleryEntry.IMAGE_TABLE + "( "
             + PhotoGalleryEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
             + PhotoGalleryEntry.TOUR_ID + INTEGER_TYPE + COMMA_SEP
             + PhotoGalleryEntry.TITLE + TEXT_TYPE + COMMA_SEP

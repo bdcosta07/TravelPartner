@@ -96,14 +96,14 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
 
         // External sdcard location
         File mediaStorageDir = new File(
-                Environment
-                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                getExternalFilesDir(Environment.DIRECTORY_PICTURES),
                 IMAGE_DIRECTORY_NAME);
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
             try {
-                mediaStorageDir.mkdirs();
+                boolean f= mediaStorageDir.mkdirs();
+                Log.d("TP",String.valueOf(f));
 
             } catch (Exception e) {
                 // if any error occurs
@@ -162,7 +162,7 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
             PhotoGallery photoGallery = new PhotoGallery(System.currentTimeMillis(), fileUri.getPath(), "", currentTourId);
 
             boolean inserted= galleryDBManager.addImage(photoGallery);
-            Toast.makeText(this,String.valueOf(inserted),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,String.valueOf(inserted),Toast.LENGTH_SHORT).show();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
