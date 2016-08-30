@@ -148,14 +148,15 @@
                 tools:text="F"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
-                android:textSize="28sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                android:layout_marginRight="53dp"
-                android:layout_marginEnd="53dp"
-                android:layout_marginBottom="36dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="27dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="23dp"
+                android:paddingBottom="5dp"/>
         </RelativeLayout>
 
 
