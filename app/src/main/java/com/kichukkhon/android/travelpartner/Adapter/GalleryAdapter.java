@@ -37,8 +37,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, ImageDetailsActivity.class);
-                    String selectedImagePath = imageList.get(getAdapterPosition()).getPath();
-                    intent.putExtra(Constants.IMAGE_PATH_KEY, selectedImagePath);
+                    int imageId = imageList.get(getAdapterPosition()).getId();
+                    intent.putExtra(Constants.GALLERY_IMAGE_ID_KEY, imageId);
                     context.startActivity(intent);
                 }
             });

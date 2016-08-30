@@ -121,7 +121,7 @@ public class PhotoGalleryDBManager {
             return false;
     }
 
-    public boolean deleteExpense(int id) {
+    public boolean deleteImage(int id) {
 
         this.open();
         int deleted = database.delete(PhotoGalleryEntry.IMAGE_TABLE, PhotoGalleryEntry._ID + " = " + id, null);

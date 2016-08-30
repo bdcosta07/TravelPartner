@@ -40,5 +40,5 @@ public final class Constants {
     public static final int SEARCH_FOR_PREVIOUS = 2;
     public static final int SEARCH_FOR_RUNNING = 3;
 
-    public static final String IMAGE_PATH_KEY = "ImagePath";
+    public static final String GALLERY_IMAGE_ID_KEY = "GalleryPicId";
 }
