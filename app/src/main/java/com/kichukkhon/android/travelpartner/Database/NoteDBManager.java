@@ -84,8 +84,10 @@ public class NoteDBManager {
 
         Cursor cursor = database.query(NoteEntry.NOTE_TABLE,
                 null,
-                Tables.ExpenseEntry._ID + "= " + id,
+                NoteEntry._ID + "= " + id,
                 null, null, null, null);
+
+        cursor.moveToFirst();
 
         int mid = cursor.getInt(cursor.getColumnIndex(NoteEntry._ID));
         int tourId = cursor.getInt(cursor.getColumnIndex(NoteEntry.TOUR_ID));

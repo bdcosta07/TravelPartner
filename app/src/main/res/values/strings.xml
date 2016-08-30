@@ -81,4 +81,6 @@
     <string name="destination">Destination</string>
     <string name="current_budget">Budget</string>
     <string name="label_created_at">create_date</string>
+    <string name="note_details">Details</string>
+    <string name="note_date">Date</string>
 </resources>

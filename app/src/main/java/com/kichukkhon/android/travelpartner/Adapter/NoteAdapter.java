@@ -1,15 +1,18 @@
 package com.kichukkhon.android.travelpartner.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.kichukkhon.android.travelpartner.Activity.NoteDetailsActivity;
 import com.kichukkhon.android.travelpartner.Class.Note;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
+import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.util.ArrayList;
 
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     ArrayList<Note> noteList = new ArrayList<>();
     Context context;
+    Preference preference;
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -28,6 +32,18 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Context context=view.getContext();
+                    Intent intent=new Intent(context,NoteDetailsActivity.class);
+                    int selectedNoteId=noteList.get(getAdapterPosition()).getId();
+                    intent.putExtra("noteId",selectedNoteId);
+                    context.startActivity(intent);
+
+                }
+            });
 
             tvTitle = (TextView) itemView.findViewById(R.id.noteTitle);
             tvDescription = (TextView) itemView.findViewById(R.id.noteContent);

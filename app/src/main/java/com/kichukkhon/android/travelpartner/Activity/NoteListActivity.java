@@ -21,7 +21,6 @@ public class NoteListActivity extends BaseDrawerActivity {
     ArrayList<Note> noteList;
     NoteAdapter noteAdapter;
     NoteDBManager noteDBManager;
-    Note noteInfo;
     Toolbar toolbar;
     int currentTourId;
 
@@ -62,6 +61,8 @@ public class NoteListActivity extends BaseDrawerActivity {
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent=new Intent(NoteListActivity.this,NoteDetailsActivity.class);
+                startActivity(intent);
 
             }
         });
