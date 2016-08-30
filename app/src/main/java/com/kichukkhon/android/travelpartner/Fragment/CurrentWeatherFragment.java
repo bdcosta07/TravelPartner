@@ -148,7 +148,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
                     tvSunrise.setText("Sunrise   " + sunrise);
                     tvSunset.setText("Sunset    " + sunset);
 
-                    Typeface weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf");
+                    Typeface weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "weather.ttf");
                     icoWeather.setTypeface(weatherFont);
                     icoWeather.setText(AppUtils.getIconForYahooWeatherCondition(getActivity(), conditionCode));
 
