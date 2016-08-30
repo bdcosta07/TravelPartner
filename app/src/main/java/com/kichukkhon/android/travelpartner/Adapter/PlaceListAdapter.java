@@ -37,7 +37,7 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             name = (TextView)itemView.findViewById(R.id.name);
-            rating = (RatingBar)itemView.findViewById(R.id.rating);
+            /*rating = (RatingBar)itemView.findViewById(R.id.rating);*/
             address = (TextView)itemView.findViewById(R.id.address);
             isOpen = (TextView)itemView.findViewById(R.id.isOpen);
             distance = (TextView)itemView.findViewById(R.id.distance);
@@ -70,7 +70,7 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(list.get(position).getName());
-        holder.rating.setRating(list.get(position).getRating());
+        /*holder.rating.setRating(list.get(position).getRating());*/
         if(list.get(position).isOpen()) {
             holder.isOpen.setTextColor(Color.parseColor("#2E7D32"));
             holder.isOpen.setText("Currently Open");

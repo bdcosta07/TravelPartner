@@ -5,12 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_container"
-    android:background="@color/medium_gray"
+    android:background="@color/card_view_background"
     tools:context="com.kichukkhon.android.travelpartner.Activity.Places_list">
 
-    <include layout="@layout/shared_toolbar_with_appbar" />
+    <LinearLayout
+        android:id="@+id/toolbarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <include layout="@layout/recycler_view" />
+        <include layout="@layout/shared_toolbar_with_appbar" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/toolbarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/recycler_view" />
+    </LinearLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
