@@ -1,8 +1,8 @@
 package com.kichukkhon.android.travelpartner.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kichukkhon.android.travelpartner.Activity.ImageDetailsActivity;
 import com.kichukkhon.android.travelpartner.Class.PhotoGallery;
 import com.kichukkhon.android.travelpartner.R;
 import com.kichukkhon.android.travelpartner.Util.AppUtils;
+import com.kichukkhon.android.travelpartner.Util.Constants;
+import com.kichukkhon.android.travelpartner.Util.ImageResizer;
 
 import java.util.ArrayList;
 
@@ -30,7 +33,15 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-            //TODO onclicklistener for itemview
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, ImageDetailsActivity.class);
+                    String selectedImagePath = imageList.get(getAdapterPosition()).getPath();
+                    intent.putExtra(Constants.IMAGE_PATH_KEY, selectedImagePath);
+                    context.startActivity(intent);
+                }
+            });
 
             imageView = (ImageView) itemView.findViewById(R.id.gallery_image);
             tvDateTaken = (TextView) itemView.findViewById(R.id.tvDateTaken);
@@ -61,46 +72,14 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
         holder.tvDateTaken.setText(sb.toString());
         String imagePath = imageList.get(position).getPath();
-        Bitmap image = getResizedBitmap(holder, imagePath);
+        int targetW = holder.imageView.getWidth() == 0 ? 500 : holder.imageView.getWidth();
+        int targetH = holder.imageView.getHeight() == 0 ? 180 : holder.imageView.getHeight();
+        Bitmap image = ImageResizer.decodeSampledBitmapFromFile(imagePath, targetW, targetH);
         holder.imageView.setImageBitmap(image);
     }
 
     @Override
     public int getItemCount() {
         return imageList.size();
-    }
-
-    private Bitmap getResizedBitmap(ViewHolder viewHolder, String imagePath) {
-
-		/* There isn't enough memory to open up more than a couple camera photos */
-        /* So pre-scale the target bitmap into which the file is decoded */
-
-		/* Get the size of the ImageView */
-        int targetW = viewHolder.imageView.getWidth() == 0 ? 500 : viewHolder.imageView.getWidth();
-        int targetH = viewHolder.imageView.getHeight() == 0 ? 180 : viewHolder.imageView.getHeight();
-
-		/* Get the size of the image */
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(imagePath, bmOptions);
-        int photoW = bmOptions.outWidth;
-        int photoH = bmOptions.outHeight;
-
-		/* Figure out which way needs to be reduced less */
-        int scaleFactor = 1;
-        if ((targetW > 0) || (targetH > 0)) {
-            scaleFactor = Math.min(photoW / targetW, photoH / targetH);
-
-        }
-
-		/* Set bitmap options to scale the image decode target */
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
-
-		/* Decode the JPEG file into a Bitmap */
-        Bitmap bitmap = BitmapFactory.decodeFile(imagePath, bmOptions);
-
-        return bitmap;
     }
 }

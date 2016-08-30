@@ -98,7 +98,7 @@
                 android:value=".Activity.NoteListActivity" />
         </activity>
         <activity
-            android:name=".Activity.DisplayImageActivity"
+            android:name=".Activity.ImageDetailsActivity"
             android:parentActivityName=".Activity.PhotoGalleryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
