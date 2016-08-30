@@ -33,7 +33,7 @@ interface Updatable {
 
 public class CurrentWeatherFragment extends Fragment implements Updatable {
     TextView tvTemperature, tvLocation, tvDescription, tvCurrentDate;
-    TextView tvHighTemp, tvLowTemp, tvWind, tvHumidity, tvSunrise, tvSunset, tvCelFar;
+    TextView tvWind, tvHumidity, tvSunrise, tvSunset, tvCelFar;
     TextView icoWeather;
     String location;
 
@@ -83,8 +83,6 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
         tvLocation = (TextView) rootView.findViewById(R.id.tvLocation);
         tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
         tvCurrentDate = (TextView) rootView.findViewById(R.id.tvDate);
-        tvHighTemp = (TextView) rootView.findViewById(R.id.tvHighTemp);
-        tvLowTemp = (TextView) rootView.findViewById(R.id.tvLowTemp);
         tvSunrise = (TextView) rootView.findViewById(R.id.tvSunrise);
         tvSunset = (TextView) rootView.findViewById(R.id.tvSunset);
         tvWind = (TextView) rootView.findViewById(R.id.tvWind);
@@ -93,7 +91,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
         icoWeather = (TextView) rootView.findViewById(R.id.tvWeatherCondition);
 
         getCurrentWeather();
-        getCurrentHighLowTemp();
+        //getCurrentHighLowTemp();
 
 
         return rootView;
@@ -172,7 +170,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
     }
 
 
-    public void getCurrentHighLowTemp() {
+    /*public void getCurrentHighLowTemp() {
         String openUrl = AppUtils.BuildOpenWeatherURL(location, Constants.OPENWEATHER_CALL_TYPE_CURRENT);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, openUrl, null, new Response.Listener<JSONObject>() {
@@ -203,6 +201,6 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
         }
         );
         AppController.getInstance().addToRequestQueue(request);
-    }
+    }*/
 
 }

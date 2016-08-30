@@ -17,7 +17,7 @@
         android:id="@+id/tvDay"
         android:layout_alignParentTop="true"
         android:textSize="25sp"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/white"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,16 +27,21 @@
         android:id="@+id/tvDescription"
         android:layout_below="@+id/tvDay"
         android:textSize="17sp"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/white"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:text="Ic"
+        android:textSize="35sp"
         android:id="@+id/tvForecastIcon"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/white"
+        android:layout_marginRight="62dp"
+        android:layout_marginEnd="62dp"
+        android:layout_alignBottom="@+id/tvDescription"
+        android:layout_toLeftOf="@+id/tvHigh"
+        android:layout_toStartOf="@+id/tvHigh" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +52,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/white"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +60,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/forecast_low"
         android:id="@+id/tvLow"
-        android:textColor="@color/dark_gray"
+        android:textColor="@color/white"
         android:layout_below="@+id/tvDay"
         android:layout_alignLeft="@+id/tvHigh" />
 </RelativeLayout>

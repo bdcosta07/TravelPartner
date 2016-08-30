@@ -13,13 +13,14 @@
         android:id="@+id/tvLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         tools:text="@string/location"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/dark_gray"
+        android:textColor="@color/white"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
 
@@ -27,12 +28,13 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvLocation"
-        android:layout_marginTop="5dp"
         tools:text="@string/current_date"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/dark_gray"
-        android:textSize="18dp" />
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:layout_marginBottom="22dp"
+        android:layout_below="@+id/tvLocation"
+        android:layout_centerHorizontal="true" />
 
 
     <TextView
@@ -42,8 +44,11 @@
         android:gravity="center"
         tools:text="@string/description"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/dark_gray"
-        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:paddingBottom="7dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/linearTemp"
         android:layout_centerHorizontal="true" />
 
@@ -51,53 +56,27 @@
         android:id="@+id/tvWind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDate"
-        android:layout_marginTop="5dp"
         tools:text="@string/current_wind"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/dark_gray"
-        android:textSize="18sp" />
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:paddingBottom="7dp"
+        android:layout_below="@+id/tvDate"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/tvDate"
+        android:layout_alignStart="@+id/tvDate" />
 
     <TextView
         android:id="@+id/tvHumidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvWind"
-        android:layout_marginTop="5dp"
         tools:text="Humidity"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/dark_gray"
-        android:textSize="18sp" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
-
-        <TextView
-            android:id="@+id/tvHighTemp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            tools:text="@string/current_high_temp"
-            android:textColor="@color/dark_gray"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/tvLowTemp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            tools:text="@string/current_low_temp"
-            android:textColor="@color/dark_gray"
-            android:textSize="22sp" />
-    </LinearLayout>
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/tvWind"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"/>
 
     <TextView
         android:id="@+id/tvSunrise"
@@ -107,7 +86,7 @@
         android:paddingTop="10dp"
         tools:text="Sunrise"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/dark_gray"
+        android:textColor="@color/white"
         android:layout_below="@+id/tvDescription"
         android:layout_centerHorizontal="true" />
 
@@ -119,20 +98,20 @@
         android:paddingTop="5dp"
         tools:text="Sunset"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/dark_gray"
+        android:textColor="@color/white"
         android:layout_below="@+id/tvSunrise"
         android:layout_centerHorizontal="true" />
 
 
     <LinearLayout
         android:id="@+id/linearTemp"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="300dp"
+        android:layout_height="130dp"
         android:layout_below="@+id/tvHumidity"
         android:orientation="horizontal"
-        android:layout_marginLeft="-10dp"
-        android:layout_marginRight="-10dp"
-        android:layout_marginTop="30dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/tvWeatherCondition"
@@ -140,33 +119,47 @@
             android:layout_height="match_parent"
             android:gravity="center"
             tools:text="@string/temperature"
-            android:textColor="@color/dark_gray"
+            android:textColor="@color/white"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="75sp"
-            android:layout_weight="4" />
+            android:textSize="100sp"
+            android:layout_weight="1" />
 
-
-        <TextView
-            android:id="@+id/tvTemperature"
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-           android:gravity="center"
-            tools:text="@string/temperature"
-            android:textColor="@color/dark_gray"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="75sp"
-            android:layout_weight="4"
-            android:textStyle="bold"
-            android:typeface="serif" />
-        <TextView
-            android:id="@+id/tvF_C"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="F/C"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/dark_gray"
-            android:textSize="30sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="@string/temperature"
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="75sp"
+                android:textStyle="bold"
+                android:typeface="serif" />
+
+            <TextView
+                android:id="@+id/tvF_C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="F"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginRight="53dp"
+                android:layout_marginEnd="53dp"
+                android:layout_marginBottom="36dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+
+
 
     </LinearLayout>
 
