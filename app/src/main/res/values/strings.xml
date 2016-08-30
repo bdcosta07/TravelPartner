@@ -138,4 +138,7 @@
     <string name="label_created_at">create_date</string>
     <string name="note_details">Details</string>
     <string name="note_date">Date</string>
+    <string name="btn_set_alarm">Set Alarm</string>
+    <string name="set_alarm">Set the alarm clock!</string>
+    <string name="btn_unset_alarm">Unset Alarm</string>
 </resources>
