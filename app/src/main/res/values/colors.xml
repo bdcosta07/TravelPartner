@@ -9,6 +9,7 @@
 
     <color name="dark_gray">#424242</color>
     <color name="medium_gray">#9E9E9E</color>
+    <color name="medium_gray_with_transparency">#aa9E9E9E</color>
     <color name="button_gray">#757575</color>
 
     <color name="test">#963258</color>

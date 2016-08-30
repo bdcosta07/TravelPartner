@@ -3,13 +3,13 @@ package com.kichukkhon.android.travelpartner.Class;
 /**
  * Created by Bridget on 8/30/2016.
  */
-public class Image extends BaseEntity {
+public class PhotoGallery extends BaseEntity {
     private int tourId;
     private String title;
     private String path;
     private long dateTime;
 
-    public Image(int id, int tourId, String title, String path, long dateTime) {
+    public PhotoGallery(int id, int tourId, String title, String path, long dateTime) {
         super(id);
         this.tourId = tourId;
         this.title = title;
@@ -17,7 +17,14 @@ public class Image extends BaseEntity {
         this.dateTime = dateTime;
     }
 
-    public Image() {
+    public PhotoGallery(long dateTime, String path, String title, int tourId) {
+        this.dateTime = dateTime;
+        this.path = path;
+        this.title = title;
+        this.tourId = tourId;
+    }
+
+    public PhotoGallery() {
     }
 
     public int getTourId() {

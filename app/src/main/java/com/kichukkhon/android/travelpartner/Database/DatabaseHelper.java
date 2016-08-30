@@ -4,7 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.kichukkhon.android.travelpartner.Database.Tables.*;
+import com.kichukkhon.android.travelpartner.Database.Tables.AlarmEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.ExpenseEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.LocationEntryTable;
+import com.kichukkhon.android.travelpartner.Database.Tables.NoteEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.PhotoGalleryEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.TourEntry;
+import com.kichukkhon.android.travelpartner.Database.Tables.TravelSessionTable;
 
 /**
  * Created by Bridget on 8/24/2016.
@@ -76,13 +82,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + LocationEntryTable.TIME_IN_MILLIS + INTEGER_TYPE + COMMA_SEP
             + LocationEntryTable.SESSION_ID + INTEGER_TYPE + " )";
 
-    public static final String CREATE_IMAGE_TABLE=" CREATE TABLE "
-            + ImageEntry.DATETIME+"( "
-            +ImageEntry._ID+" INTEGER PRIMARY KEY"+COMMA_SEP
-            +ImageEntry.TOUR_ID+INTEGER_TYPE+COMMA_SEP
-            +ImageEntry.TITLE+TEXT_TYPE+COMMA_SEP
-            +ImageEntry.PATH+TEXT_TYPE+COMMA_SEP
-            +ImageEntry.DATETIME+INTEGER_TYPE+" )";
+    public static final String CREATE_PHOTO_GALLERY_TABLE = " CREATE TABLE "
+            + PhotoGalleryEntry.DATETIME + "( "
+            + PhotoGalleryEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP
+            + PhotoGalleryEntry.TOUR_ID + INTEGER_TYPE + COMMA_SEP
+            + PhotoGalleryEntry.TITLE + TEXT_TYPE + COMMA_SEP
+            + PhotoGalleryEntry.PATH + TEXT_TYPE + COMMA_SEP
+            + PhotoGalleryEntry.DATETIME + INTEGER_TYPE + " )";
 
     public static DatabaseHelper getDbInstance(Context context) {
         if (dbInstance == null)
@@ -98,7 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_NOTE_TABLE);
         sqLiteDatabase.execSQL(CREATE_SESSION_ENTRY_TABLE);
         sqLiteDatabase.execSQL(CREATE_LOCATION_ENTRY_TABLE);
-        sqLiteDatabase.execSQL(CREATE_IMAGE_TABLE);
+        sqLiteDatabase.execSQL(CREATE_PHOTO_GALLERY_TABLE);
     }
 
     @Override

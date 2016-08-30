@@ -13,12 +13,12 @@ import java.util.ArrayList;
 /**
  * Created by Bridget on 8/30/2016.
  */
-public class ImageDBManager {
+public class PhotoGalleryDBManager {
     private DatabaseHelper helper;
     private SQLiteDatabase database;
     private Image imageInfo;
 
-    public ImageDBManager(Context context) {
+    public PhotoGalleryDBManager(Context context) {
         helper=new DatabaseHelper(context);
     }
 

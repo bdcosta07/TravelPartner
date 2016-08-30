@@ -7,7 +7,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
 
     <application
         android:name=".VolleyAppController.AppController"
@@ -92,7 +97,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.NoteListActivity" />
         </activity>
-        <activity android:name=".Activity.DisplayImageActivity"
+        <activity
+            android:name=".Activity.DisplayImageActivity"
             android:parentActivityName=".Activity.PhotoGalleryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
