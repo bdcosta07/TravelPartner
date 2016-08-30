@@ -51,7 +51,7 @@ public class WeatherActivity extends BaseDrawerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        //InitCommonUIElements();
+        InitCommonUIElements();
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new WeatherPagerAdapter(getSupportFragmentManager());
