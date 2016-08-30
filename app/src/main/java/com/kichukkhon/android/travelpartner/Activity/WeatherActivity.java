@@ -1,41 +1,18 @@
 package com.kichukkhon.android.travelpartner.Activity;
 
-import android.Manifest;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.text.InputType;
-import android.view.MenuItem;
-import android.widget.EditText;
+import android.support.v7.app.ActionBar;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 import com.kichukkhon.android.travelpartner.Fragment.CurrentWeatherFragment;
 import com.kichukkhon.android.travelpartner.Fragment.ForecastWeatherFragment;
 import com.kichukkhon.android.travelpartner.R;
-import com.kichukkhon.android.travelpartner.Settings.SettingsUtils;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 public class WeatherActivity extends BaseDrawerActivity {
 
@@ -52,6 +29,9 @@ public class WeatherActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_weather);
 
         InitCommonUIElements();
+        ActionBar actionbar = getSupportActionBar();
+        if (actionbar != null)
+            actionbar.setTitle("Weather Report");
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new WeatherPagerAdapter(getSupportFragmentManager());

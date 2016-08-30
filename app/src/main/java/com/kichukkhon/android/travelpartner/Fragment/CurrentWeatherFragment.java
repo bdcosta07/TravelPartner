@@ -107,7 +107,9 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
 
     //get current weather data (JSON)
     public void getCurrentWeather() {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, AppUtils.BuildYahooURL(location), null, new Response.Listener<JSONObject>() {
+        String url = AppUtils.BuildYahooURL(location);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
+                url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -128,7 +130,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
                     String temperature = AppUtils.formatTemperature(getActivity(), Double.parseDouble(condition.getString("temp")));
                     int conditionCode = Integer.parseInt(condition.getString("code"));
                     String text = condition.getString("text");
-                    String date = condition.getString("date");
+                    String date = AppUtils.parseYahooWeatherDate(getActivity(),condition.getString("date"));
 
                     JSONObject location = channel.getJSONObject("location");
                     String city = location.getString("city");
