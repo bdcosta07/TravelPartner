@@ -210,51 +210,58 @@ public class AppUtils {
         return String.format(context.getString(R.string.format_temperature), temperature, suffix);
     }
 
-    public static int getArtResourceForYahooWeatherCondition(int weatherId) {
-        /*if (weatherId==3)
-            return R.drawable.severelthunderstoms;
-        if (weatherId==4)
-            return R.drawable.thunderstorms;
-        else if(weatherId==9)
-            return R.drawable.drizzle;
-        else if (weatherId==8)
-            return R.drawable.freezingdrizzle;
-        else if (weatherId==11)
-            return R.drawable.showers;
-        else if ((weatherId==27)||(weatherId==28))
-            return R.drawable.mostlycloudy;
-        else if (weatherId==26)
-            return R.drawable.cloudy;
-        else */
-        if (weatherId == 32)
-            return R.drawable.sunny;
-        /*else if (weatherId==36)
-            return R.drawable.hot;
-        else if (weatherId==31)
-            return R.drawable.clear;
-        else if (weatherId==37)
-            return R.drawable.isolatedthunderstorms;
-        else if ((weatherId==38)||(weatherId==39))
-            return R.drawable.scatteredthunderstorms;
-        else if (weatherId==44)
-            return R.drawable.partlycloudy;
-        else if (weatherId==47)
-            return R.drawable.isolatedthundersowers;
-        else if (weatherId==35)
-            return R.drawable.mixedrainandhail;
-        else if ((weatherId==33)||(weatherId==34))
-            return R.drawable.fair;
-        else if ((weatherId==29)||(weatherId==30))
-            return R.drawable.partlycloudy;
-        else if ((weatherId==24))
-            return R.drawable.windy;
-        else if ((weatherId==22))
-            return R.drawable.smoke;
-        else if ((weatherId==23))
-            return R.drawable.blustery;
-        else if ((weatherId==21))
-            return R.drawable.haze;*/
-        else return R.drawable.default_weather_icon;
+    public static String getIconForYahooWeatherCondition(Context context, int weatherId) {
+        if (weatherId == 3)
+            return context.getString(R.string.wi_yahoo_3);
+        if (weatherId == 4)
+            return context.getString(R.string.wi_yahoo_4);
+        else if (weatherId == 9)
+            return context.getString(R.string.wi_yahoo_9);
+        else if (weatherId == 8)
+            return context.getString(R.string.wi_yahoo_8);
+        else if (weatherId == 11)
+            return context.getString(R.string.wi_yahoo_11);
+        else if (weatherId == 27)
+            return context.getString(R.string.wi_yahoo_27);
+        else if (weatherId == 28)
+            return context.getString(R.string.wi_yahoo_28);
+        else if (weatherId == 26)
+            return context.getString(R.string.wi_yahoo_26);
+        else if (weatherId == 32)
+            return context.getString(R.string.wi_yahoo_32);
+        else if (weatherId == 36)
+            return context.getString(R.string.wi_yahoo_36);
+        else if (weatherId == 31)
+            return context.getString(R.string.wi_yahoo_31);
+        else if (weatherId == 37)
+            return context.getString(R.string.wi_yahoo_37);
+        else if (weatherId == 38)
+            return context.getString(R.string.wi_yahoo_38);
+        else if (weatherId == 39)
+            return context.getString(R.string.wi_yahoo_39);
+        else if (weatherId == 44)
+            return context.getString(R.string.wi_yahoo_44);
+        else if (weatherId == 47)
+            return context.getString(R.string.wi_yahoo_47);
+        else if (weatherId == 35)
+            return context.getString(R.string.wi_yahoo_35);
+        else if (weatherId == 33)
+            return context.getString(R.string.wi_yahoo_33);
+        else if (weatherId == 34)
+            return context.getString(R.string.wi_yahoo_34);
+        else if (weatherId == 29)
+            return context.getString(R.string.wi_yahoo_29);
+        else if (weatherId == 30)
+            return context.getString(R.string.wi_yahoo_30);
+        else if (weatherId == 24)
+            return context.getString(R.string.wi_yahoo_24);
+        else if (weatherId == 22)
+            return context.getString(R.string.wi_yahoo_22);
+        else if (weatherId == 23)
+            return context.getString(R.string.wi_yahoo_23);
+        else if (weatherId == 21)
+            return context.getString(R.string.wi_yahoo_21);
+        else return context.getString(R.string.wi_yahoo_0);
     }
 
     public static String BuildOpenWeatherURL(String cityName, String type) {

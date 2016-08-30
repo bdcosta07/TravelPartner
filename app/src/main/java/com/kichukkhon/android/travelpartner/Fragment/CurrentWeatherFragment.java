@@ -1,12 +1,12 @@
 package com.kichukkhon.android.travelpartner.Fragment;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +34,7 @@ interface Updatable {
 public class CurrentWeatherFragment extends Fragment implements Updatable {
     TextView tvTemperature, tvLocation, tvDescription, tvCurrentDate;
     TextView tvHighTemp, tvLowTemp, tvWind, tvHumidity, tvSunrise, tvSunset, tvCelFar;
-    ImageView imgWeather;
+    TextView icoWeather;
     String location;
 
     public static final String ARG_PAGE = "page";
@@ -90,7 +90,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
         tvWind = (TextView) rootView.findViewById(R.id.tvWind);
         tvHumidity = (TextView) rootView.findViewById(R.id.tvHumidity);
         tvCelFar = (TextView) rootView.findViewById(R.id.tvF_C);
-        imgWeather = (ImageView) rootView.findViewById(R.id.weatherImg);
+        icoWeather = (TextView) rootView.findViewById(R.id.tvWeatherCondition);
 
         getCurrentWeather();
         getCurrentHighLowTemp();
@@ -130,7 +130,7 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
                     String temperature = AppUtils.formatTemperature(getActivity(), Double.parseDouble(condition.getString("temp")));
                     int conditionCode = Integer.parseInt(condition.getString("code"));
                     String text = condition.getString("text");
-                    String date = AppUtils.parseYahooWeatherDate(getActivity(),condition.getString("date"));
+                    String date = AppUtils.parseYahooWeatherDate(getActivity(), condition.getString("date"));
 
                     JSONObject location = channel.getJSONObject("location");
                     String city = location.getString("city");
@@ -143,12 +143,14 @@ public class CurrentWeatherFragment extends Fragment implements Updatable {
                     tvDescription.setText(text);
                     tvCurrentDate.setText(date);
                     tvLocation.setText(city);
-                    tvWind.setText("Wind  " + speed + "%");
-                    tvHumidity.setText("Humidity  " + humidity + "mph");
+                    tvWind.setText("Wind  " + speed + "mph");
+                    tvHumidity.setText("Humidity  " + humidity + "%");
                     tvSunrise.setText("Sunrise   " + sunrise);
                     tvSunset.setText("Sunset    " + sunset);
 
-                    imgWeather.setImageResource(AppUtils.getArtResourceForYahooWeatherCondition(conditionCode));
+                    Typeface weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf");
+                    icoWeather.setTypeface(weatherFont);
+                    icoWeather.setText(AppUtils.getIconForYahooWeatherCondition(getActivity(), conditionCode));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
