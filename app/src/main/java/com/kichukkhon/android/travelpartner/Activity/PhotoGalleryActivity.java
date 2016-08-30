@@ -102,11 +102,21 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
-            if (!mediaStorageDir.mkdirs()) {
+            try {
+                mediaStorageDir.mkdirs();
+
+            } catch (Exception e) {
+                // if any error occurs
+                Log.d("TravelPartner", e.getMessage());
+                e.printStackTrace();
+            }
+
+
+            /*if (!mediaStorageDir.mkdirs()) {
                 Log.d(IMAGE_DIRECTORY_NAME, "Oops! Failed create "
                         + IMAGE_DIRECTORY_NAME + " directory");
                 return null;
-            }
+            }*/
         }
 
         // Create a media file name
@@ -151,7 +161,8 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
         try {
             PhotoGallery photoGallery = new PhotoGallery(System.currentTimeMillis(), fileUri.getPath(), "", currentTourId);
 
-            galleryDBManager.addImage(photoGallery);
+            boolean inserted= galleryDBManager.addImage(photoGallery);
+            Toast.makeText(this,String.valueOf(inserted),Toast.LENGTH_SHORT).show();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

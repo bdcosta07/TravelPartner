@@ -85,6 +85,9 @@ public class BaseDrawerActivity extends BaseActivity {
                         } else if (menuItem.getItemId() == R.id.menu_route_tracker) {
                             Intent intent = new Intent(BaseDrawerActivity.this, RouteListActivity.class);
                             startActivity(intent);
+                        } else if (menuItem.getItemId() == R.id.menu_gallery) {
+                            Intent intent = new Intent(BaseDrawerActivity.this, PhotoGalleryActivity.class);
+                            startActivity(intent);
                         }
 
                         // Closing drawer on item click
