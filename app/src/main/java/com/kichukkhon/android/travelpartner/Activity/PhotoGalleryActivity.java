@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kichukkhon.android.travelpartner.Adapter.GalleryAdapter;
 import com.kichukkhon.android.travelpartner.Class.PhotoGallery;
 import com.kichukkhon.android.travelpartner.Database.PhotoGalleryDBManager;
 import com.kichukkhon.android.travelpartner.R;
@@ -23,6 +24,7 @@ import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -50,20 +52,21 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
 
         InitCommonUIElements();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvTourList);
-        /*PlaceTypeContentAdapter adapter = new PlaceTypeContentAdapter(recyclerView.getContext());
-        recyclerView.setAdapter(adapter);*/
-        recyclerView.setHasFixedSize(true);
-        //set padding for tiles
-        int tilePadding = getResources().getDimensionPixelSize(R.dimen.tile_padding);
-        recyclerView.setPadding(tilePadding, tilePadding, tilePadding, tilePadding);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-
         //Tour
         Preference preference = new Preference(this);
         currentTourId = preference.getCurrentlySelectedTourId();
 
         galleryDBManager = new PhotoGalleryDBManager(this);
+        ArrayList<PhotoGallery> imageList = galleryDBManager.getImageInfoByTourId(currentTourId);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvTourList);
+        GalleryAdapter adapter = new GalleryAdapter(imageList, recyclerView.getContext());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+        //set padding for tiles
+        int tilePadding = getResources().getDimensionPixelSize(R.dimen.tile_padding);
+        recyclerView.setPadding(tilePadding, tilePadding, tilePadding, tilePadding);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         // Adding Floating Action Button to bottom right of main view
         fab = (FloatingActionButton) findViewById(R.id.fabGallery);
@@ -102,8 +105,8 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
             try {
-                boolean f= mediaStorageDir.mkdirs();
-                Log.d("TP",String.valueOf(f));
+                boolean f = mediaStorageDir.mkdirs();
+                Log.d("TP", String.valueOf(f));
 
             } catch (Exception e) {
                 // if any error occurs
@@ -161,7 +164,7 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
         try {
             PhotoGallery photoGallery = new PhotoGallery(System.currentTimeMillis(), fileUri.getPath(), "", currentTourId);
 
-            boolean inserted= galleryDBManager.addImage(photoGallery);
+            boolean inserted = galleryDBManager.addImage(photoGallery);
             //Toast.makeText(this,String.valueOf(inserted),Toast.LENGTH_SHORT).show();
         } catch (NullPointerException e) {
             e.printStackTrace();

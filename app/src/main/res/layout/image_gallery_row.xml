@@ -7,17 +7,17 @@
     android:padding="@dimen/tile_padding">
 
     <ImageView
-        android:id="@+id/photoGallery"
+        android:id="@+id/gallery_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tile_height"
         android:scaleType="center" />
 
     <TextView
-        android:id="@+id/txtDateTaken"
+        android:id="@+id/tvDateTaken"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tile_textview_height"
         android:background="@color/medium_gray_with_transparency"
-        android:layout_alignBottom="@+id/photoGallery"
+        android:layout_alignBottom="@+id/gallery_image"
         android:gravity="center_horizontal"
         android:textColor="@color/white"
         android:textStyle="bold"
