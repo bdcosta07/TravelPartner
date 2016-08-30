@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -117,6 +118,20 @@ public class AppUtils {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
         String dateString = dateFormat.format(dateInMillis);
         return dateString;
+    }
+
+    public static String parseYahooWeatherDate(Context context, String date) {
+        //ex: Tue, 30 Aug 2016 01:00 PM BDT
+        DateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm z", Locale.US);
+        Date convertedDate = new Date();
+        try {
+            convertedDate = format.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String desiredDateString = getFriendlyDayString(context, convertedDate.getTime());
+        return desiredDateString;
     }
 
     public static String getFormattedTime(Context context, long dateInMillis) {
