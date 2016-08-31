@@ -95,7 +95,7 @@ public class BaseDrawerActivity extends BaseActivity {
                         return true;
                     }
                 });
-        navigationView.getMenu().findItem(mNavItemId).setChecked(true);
+        //navigationView.getMenu().findItem(mNavItemId).setChecked(true);
     }
 
     @Override
