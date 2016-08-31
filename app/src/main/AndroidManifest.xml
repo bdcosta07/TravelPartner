@@ -7,7 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -83,21 +84,6 @@
                 android:value=".Activity.NoteListActivity" />
         </activity>
         <activity android:name=".Activity.NoteListActivity" />
-
-        <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
-        <receiver
-            android:name=".BroadcastReceiver.AlarmBootReceiver"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".BackgroundService.AlarmService" />
-        <service
-            android:name=".BackgroundService.LocationTrackerService"
-            android:exported="false" />
-
         <activity
             android:name=".Activity.NoteDetailsActivity"
             android:parentActivityName=".Activity.NoteListActivity">
@@ -112,9 +98,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.PhotoGalleryActivity" />
         </activity>
-        <activity android:name=".Activity.PhotoGalleryActivity">
+        <activity android:name=".Activity.PhotoGalleryActivity"/>
 
-        </activity>
+        <receiver android:name=".BroadcastReceiver.AlarmReceiver" />
+        <receiver
+            android:name=".BroadcastReceiver.AlarmBootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".BackgroundService.AlarmService" />
+        <service
+            android:name=".BackgroundService.LocationTrackerService"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -75,7 +75,7 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
         //if we come here after a image deletion, let's show a snackbar
         if (getIntent() != null) {
             boolean isDeleted = getIntent().getBooleanExtra(Constants.IS_PICTURE_DELETED, false);
-            if (isDeleted){
+            if (isDeleted) {
                 Snackbar snackbar = Snackbar.make(coordinatorLayout, "Picture is successfully deleted!", Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
@@ -116,6 +116,8 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
         File mediaStorageDir = new File(
                 getExternalFilesDir(Environment.DIRECTORY_PICTURES),
                 IMAGE_DIRECTORY_NAME);
+        //we use 'getExternalFilesDir' as 'getExternalStoragePublicDirectory' does not work
+        Log.d("Gallery", mediaStorageDir.getPath());
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {

@@ -76,7 +76,7 @@ public class TourDBManager {
 
         switch (searchType) {
             case Constants.SEARCH_FOR_UPCOMING:
-                whereClause = TourEntry.STAR_DATE + " >= " + (today+ (24*60*60*1000)); //tomorrow 1st hour
+                whereClause = TourEntry.STAR_DATE + " >= " + (today + (24 * 60 * 60 * 1000)); //tomorrow 1st hour
                 break;
             case Constants.SEARCH_FOR_PREVIOUS:
                 whereClause = TourEntry.END_DATE + " <= " + today;

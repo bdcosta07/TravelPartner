@@ -31,7 +31,7 @@ public class AlarmService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        sendNotification("alarm alarm alarm .....");
+        sendNotification("Time to wake up!");
 
         // Release the wake lock provided by the BroadcastReceiver.
         AlarmReceiver.completeWakefulIntent(intent);
