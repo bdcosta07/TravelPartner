@@ -5,21 +5,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kichukkhon.android.travelpartner.Adapter.GalleryAdapter;
 import com.kichukkhon.android.travelpartner.Class.PhotoGallery;
 import com.kichukkhon.android.travelpartner.Database.PhotoGalleryDBManager;
 import com.kichukkhon.android.travelpartner.R;
+import com.kichukkhon.android.travelpartner.Util.Constants;
 import com.kichukkhon.android.travelpartner.Util.Preference;
 
 import java.io.File;
@@ -60,6 +59,7 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
 
         galleryDBManager = new PhotoGalleryDBManager(this);
         recyclerView = (RecyclerView) findViewById(R.id.rvTourList);
+        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
         createTile();
 
@@ -71,9 +71,18 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
                 captureImage();
             }
         });
+
+        //if we come here after a image deletion, let's show a snackbar
+        if (getIntent() != null) {
+            boolean isDeleted = getIntent().getBooleanExtra(Constants.IS_PICTURE_DELETED, false);
+            if (isDeleted){
+                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Picture is successfully deleted!", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        }
     }
 
-    private void createTile(){
+    private void createTile() {
         ArrayList<PhotoGallery> imageList = galleryDBManager.getImageInfoByTourId(currentTourId);
         adapter = new GalleryAdapter(imageList, recyclerView.getContext());
         recyclerView.setAdapter(adapter);
@@ -171,7 +180,7 @@ public class PhotoGalleryActivity extends BaseDrawerActivity {
             PhotoGallery photoGallery = new PhotoGallery(System.currentTimeMillis(), fileUri.getPath(), "", currentTourId);
 
             boolean inserted = galleryDBManager.addImage(photoGallery);
-            if(inserted) {
+            if (inserted) {
                 createTile();
                 //adapter.notifyDataSetChanged();
             }

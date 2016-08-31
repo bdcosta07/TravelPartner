@@ -96,6 +96,7 @@ public class ImageDetailsActivity extends AppCompatActivity {
                             boolean deleted = dbManager.deleteImage(imageInfo.getId());
                             if (deleted) {
                                 Intent intent = new Intent(ImageDetailsActivity.this, PhotoGalleryActivity.class);
+                                intent.putExtra(Constants.IS_PICTURE_DELETED, true);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(ImageDetailsActivity.this, "Something wrong! Please try again later.", Toast.LENGTH_SHORT).show();
