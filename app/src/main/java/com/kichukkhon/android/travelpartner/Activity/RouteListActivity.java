@@ -46,6 +46,10 @@ public class RouteListActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_route_list);
 
         InitCommonUIElements();
+        toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Route records");
+
         preference = new Preference(this);
 
         currentTourId = preference.getCurrentlySelectedTourId();

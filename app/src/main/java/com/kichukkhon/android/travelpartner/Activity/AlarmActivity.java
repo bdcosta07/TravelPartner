@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,6 +27,10 @@ public class AlarmActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_alarm);
 
         InitCommonUIElements();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarWithAppbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Alarm");
 
         alarmReceiver = new AlarmReceiver();
         preference = new Preference(this);
